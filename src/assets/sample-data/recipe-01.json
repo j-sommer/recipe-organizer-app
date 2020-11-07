@@ -1,5 +1,7 @@
 {
     "title": "Schwarzbrot",
+    "category":"Backen",
+    "img":"assets/sample-data/schwarzbrot.jpg",
     "labels": [
       "Brot", "Teig"
     ],
