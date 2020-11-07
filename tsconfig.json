@@ -10,11 +10,16 @@
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "target": "es2015",
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@assets/*": ["src/assets/*"]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
