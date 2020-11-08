@@ -18,7 +18,7 @@ export class AppComponent {
     },
     {
       title: 'Neues Rezept',
-      url: '/new',
+      url: '/new-recipe',
       icon: 'add',
     },
   ];
