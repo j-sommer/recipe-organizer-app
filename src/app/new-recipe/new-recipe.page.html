@@ -7,4 +7,76 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content fullscreen class="new-recipe__content">
+  <ion-item>
+    <ion-label position="floating">Titel</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <div class="space-vertical-m"></div>
+
+  <ion-item>
+    <ion-label>Kategorie</ion-label>
+    <ion-select
+      placeholder="Auswählen"
+      okText="Auswählen"
+      cancelText="Abbrechen"
+      [(ngModel)]="selectedCategory"
+    >
+      <ion-select-option *ngFor="let category of categories"
+        >{{category}}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+
+  <div class="space-vertical-m"></div>
+
+  <form #form="ngForm" (ngSubmit)="addTag(form.value)">
+    <ion-item>
+      <ion-label>Tags</ion-label>
+      <ion-input [(ngModel)]="tagInputValue" name="tagValue"></ion-input>
+      <button ion-button item-right type="submit">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-item>
+  </form>
+  <ion-chip color="secondary" *ngFor="let tag of tags">
+    <ion-label>{{tag }}</ion-label>
+  </ion-chip>
+
+  <div class="space-vertical-m"></div>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Zutaten</ion-label>
+    </ion-list-header>
+    <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
+      <ion-item *ngFor="let ingredient of ingredients">
+        <ion-input></ion-input>
+        <ion-reorder slot="end"></ion-reorder>
+      </ion-item>
+    </ion-reorder-group>
+
+    <div class="space-vertical-xs"></div>
+
+    <ion-button
+      class="new-recipe__content__ingredients__add"
+      (click)="addIngredient()"
+      color="secondary"
+    >
+      <ion-icon slot="start" name="add"></ion-icon>
+      Zutat
+    </ion-button>
+  </ion-list>
+
+  <div class="space-vertical-m"></div>
+
+  <ion-item>
+    <ion-label position="floating">Zubereitung</ion-label>
+    <ion-textarea></ion-textarea>
+  </ion-item>
+
+  <div class="space-vertical-m"></div>
+
+  <ion-button expand="block" color="primary">Speichern</ion-button>
+</ion-content>

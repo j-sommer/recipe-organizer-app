@@ -1,0 +1,15 @@
+.new-recipe {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__ingredients {
+      display: flex;
+      flex-direction: column;
+      &__add {
+        float: right;
+      }
+    }
+  }
+}
