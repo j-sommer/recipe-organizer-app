@@ -1,3 +1,24 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start" menuId="first" contentId="content1">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Recipe Organizer</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list *ngFor="let sideMenuItem of sideMenuItems">
+        <ion-menu-toggle auto-hide="true">
+          <ion-item [routerLink]="sideMenuItem.url" routerDirection="root">
+            <ion-icon [name]="sideMenuItem.icon" slot="start"></ion-icon>
+            {{ sideMenuItem.title }}
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="content1"></ion-router-outlet>
 </ion-app>
