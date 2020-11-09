@@ -52,7 +52,21 @@
     </ion-list-header>
     <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
       <ion-item *ngFor="let ingredient of newRecipe.ingredients">
-        <ion-input [(ngModel)]="ingredient.name"></ion-input>
+        <div class="new-recipe__content__ingredients__fields">
+          <ion-input [(ngModel)]="ingredient.name"></ion-input>
+          <ion-input [(ngModel)]="ingredient.quantity"></ion-input>
+          <ion-item>
+            <ion-select
+              okText="Auswählen"
+              cancelText="Abbrechen"
+              [(ngModel)]="ingredient.quantityType"
+            >
+              <ion-select-option *ngFor="let quantityType of quantityTypes"
+                >{{quantityType}}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+        </div>
         <ion-reorder slot="end"></ion-reorder>
       </ion-item>
     </ion-reorder-group>
@@ -79,6 +93,4 @@
   <div class="space-vertical-m"></div>
 
   <ion-button expand="block" color="primary">Speichern</ion-button>
-
-  {{newRecipe |json}}
 </ion-content>

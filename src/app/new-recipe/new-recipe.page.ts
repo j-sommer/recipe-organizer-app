@@ -4,6 +4,7 @@ import { ItemReorderEventDetail } from '@ionic/core';
 import { categoriesDE } from '@core/models/recipe/categories.const';
 import { Recipe } from '@core/models/recipe/recipe.model';
 import { Ingredient } from '@core/models/recipe/ingredient.model';
+import { quantityTypesDE } from '@core/models/recipe/quantity-types.const';
 
 @Component({
   selector: 'app-new-recipe',
@@ -12,6 +13,7 @@ import { Ingredient } from '@core/models/recipe/ingredient.model';
 })
 export class NewRecipePage {
   public readonly categories: string[] = categoriesDE;
+  public readonly quantityTypes: string[] = quantityTypesDE;
 
   public tagInputValue = '';
 
