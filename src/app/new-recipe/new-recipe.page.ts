@@ -1,25 +1,27 @@
 import { Component } from '@angular/core';
 import { ItemReorderEventDetail } from '@ionic/core';
 
+import { categoriesDE } from '@core/models/recipe/categories.const';
+import { Recipe } from '@core/models/recipe/recipe.model';
+import { Ingredient } from '@core/models/recipe/ingredient.model';
+
 @Component({
   selector: 'app-new-recipe',
   templateUrl: './new-recipe.page.html',
   styleUrls: ['./new-recipe.page.scss'],
 })
 export class NewRecipePage {
-  public readonly categories: string[] = [
-    'Fleisch',
-    'Backen',
-    'Fisch',
-    'Dessert',
-    'Snacks',
-  ];
+  public readonly categories: string[] = categoriesDE;
 
   public tagInputValue = '';
 
-  public selectedCategory = '';
-  public tags: string[] = [];
-  public ingredients: string[] = [];
+  public newRecipe: Recipe = {
+    title: '',
+    category: '',
+    tags: [],
+    ingredients: [],
+    preparation: '',
+  };
 
   public doReorder(ev: CustomEvent<ItemReorderEventDetail>): void {
     // The `from` and `to` properties contain the index of the item
@@ -36,12 +38,17 @@ export class NewRecipePage {
     const tagValue = formValue.tagValue;
 
     if (tagValue) {
-      this.tags.push(tagValue);
+      this.newRecipe.tags.push(tagValue);
       this.tagInputValue = '';
     }
   }
 
   public addIngredient(): void {
-    this.ingredients.push('');
+    const newIngredient: Ingredient = {
+      name: '',
+      quantity: 0,
+      quantityType: '',
+    };
+    this.newRecipe.ingredients.push(newIngredient);
   }
 }
