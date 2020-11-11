@@ -14,7 +14,10 @@
         <ion-card class="recipe-card">
           <span class="recipe-card__category">{{recipe.category}}</span>
 
-          <img class="recipe-card__image" [src]="recipe.img" />
+          <img
+            class="recipe-card__image"
+            [src]="recipe.img ? recipe.img : 'assets/images/placeholder.jpg'"
+          />
           <ion-card-header>
             <ion-card-title>{{recipe.title}}</ion-card-title>
           </ion-card-header>

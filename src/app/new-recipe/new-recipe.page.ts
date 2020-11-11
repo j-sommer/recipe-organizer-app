@@ -5,6 +5,7 @@ import { categoriesDE } from '@core/models/recipe/categories.const';
 import { Recipe } from '@core/models/recipe/recipe.model';
 import { Ingredient } from '@core/models/recipe/ingredient.model';
 import { quantityTypesDE } from '@core/models/recipe/quantity-types.const';
+import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.service';
 
 @Component({
   selector: 'app-new-recipe',
@@ -25,14 +26,13 @@ export class NewRecipePage {
     preparation: '',
   };
 
-  public doReorder(ev: CustomEvent<ItemReorderEventDetail>): void {
-    // The `from` and `to` properties contain the index of the item
-    // when the drag started and ended, respectively
-    console.log('Dragged from index', ev.detail.from, 'to', ev.detail.to);
+  constructor(private recipeFileHandler: RecipeFileHandlerService) {}
 
-    // Finish the reorder and position the item in the DOM based on
-    // where the gesture ended. This method can also be called directly
-    // by the reorder group
+  public doReorder(ev: CustomEvent<ItemReorderEventDetail>): void {
+    const item = this.newRecipe.ingredients.splice(ev.detail.from, 1);
+
+    this.newRecipe.ingredients.splice(ev.detail.to, 0, item[0]);
+
     ev.detail.complete();
   }
 
@@ -52,5 +52,9 @@ export class NewRecipePage {
       quantityType: '',
     };
     this.newRecipe.ingredients.push(newIngredient);
+  }
+
+  public async saveRecipe(): Promise<void> {
+    this.recipeFileHandler.writeRecipe(this.newRecipe);
   }
 }

@@ -7,10 +7,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen class="new-recipe__content">
+<ion-content fullscreen class="new-recipe__content ion-padding">
   <ion-item>
     <ion-label position="floating">Titel</ion-label>
-    <ion-input [(ngModel)]="newRecipe.title"></ion-input>
+    <ion-input [required]="true" [(ngModel)]="newRecipe.title"></ion-input>
   </ion-item>
 
   <div class="space-vertical-m"></div>
@@ -40,6 +40,7 @@
       </button>
     </ion-item>
   </form>
+
   <ion-chip color="secondary" *ngFor="let tag of newRecipe.tags">
     <ion-label>{{tag }}</ion-label>
   </ion-chip>
@@ -92,5 +93,11 @@
 
   <div class="space-vertical-m"></div>
 
-  <ion-button expand="block" color="primary">Speichern</ion-button>
+  <ion-button
+    (click)="saveRecipe()"
+    expand="block"
+    color="primary"
+    type="submit"
+    >Speichern</ion-button
+  >
 </ion-content>
