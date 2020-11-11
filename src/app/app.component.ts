@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SideMenuItem } from '@core/models/side-menu-item.model';
+import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.service';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Platform } from '@ionic/angular';
@@ -26,12 +27,14 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private recipeFileService: RecipeFileHandlerService
   ) {
     this.initializeApp();
   }
 
   private initializeApp(): void {
+    this.recipeFileService.createRecipeDir();
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
