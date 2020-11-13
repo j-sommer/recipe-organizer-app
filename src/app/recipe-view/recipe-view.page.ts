@@ -9,6 +9,7 @@ import { RecipeViewService } from './recipe-view.service';
   providers: [RecipeViewService],
 })
 export class RecipeViewPage implements OnInit {
+  public segment = 'ingredients';
   public recipe: Recipe;
 
   constructor(private recipeViewService: RecipeViewService) {}
