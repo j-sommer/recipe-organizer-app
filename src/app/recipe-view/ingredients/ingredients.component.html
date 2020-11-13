@@ -1,0 +1,24 @@
+<div *ngIf="$recipe | async as recipe">
+  <img
+    class="recipe-view__ingredients__image"
+    [src]="recipe.img ? recipe.img : 'assets/images/placeholder.jpg'"
+  />
+
+  <div class="recipe-view__ingredients__tags">
+    <ion-chip *ngFor="let tag of recipe.tags" color="secondary">
+      <ion-label>{{ tag }}</ion-label>
+    </ion-chip>
+  </div>
+
+  <h3>Zutaten</h3>
+  <ion-list>
+    <ion-item *ngFor="let ingredient of recipe.ingredients">
+      <ion-label>
+        <div class="recipe-view__ingredients__list">
+          <span>{{ ingredient.name }}</span
+          ><span>{{ ingredient.quantity }} {{ ingredient.quantityType }}</span>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</div>

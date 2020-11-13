@@ -1,0 +1,24 @@
+.recipe-view {
+  &__ingredients {
+    display: flex;
+    flex-direction: column;
+
+    &__tags {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &__image {
+      max-height: 20vh;
+      max-width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
