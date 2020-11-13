@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { CoreModule } from '@core/core.module';
 import { IonicModule } from '@ionic/angular';
 
+import { GeneralComponent } from './general/general.component';
+import { IngredientsComponent } from './ingredients/ingredients.component';
 import { NewRecipePageRoutingModule } from './new-recipe-routing.module';
-
 import { NewRecipePage } from './new-recipe.page';
-import { CoreModule } from '@core/core.module';
+import { PreparationComponent } from './preparation/preparation.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,11 @@ import { CoreModule } from '@core/core.module';
     ReactiveFormsModule,
     CoreModule,
   ],
-  declarations: [NewRecipePage],
+  declarations: [
+    NewRecipePage,
+    PreparationComponent,
+    IngredientsComponent,
+    GeneralComponent,
+  ],
 })
 export class NewRecipePageModule {}

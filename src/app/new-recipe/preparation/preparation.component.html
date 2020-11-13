@@ -1,0 +1,11 @@
+<h3>Zubereitung</h3>
+
+<ion-item>
+  <ion-textarea
+    placeholder="Hier Text eingeben..."
+    [rows]="24"
+    [autoGrow]="true"
+    [ngModel]="preparation"
+    (ngModelChange)="onChange($event)"
+  ></ion-textarea>
+</ion-item>
