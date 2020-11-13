@@ -1,4 +1,4 @@
-<div *ngIf="$recipe | async as recipe">
+<div class="recipe-view__ingredients" *ngIf="$recipe | async as recipe">
   <img
     class="recipe-view__ingredients__image"
     [src]="recipe.img ? recipe.img : 'assets/images/placeholder.jpg'"
