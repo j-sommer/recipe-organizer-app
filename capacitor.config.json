@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "recipe-organizer-app",
+  "appName": "Recipe Organizer",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
