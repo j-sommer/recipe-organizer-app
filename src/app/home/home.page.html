@@ -10,8 +10,8 @@
 <ion-content [fullscreen]="true">
   <ion-grid>
     <ion-row>
-      <ion-col size="6" size-md="3" *ngFor="let recipe of recipes">
-        <ion-card class="recipe-card">
+      <ion-col size="12" size-md="3" *ngFor="let recipe of recipes">
+        <ion-card class="recipe-card" (click)="onRecipeClick(recipe)">
           <span class="recipe-card__category">{{recipe.category}}</span>
 
           <img
@@ -29,7 +29,7 @@
               class="recipe-card__content__categories"
             >
               <ion-chip
-                color="primary"
+                color="secondary"
                 outline
                 *ngFor="let label of recipe.tags"
               >

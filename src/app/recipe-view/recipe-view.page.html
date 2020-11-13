@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf="recipe">Rezeptansicht</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="recipe-view ion-padding">
+  <div *ngIf="recipe" class="recipe-view__content">
+    <h1 class="recipe-view__content__title">{{recipe.title}}</h1>
+
+    <div [ngSwitch]="segment">
+      <app-ingredients *ngSwitchCase="'ingredients'"></app-ingredients>
+      <app-preparation *ngSwitchCase="'preparation'"></app-preparation>
+    </div>
+  </div>
+</ion-content>
+
+<ion-segment
+  color="primary"
+  [(ngModel)]="segment"
+>
+  <ion-segment-button value="ingredients">
+    <ion-label>Zutaten</ion-label>
+    <ion-icon name="list"></ion-icon>
+  </ion-segment-button>
+  <ion-segment-button value="preparation">
+    <ion-label>Zubereitung</ion-label>
+    <ion-icon name="reader"></ion-icon>
+  </ion-segment-button>
+</ion-segment>
