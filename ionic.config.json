@@ -1,5 +1,5 @@
 {
-  "name": "recipe-organizer-app",
+  "name": "Recipe Organizer",
   "integrations": {
     "capacitor": {}
   },

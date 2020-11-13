@@ -1,0 +1,38 @@
+<h3>Allgemein</h3>
+
+<ion-item>
+  <ion-label position="floating">Titel</ion-label>
+  <ion-input [required]="true" [(ngModel)]="recipe.title"></ion-input>
+</ion-item>
+
+<div class="space-vertical-m"></div>
+
+<ion-item>
+  <ion-label>Kategorie</ion-label>
+  <ion-select
+    placeholder="Auswählen"
+    okText="Auswählen"
+    cancelText="Abbrechen"
+    [(ngModel)]="recipe.category"
+  >
+    <ion-select-option *ngFor="let category of categories">{{
+      category
+    }}</ion-select-option>
+  </ion-select>
+</ion-item>
+
+<div class="space-vertical-m"></div>
+
+<form #form="ngForm" (ngSubmit)="addTag(form.value)">
+  <ion-item>
+    <ion-label>Tags</ion-label>
+    <ion-input [(ngModel)]="tagInputValue" name="tagValue"></ion-input>
+    <ion-button type="submit" color="secondary">
+      <ion-icon slot="icon-only" name="checkmark"></ion-icon>
+    </ion-button>
+  </ion-item>
+</form>
+
+<ion-chip color="secondary" *ngFor="let tag of recipe.tags">
+  <ion-label>{{ tag }}</ion-label>
+</ion-chip>

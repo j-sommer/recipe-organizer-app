@@ -3,104 +3,42 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="saveRecipe()" type="submit">
+        <ion-icon slot="icon-only" name="save"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
     <ion-title> Neues Rezept </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen class="new-recipe__content ion-padding">
-  <ion-item>
-    <ion-label position="floating">Titel</ion-label>
-    <ion-input [required]="true" [(ngModel)]="newRecipe.title"></ion-input>
-  </ion-item>
-
-  <div class="space-vertical-m"></div>
-
-  <ion-item>
-    <ion-label>Kategorie</ion-label>
-    <ion-select
-      placeholder="Auswählen"
-      okText="Auswählen"
-      cancelText="Abbrechen"
-      [(ngModel)]="newRecipe.category"
-    >
-      <ion-select-option *ngFor="let category of categories"
-        >{{category}}</ion-select-option
-      >
-    </ion-select>
-  </ion-item>
-
-  <div class="space-vertical-m"></div>
-
-  <form #form="ngForm" (ngSubmit)="addTag(form.value)">
-    <ion-item>
-      <ion-label>Tags</ion-label>
-      <ion-input [(ngModel)]="tagInputValue" name="tagValue"></ion-input>
-      <button ion-button item-right type="submit">
-        <ion-icon name="checkmark"></ion-icon>
-      </button>
-    </ion-item>
-  </form>
-
-  <ion-chip color="secondary" *ngFor="let tag of newRecipe.tags">
-    <ion-label>{{tag }}</ion-label>
-  </ion-chip>
-
-  <div class="space-vertical-m"></div>
-
-  <ion-list>
-    <ion-list-header>
-      <ion-label>Zutaten</ion-label>
-    </ion-list-header>
-    <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
-      <ion-item *ngFor="let ingredient of newRecipe.ingredients">
-        <div class="new-recipe__content__ingredients__fields">
-          <ion-input [(ngModel)]="ingredient.name"></ion-input>
-          <ion-input [(ngModel)]="ingredient.quantity"></ion-input>
-          <ion-item>
-            <ion-select
-              okText="Auswählen"
-              cancelText="Abbrechen"
-              [(ngModel)]="ingredient.quantityType"
-            >
-              <ion-select-option *ngFor="let quantityType of quantityTypes"
-                >{{quantityType}}</ion-select-option
-              >
-            </ion-select>
-          </ion-item>
-        </div>
-        <ion-reorder slot="end"></ion-reorder>
-      </ion-item>
-    </ion-reorder-group>
-
-    <div class="space-vertical-xs"></div>
-
-    <ion-button
-      class="new-recipe__content__ingredients__add"
-      (click)="addIngredient()"
-      color="secondary"
-    >
-      <ion-icon slot="start" name="add"></ion-icon>
-      Zutat
-    </ion-button>
-  </ion-list>
-
-  <div class="space-vertical-m"></div>
-
-  <ion-item>
-    <ion-label position="floating">Zubereitung</ion-label>
-    <ion-textarea
-      [autoGrow]="true"
-      [(ngModel)]="newRecipe.preparation"
-    ></ion-textarea>
-  </ion-item>
-
-  <div class="space-vertical-m"></div>
-
-  <ion-button
-    (click)="saveRecipe()"
-    expand="block"
-    color="primary"
-    type="submit"
-    >Speichern</ion-button
-  >
+  <div [ngSwitch]="segment">
+    <app-general *ngSwitchCase="'general'" [(recipe)]="newRecipe"></app-general>
+    <app-new-ingredients
+      *ngSwitchCase="'ingredients'"
+      [(ingredients)]="newRecipe.ingredients"
+    ></app-new-ingredients>
+    <app-new-preparation
+      [(preparation)]="newRecipe.preparation"
+      *ngSwitchCase="'preparation'"
+    ></app-new-preparation>
+  </div>
 </ion-content>
+
+<ion-segment color="primary" [(ngModel)]="segment">
+  <ion-segment-button value="general">
+    <ion-label>Allgemein</ion-label>
+    <ion-icon name="information-circle"></ion-icon>
+  </ion-segment-button>
+  <ion-segment-button value="ingredients">
+    <ion-label>Zutaten</ion-label>
+    <ion-icon name="list"></ion-icon>
+  </ion-segment-button>
+  <ion-segment-button value="preparation">
+    <ion-label>Zubereitung</ion-label>
+    <ion-icon name="reader"></ion-icon>
+  </ion-segment-button>
+</ion-segment>
