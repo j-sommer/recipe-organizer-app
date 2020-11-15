@@ -20,15 +20,19 @@ export class HomePage implements OnInit {
     { name: CategoryName.Other, recipes: [], icon: 'restaurant' },
   ];
 
+  public hasRecipes = false;
+
   constructor(
     private recipeFileHandler: RecipeFileHandlerService,
     private router: Router
   ) {}
 
   public async ngOnInit(): Promise<void> {
+    await this.recipeFileHandler.createRecipeDir();
     const recipes = await this.recipeFileHandler.readRecipes();
+    this.hasRecipes = recipes && !!recipes.length;
 
-    if (recipes && recipes.length) {
+    if (this.hasRecipes) {
       this.fillCategories(recipes);
     }
   }
