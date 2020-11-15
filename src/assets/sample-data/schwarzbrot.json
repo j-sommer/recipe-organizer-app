@@ -1,0 +1,10 @@
+{
+  "title": "Schwarzbrot",
+  "category": "Backen",
+  "tags": ["Teig", "Gesund", "Lecker"],
+  "ingredients": [
+    { "name": "Roggenmehl", "quantity": "400", "quantityType": "g" },
+    { "name": "Wasser", "quantity": "250", "quantityType": "ml" }
+  ],
+  "preparation": "Alle Zutaten in eine Schüssel geben und mithilfe eines Mixers oder eine Küchenmaschine gute 5 Minuten rühren bzw. kneten lassen (der Teig wird relativ weich, was aber richtig ist).\n\nDie Schüssel abdecken und den Teig gehen lassen (je nach Raumtemperatur kann dies gut 2-6 Stunden dauern, auch ist die Triebstärke des Sauerteiges wichtig. Daher immer mal schauen). Hat der Teig sein Volumen verdoppelt, ist er bereit zur Weiterverarbeitung.\n\nMag man das Brot intensiver im Geschmack, kann man den Teig auch über Nacht im Kühlschrank gehen lassen, was ich empfehle.\n"
+}
