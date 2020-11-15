@@ -5,6 +5,16 @@
     margin-top: 10vh;
   }
 
+  &__list-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &__icon {
+      margin-right: 1rem;
+    }
+  }
+
   &__list-item {
     cursor: pointer;
   }

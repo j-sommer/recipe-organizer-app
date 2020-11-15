@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { categoriesDE } from '@core/models/recipe/categories.const';
+import { CategoryName } from '@core/models/category/category-name.enum';
+import { Category } from '@core/models/category/category.model';
 import { Recipe } from '@core/models/recipe/recipe.model';
 import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.service';
 
@@ -10,7 +11,14 @@ import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.ser
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  public categories: { category: string; recipes: Recipe[] }[] = [];
+  public categories: Category[] = [
+    { name: CategoryName.Meat, recipes: [], icon: 'flame' },
+    { name: CategoryName.Baking, recipes: [], icon: 'cafe' },
+    { name: CategoryName.Dessert, recipes: [], icon: 'ice-cream' },
+    { name: CategoryName.Fish, recipes: [], icon: 'fish' },
+    { name: CategoryName.Snacks, recipes: [], icon: 'pizza' },
+    { name: CategoryName.Other, recipes: [], icon: 'restaurant' },
+  ];
 
   constructor(
     private recipeFileHandler: RecipeFileHandlerService,
@@ -21,7 +29,6 @@ export class HomePage implements OnInit {
     const recipes = await this.recipeFileHandler.readRecipes();
 
     if (recipes && recipes.length) {
-      this.setupCategories();
       this.fillCategories(recipes);
     }
   }
@@ -30,26 +37,11 @@ export class HomePage implements OnInit {
     this.router.navigate(['/recipe-view'], { state: { data: recipe } });
   }
 
-  private setupCategories(): void {
-    categoriesDE.forEach((category: string) => {
-      this.categories.push({ category, recipes: [] });
-    });
-
-    this.categories.push({ category: 'Andere', recipes: [] });
-  }
-
   private fillCategories(recipes: Recipe[]): void {
     recipes.forEach((recipe: Recipe) => {
       const matchingCategory = this.categories.find(
-        (category) => category.category === recipe.category
+        (category) => category.name === recipe.category
       );
-
-      if (!matchingCategory) {
-        this.categories
-          .find((category) => category.category === 'Andere')
-          .recipes.push(recipe);
-        return;
-      }
 
       matchingCategory.recipes.push(recipe);
     });
