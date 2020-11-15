@@ -19,11 +19,13 @@ export class RecipeFileHandlerService {
 
   public async createRecipeDir(): Promise<void> {
     try {
-      if (await !this.hasRecipeDir()) {
+      const hasRecipeDir = await this.hasRecipeDir();
+
+      if (!hasRecipeDir) {
         await Filesystem.mkdir({
           path: this.recipeDirectory,
           directory: this.filesystemDirectory,
-          recursive: false,
+          recursive: true,
         });
 
         console.log('created dir');
@@ -35,12 +37,15 @@ export class RecipeFileHandlerService {
 
   public async writeRecipe(recipe: Recipe): Promise<void> {
     try {
+      const fileName = this.generateFileName(recipe.title);
+
       const result = await Filesystem.writeFile({
-        path: `${this.recipeDirectory}/${recipe.title}${this.jsonFileExtension}`,
+        path: `${this.recipeDirectory}/${fileName}${this.jsonFileExtension}`,
         data: JSON.stringify(recipe),
         directory: this.filesystemDirectory,
         encoding: FilesystemEncoding.UTF8,
       });
+
       console.log('Wrote recipe to', result.uri);
 
       return Promise.resolve();
@@ -51,47 +56,60 @@ export class RecipeFileHandlerService {
   }
 
   public async readRecipes(): Promise<Recipe[]> {
-    let recipes: Recipe[] = [];
     try {
-      const recipeFiles = await Filesystem.readdir({
-        path: this.recipeDirectory,
-        directory: this.filesystemDirectory,
-      });
+      let recipes: Recipe[] = [];
 
-      const readRecipesPromises = recipeFiles.files.map(
-        async (recipeFile: string) => {
-          try {
-            const contents = await Filesystem.readFile({
-              path: `${this.recipeDirectory}/${recipeFile}`,
-              directory: this.filesystemDirectory,
-              encoding: FilesystemEncoding.UTF8,
-            });
+      const hasRecipeDir = await this.hasRecipeDir();
 
-            return JSON.parse(contents.data);
-          } catch (error) {
-            console.error(error);
+      if (hasRecipeDir) {
+        const recipeFiles = await Filesystem.readdir({
+          path: this.recipeDirectory,
+          directory: this.filesystemDirectory,
+        });
+
+        const readRecipesPromises = recipeFiles.files.map(
+          async (recipeFile: string) => {
+            try {
+              const contents = await Filesystem.readFile({
+                path: `${this.recipeDirectory}/${recipeFile}`,
+                directory: this.filesystemDirectory,
+                encoding: FilesystemEncoding.UTF8,
+              });
+
+              return JSON.parse(contents.data);
+            } catch (error) {
+              console.error(error);
+            }
           }
-        }
-      );
+        );
 
-      recipes = await Promise.all(readRecipesPromises);
-      return Promise.resolve(recipes);
+        recipes = await Promise.all(readRecipesPromises);
+        return Promise.resolve(recipes);
+      }
     } catch (error) {
       console.error('Unable to read dir', error);
       return Promise.reject();
     }
   }
 
+  private generateFileName(title: string): string {
+    const normalizedTitle = title.replace(/ /g, '-');
+    return `${normalizedTitle.toLowerCase}_${Date.now()}`;
+  }
+
   private async hasRecipeDir(): Promise<boolean> {
     try {
-      const directoryExists = await Filesystem.readdir({
-        path: this.recipeDirectory,
+      const readResult = await Filesystem.readdir({
+        path: '',
         directory: this.filesystemDirectory,
       });
 
-      return Promise.resolve(!!directoryExists);
+      return Promise.resolve(
+        readResult.files.some((file) => file === this.recipeDirectory)
+      );
     } catch (error) {
-      return Promise.resolve(false);
+      console.error('Unable to read dir', error);
+      return Promise.reject();
     }
   }
 }

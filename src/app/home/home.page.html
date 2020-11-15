@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content fullscreen class="ion-padding">
-  <div *ngIf="!categories.length" class="recipe-overview__no-content">
+  <div *ngIf="!hasRecipes" class="recipe-overview__no-content">
     <ion-text> Es sieht so aus als hättest du noch keine Rezepte. </ion-text>
 
     <ion-button
@@ -23,9 +23,10 @@
   <ng-container *ngFor="let category of categories">
     <ion-list *ngIf="category.recipes.length">
       <ion-list-header lines="full">
-        <ion-text color="primary">
+        <ion-text>
           <h2 class="recipe-overview__list-header">
             <ion-icon
+              color="primary"
               name="{{category.icon}}"
               class="recipe-overview__list-header__icon"
             ></ion-icon>
