@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { categoriesDE } from '@core/models/recipe/categories.const';
+import { getCategories } from '@core/models/category/category-name.enum';
 import { Recipe } from '@core/models/recipe/recipe.model';
 
 @Component({
@@ -8,7 +8,7 @@ import { Recipe } from '@core/models/recipe/recipe.model';
   styleUrls: ['./general.component.scss'],
 })
 export class GeneralComponent {
-  public readonly categories: string[] = categoriesDE;
+  public readonly categories: string[] = getCategories();
 
   public tagInputValue = '';
 

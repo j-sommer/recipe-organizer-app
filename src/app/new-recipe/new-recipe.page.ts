@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CategoryName } from '@core/models/category/category-name.enum';
 import { Recipe } from '@core/models/recipe/recipe.model';
 import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.service';
 import { ToastController } from '@ionic/angular';
@@ -13,7 +14,7 @@ export class NewRecipePage {
 
   public newRecipe: Recipe = {
     title: '',
-    category: '',
+    category: CategoryName.Other,
     tags: [],
     ingredients: [],
     preparation: '',

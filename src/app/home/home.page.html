@@ -24,7 +24,13 @@
     <ion-list *ngIf="category.recipes.length">
       <ion-list-header lines="full">
         <ion-text color="primary">
-          <h2>{{category.category}}</h2>
+          <h2 class="recipe-overview__list-header">
+            <ion-icon
+              name="{{category.icon}}"
+              class="recipe-overview__list-header__icon"
+            ></ion-icon>
+            {{category.name}}
+          </h2>
         </ion-text>
       </ion-list-header>
 
