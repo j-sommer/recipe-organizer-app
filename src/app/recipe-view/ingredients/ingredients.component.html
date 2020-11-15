@@ -11,7 +11,9 @@
   </div>
 
   <h3>Zutaten</h3>
-  <ion-list>
+  <p *ngIf="!recipe.ingredients.length">Bisher keine Zutaten</p>
+
+  <ion-list *ngIf="recipe.ingredients.length">
     <ion-item *ngFor="let ingredient of recipe.ingredients">
       <ion-label>
         <div class="recipe-view__ingredients__list">
