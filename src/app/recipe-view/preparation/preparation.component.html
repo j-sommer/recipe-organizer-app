@@ -1,4 +1,6 @@
 <h3>Zubereitung</h3>
-<p class="recipe-view__preparation">
+
+<p *ngIf="!($recipe | async).preparation">Noch keine Angaben zur Zubereitung</p>
+<p *ngIf="($recipe | async).preparation" class="recipe-view__preparation">
   {{ ($recipe | async).preparation }}
 </p>

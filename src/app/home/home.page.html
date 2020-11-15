@@ -7,38 +7,55 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12" size-md="3" *ngFor="let recipe of recipes">
-        <ion-card class="recipe-card" (click)="onRecipeClick(recipe)">
-          <span class="recipe-card__category">{{recipe.category}}</span>
+<ion-content fullscreen class="ion-padding">
+  <div *ngIf="!categories.length" class="recipe-overview__no-content">
+    <ion-text> Es sieht so aus als hättest du noch keine Rezepte. </ion-text>
 
+    <ion-button
+      [routerLink]="'/new-recipe'"
+      routerDirection="root"
+      size="default"
+    >
+      Rezept erstellen
+    </ion-button>
+  </div>
+
+  <ng-container *ngFor="let category of categories">
+    <ion-list *ngIf="category.recipes.length">
+      <ion-list-header lines="full">
+        <ion-text color="primary">
+          <h2>{{category.category}}</h2>
+        </ion-text>
+      </ion-list-header>
+
+      <ion-item
+        class="recipe-overview__list-item"
+        (click)="onRecipeClick(recipe)"
+        *ngFor="let recipe of category.recipes"
+        detail
+        lines="none"
+      >
+        <ion-thumbnail slot="start">
           <img
-            class="recipe-card__image"
             [src]="recipe.img ? recipe.img : 'assets/images/placeholder.jpg'"
           />
-          <ion-card-header>
-            <ion-card-title>{{recipe.title}}</ion-card-title>
-          </ion-card-header>
-
-          <ion-card-content class="recipe-card__content">
-            <div class="recipe-card__content__space"></div>
-            <div
-              *ngIf="recipe.tags.length"
-              class="recipe-card__content__categories"
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{recipe.title}}</h2>
+          <div
+            *ngIf="recipe.tags.length"
+            class="recipe-card__content__categories"
+          >
+            <ion-chip
+              color="secondary"
+              outline
+              *ngFor="let label of recipe.tags"
             >
-              <ion-chip
-                color="secondary"
-                outline
-                *ngFor="let label of recipe.tags"
-              >
-                <ion-label>{{label}}</ion-label>
-              </ion-chip>
-            </div>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+              <ion-label>{{label}}</ion-label>
+            </ion-chip>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
 </ion-content>
