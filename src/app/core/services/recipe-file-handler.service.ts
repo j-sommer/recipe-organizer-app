@@ -14,25 +14,26 @@ const { Filesystem } = Plugins;
 export class RecipeFileHandlerService {
   public readonly recipeDirectory = 'recipes';
 
-  private readonly filesystemDirectory = FilesystemDirectory.Documents;
+  private readonly filesystemDirectory = FilesystemDirectory.Data;
   private readonly jsonFileExtension = '.json';
 
   public async createRecipeDir(): Promise<void> {
     try {
-      await Filesystem.mkdir({
-        path: this.recipeDirectory,
-        directory: this.filesystemDirectory,
-        recursive: false,
-      });
+      if (await !this.hasRecipeDir()) {
+        await Filesystem.mkdir({
+          path: this.recipeDirectory,
+          directory: this.filesystemDirectory,
+          recursive: false,
+        });
 
-      console.log('created dir');
+        console.log('created dir');
+      }
     } catch (error) {
       console.error('Unable to make directory', error);
     }
   }
 
   public async writeRecipe(recipe: Recipe): Promise<void> {
-    // TODO: MKDIR vorher ausühren
     try {
       const result = await Filesystem.writeFile({
         path: `${this.recipeDirectory}/${recipe.title}${this.jsonFileExtension}`,
@@ -78,6 +79,19 @@ export class RecipeFileHandlerService {
     } catch (error) {
       console.error('Unable to read dir', error);
       return Promise.reject();
+    }
+  }
+
+  private async hasRecipeDir(): Promise<boolean> {
+    try {
+      const directoryExists = await Filesystem.readdir({
+        path: this.recipeDirectory,
+        directory: this.filesystemDirectory,
+      });
+
+      return Promise.resolve(!!directoryExists);
+    } catch (error) {
+      return Promise.resolve(false);
     }
   }
 }
