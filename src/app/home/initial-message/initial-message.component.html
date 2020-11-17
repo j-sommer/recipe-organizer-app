@@ -1,0 +1,11 @@
+<div *ngIf="show" class="recipe-overview__no-content">
+  <ion-text> Es sieht so aus als hättest du noch keine Rezepte. </ion-text>
+
+  <ion-button
+    [routerLink]="'/new-recipe'"
+    routerDirection="root"
+    size="default"
+  >
+    Rezept erstellen
+  </ion-button>
+</div>

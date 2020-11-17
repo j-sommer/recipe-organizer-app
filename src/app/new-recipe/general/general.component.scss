@@ -1,0 +1,9 @@
+.new-recipe {
+  &__image-selection {
+    display: flex;
+    flex-direction: column;
+    max-width: 60vw;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
