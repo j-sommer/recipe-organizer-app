@@ -1,11 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
+import { CoreModule } from '@core/core.module';
+import { IonicModule } from '@ionic/angular';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { CoreModule } from '@core/core.module';
+import { HomePage } from './home.page';
+import { InitialMessageComponent } from './initial-message/initial-message.component';
+import { ListPlaceholderComponent } from './list-placeholder/list-placeholder.component';
 
 @NgModule({
   imports: [
@@ -15,6 +17,6 @@ import { CoreModule } from '@core/core.module';
     HomePageRoutingModule,
     CoreModule,
   ],
-  declarations: [HomePage],
+  declarations: [HomePage, ListPlaceholderComponent, InitialMessageComponent],
 })
 export class HomePageModule {}

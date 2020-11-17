@@ -8,17 +8,13 @@
 </ion-header>
 
 <ion-content fullscreen class="ion-padding">
-  <div *ngIf="!hasRecipes" class="recipe-overview__no-content">
-    <ion-text> Es sieht so aus als hättest du noch keine Rezepte. </ion-text>
+  <ng-container *ngFor="let number of [1, 2, 3]">
+    <app-list-placeholder
+      [isLoading]="!hasRecipes && isLoading"
+    ></app-list-placeholder>
+  </ng-container>
 
-    <ion-button
-      [routerLink]="'/new-recipe'"
-      routerDirection="root"
-      size="default"
-    >
-      Rezept erstellen
-    </ion-button>
-  </div>
+  <app-initial-message [show]="!isLoading && !hasRecipes"></app-initial-message>
 
   <ng-container *ngFor="let category of categories">
     <ion-list *ngIf="category.recipes.length">
@@ -44,7 +40,8 @@
       >
         <ion-thumbnail slot="start">
           <img
-            [src]="recipe.img ? recipe.img : 'assets/images/placeholder.jpg'"
+            class="recipe-overview__list-item__image"
+            [src]="recipe.img ? imagePrefix + recipe.img : 'assets/images/placeholder.jpg'"
           />
         </ion-thumbnail>
         <ion-label>

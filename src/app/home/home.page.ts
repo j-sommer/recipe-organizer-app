@@ -4,6 +4,7 @@ import { CategoryName } from '@core/models/category/category-name.enum';
 import { Category } from '@core/models/category/category.model';
 import { Recipe } from '@core/models/recipe/recipe.model';
 import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.service';
+import { imageBase64Prefix } from '@core/util/image-base64-prefix.const';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,8 @@ import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.ser
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  public readonly imagePrefix = imageBase64Prefix;
+
   public categories: Category[] = [
     { name: CategoryName.Meat, recipes: [], icon: 'flame' },
     { name: CategoryName.Baking, recipes: [], icon: 'cafe' },
@@ -21,6 +24,7 @@ export class HomePage implements OnInit {
   ];
 
   public hasRecipes = false;
+  public isLoading = true;
 
   constructor(
     private recipeFileHandler: RecipeFileHandlerService,
@@ -33,6 +37,7 @@ export class HomePage implements OnInit {
     this.hasRecipes = recipes && !!recipes.length;
 
     if (this.hasRecipes) {
+      this.isLoading = false;
       this.fillCategories(recipes);
     }
   }

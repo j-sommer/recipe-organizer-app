@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import {
   Plugins,
   FilesystemDirectory,
+  CameraResultType,
   FilesystemEncoding,
 } from '@capacitor/core';
 import { Recipe } from '@core/models/recipe/recipe.model';
 
-const { Filesystem } = Plugins;
+const { Filesystem, Camera } = Plugins;
 
 @Injectable({
   providedIn: 'root',
@@ -88,6 +89,19 @@ export class RecipeFileHandlerService {
       }
     } catch (error) {
       console.error('Unable to read dir', error);
+      return Promise.reject();
+    }
+  }
+
+  public async getPhoto(): Promise<string> {
+    try {
+      const photo = await Camera.getPhoto({
+        resultType: CameraResultType.Base64,
+      });
+
+      return photo.base64String;
+    } catch (error) {
+      console.error('Unable to get photo', error);
       return Promise.reject();
     }
   }
