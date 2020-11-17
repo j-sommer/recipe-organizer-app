@@ -3,6 +3,7 @@ import { SideMenuItem } from '@core/models/side-menu-item.model';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Platform } from '@ionic/angular';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
 @Component({
   selector: 'app-root',
@@ -26,9 +27,14 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private androidPermissions: AndroidPermissions
   ) {
     this.initializeApp();
+
+    if (this.platform.is('android')) {
+      this.initializeAndroidPermissions();
+    }
   }
 
   private initializeApp(): void {
@@ -36,5 +42,22 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  private initializeAndroidPermissions(): void {
+    this.androidPermissions
+      .checkPermission(this.androidPermissions.PERMISSION.CAMERA)
+      .then(
+        (result) => console.log('Has permission?', result.hasPermission),
+        (err) =>
+          this.androidPermissions.requestPermission(
+            this.androidPermissions.PERMISSION.CAMERA
+          )
+      );
+
+    this.androidPermissions.requestPermissions([
+      this.androidPermissions.PERMISSION.CAMERA,
+      this.androidPermissions.PERMISSION.GET_ACCOUNTS,
+    ]);
   }
 }
