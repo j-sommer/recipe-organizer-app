@@ -108,7 +108,8 @@ export class RecipeFileHandlerService {
 
   private generateFileName(title: string): string {
     const normalizedTitle = title.replace(/ /g, '-');
-    return `${normalizedTitle.toLowerCase}_${Date.now()}`;
+    const titleWithTimestamp = `${normalizedTitle.toLowerCase()}_${Date.now()}`;
+    return titleWithTimestamp;
   }
 
   private async hasRecipeDir(): Promise<boolean> {
