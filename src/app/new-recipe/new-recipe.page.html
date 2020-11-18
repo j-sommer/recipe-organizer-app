@@ -10,7 +10,7 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-title> Neues Rezept </ion-title>
+    <ion-title> {{'new-recipe.heading' | translate}} </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -30,15 +30,15 @@
 
 <ion-segment color="primary" [(ngModel)]="segment">
   <ion-segment-button value="general">
-    <ion-label>Allgemein</ion-label>
+    <ion-label>{{'new-recipe.segment.general' | translate}}</ion-label>
     <ion-icon name="information-circle"></ion-icon>
   </ion-segment-button>
   <ion-segment-button value="ingredients">
-    <ion-label>Zutaten</ion-label>
+    <ion-label>{{'new-recipe.segment.ingredients' | translate}}</ion-label>
     <ion-icon name="list"></ion-icon>
   </ion-segment-button>
   <ion-segment-button value="preparation">
-    <ion-label>Zubereitung</ion-label>
+    <ion-label>{{'new-recipe.segment.preparation' | translate}}</ion-label>
     <ion-icon name="reader"></ion-icon>
   </ion-segment-button>
 </ion-segment>

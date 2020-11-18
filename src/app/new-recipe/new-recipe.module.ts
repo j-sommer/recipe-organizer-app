@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from '@core/core.module';
 import { IonicModule } from '@ionic/angular';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { GeneralComponent } from './general/general.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
@@ -18,6 +19,7 @@ import { PreparationComponent } from './preparation/preparation.component';
     NewRecipePageRoutingModule,
     ReactiveFormsModule,
     CoreModule,
+    TranslateModule.forChild(),
   ],
   declarations: [
     NewRecipePage,

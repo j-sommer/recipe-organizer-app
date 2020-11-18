@@ -13,7 +13,7 @@
         <ion-menu-toggle auto-hide="true">
           <ion-item [routerLink]="sideMenuItem.url" routerDirection="root">
             <ion-icon [name]="sideMenuItem.icon" slot="start"></ion-icon>
-            {{ sideMenuItem.title }}
+            {{ 'menu.item.' + sideMenuItem.title | translate }}
           </ion-item>
         </ion-menu-toggle>
       </ion-list>

@@ -4,6 +4,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Platform } from '@ionic/angular';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +14,12 @@ import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 export class AppComponent {
   sideMenuItems: SideMenuItem[] = [
     {
-      title: 'Übersicht',
+      title: 'home',
       url: '/home',
       icon: 'list',
     },
     {
-      title: 'Neues Rezept',
+      title: 'new-recipe',
       url: '/new-recipe',
       icon: 'add',
     },
@@ -28,7 +29,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private androidPermissions: AndroidPermissions
+    private androidPermissions: AndroidPermissions,
+    private translate: TranslateService
   ) {
     this.initializeApp();
 
@@ -42,6 +44,8 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
+    this.translate.setDefaultLang('de');
   }
 
   private initializeAndroidPermissions(): void {
