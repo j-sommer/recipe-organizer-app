@@ -1,0 +1,70 @@
+{
+  "menu": {
+    "item": {
+      "home": "Übersicht",
+      "new-recipe": "Neues Rezept"
+    }
+  },
+  "recipe-overview": {
+    "heading": "Übersicht",
+    "no-content": {
+      "info-text": "Es sieht so aus als hättest du keine Rezepte.",
+      "button": "Rezept erstellen"
+    },
+    "categories": {
+      "meat": "Fleisch",
+      "baking": "Backen",
+      "fish": "Fisch",
+      "dessert": "Dessert",
+      "snacks": "Snacks",
+      "other": "Andere"
+    }
+  },
+  "new-recipe": {
+    "heading": "Neues Rezept",
+    "general": {
+      "heading": "Allgemein",
+      "label-title": "Titel",
+      "label-category": "Kategorie",
+      "add-photo": "Foto Hinzufügen",
+      "tags": "Tags",
+      "category": {
+        "meat": "Fleisch",
+        "baking": "Backen",
+        "fish": "Fisch",
+        "dessert": "Dessert",
+        "snacks": "Snacks",
+        "other": "Andere",
+        "select-placeholder": "Auswählen",
+        "select-confirm": "Auswählen",
+        "select-cancel": "Abbrechen"
+      }
+    },
+    "ingredients": {
+      "heading": "Zutaten",
+      "button-add": "Zutat",
+      "confirm-text": "Auswählen",
+      "cancel-text": "Abbrechen"
+    },
+    "segment": {
+      "general": "Allgemein",
+      "ingredients": "Zutaten",
+      "preparation": "Zubereitung"
+    }
+  },
+  "recipe-view": {
+    "heading": "Rezeptansicht",
+    "segment": {
+      "ingredients": "Zutaten",
+      "preparation": "Zubereitung"
+    },
+    "preparation": {
+      "heading": "Zubereitung",
+      "no-content": "Es gibt noch keine Angaben zur Zubereitung"
+    },
+    "ingredients": {
+      "heading": "Zutaten",
+      "no-content": "Noch keine Zutaten hinzugefügt"
+    }
+  }
+}

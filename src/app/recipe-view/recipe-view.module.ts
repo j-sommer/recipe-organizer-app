@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { PreparationComponent } from './preparation/preparation.component';
@@ -14,6 +15,7 @@ import { RecipeViewPage } from './recipe-view.page';
     FormsModule,
     IonicModule,
     RecipeViewPageRoutingModule,
+    TranslateModule.forChild(),
   ],
   declarations: [RecipeViewPage, IngredientsComponent, PreparationComponent],
 })

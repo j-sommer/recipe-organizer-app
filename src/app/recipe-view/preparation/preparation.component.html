@@ -1,6 +1,8 @@
-<h3>Zubereitung</h3>
+<h3>{{ 'recipe-view.preparation.heading' | translate }}</h3>
 
-<p *ngIf="!($recipe | async).preparation">Noch keine Angaben zur Zubereitung</p>
+<p *ngIf="!($recipe | async).preparation">
+  {{ 'recipe-view.preparation.no-content' | translate }}
+</p>
 <p *ngIf="($recipe | async).preparation" class="recipe-view__preparation">
   {{ ($recipe | async).preparation }}
 </p>

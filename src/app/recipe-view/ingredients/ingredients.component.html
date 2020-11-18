@@ -12,8 +12,10 @@
     </ion-chip>
   </div>
 
-  <h3>Zutaten</h3>
-  <p *ngIf="!recipe.ingredients.length">Bisher keine Zutaten</p>
+  <h3>{{ 'recipe-view.ingredients.heading' | translate }}</h3>
+  <p *ngIf="!recipe.ingredients.length">
+    {{ 'recipe-view.ingredients.no-content' | translate }}
+  </p>
 
   <ion-list *ngIf="recipe.ingredients.length">
     <ion-item *ngFor="let ingredient of recipe.ingredients">

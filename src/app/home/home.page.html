@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title> Übersicht </ion-title>
+    <ion-title>{{'recipe-overview.heading' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -26,7 +26,7 @@
               name="{{category.icon}}"
               class="recipe-overview__list-header__icon"
             ></ion-icon>
-            {{category.name}}
+            {{'recipe-overview.categories.' + category.name | translate}}
           </h2>
         </ion-text>
       </ion-list-header>

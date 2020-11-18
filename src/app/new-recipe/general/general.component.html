@@ -1,22 +1,26 @@
-<h3>Allgemein</h3>
+<h3>{{ 'new-recipe.general.heading' | translate }}</h3>
 
 <ion-item>
-  <ion-label position="floating">Titel</ion-label>
+  <ion-label position="floating">{{
+    'new-recipe.general.label-title' | translate
+  }}</ion-label>
   <ion-input [required]="true" [(ngModel)]="recipe.title"></ion-input>
 </ion-item>
 
 <div class="space-vertical-l"></div>
 
 <ion-item>
-  <ion-label>Kategorie</ion-label>
+  <ion-label>{{ 'new-recipe.general.label-category' | translate }}</ion-label>
   <ion-select
-    placeholder="Auswählen"
-    okText="Auswählen"
-    cancelText="Abbrechen"
+    placeholder="{{
+      'new-recipe.general.category.select-placeholder' | translate
+    }}"
+    okText="{{ 'new-recipe.general.category.select-confirm' | translate }}"
+    cancelText="{{ 'new-recipe.general.category.select-cancel' | translate }}"
     [(ngModel)]="recipe.category"
   >
-    <ion-select-option *ngFor="let category of categories">{{
-      category
+    <ion-select-option [value]="category" *ngFor="let category of categories">{{
+      'new-recipe.general.category.' + category | translate
     }}</ion-select-option>
   </ion-select>
 </ion-item>
@@ -25,7 +29,7 @@
 
 <form #form="ngForm" (ngSubmit)="addTag(form.value)">
   <ion-item>
-    <ion-label>Tags</ion-label>
+    <ion-label>{{ 'new-recipe.general.tags' | translate }}</ion-label>
     <ion-input [(ngModel)]="tagInputValue" name="tagValue"></ion-input>
     <ion-button type="submit" color="secondary">
       <ion-icon slot="icon-only" name="checkmark"></ion-icon>
@@ -48,7 +52,7 @@
 
   <div class="space-vertical-xs"></div>
 
-  <ion-button (click)="getPhoto()" color="secondary"
-    >Foto hinzufügen</ion-button
-  >
+  <ion-button (click)="getPhoto()" color="secondary">{{
+    'new-recipe.general.add-photo' | translate
+  }}</ion-button>
 </div>
