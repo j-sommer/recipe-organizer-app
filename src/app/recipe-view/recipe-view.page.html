@@ -3,6 +3,13 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="editRecipe()" type="submit">
+        <ion-icon slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
     <ion-title *ngIf="recipe">{{'recipe-view.heading' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
