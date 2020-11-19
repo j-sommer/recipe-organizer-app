@@ -57,7 +57,7 @@ export class RecipeFormPage {
         message: `Rezept '${this.currentRecipe.title}' wurde gespeichert`,
         duration: 2500,
         color: 'medium',
-        position: 'top',
+        position: 'bottom',
       });
 
       successToast.present();
@@ -66,7 +66,7 @@ export class RecipeFormPage {
         message: 'Fehler beim Speichern',
         duration: 2000,
         color: 'danger',
-        position: 'top',
+        position: 'bottom',
       });
 
       errorToast.present();
