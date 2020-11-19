@@ -29,7 +29,7 @@ export class RecipeViewPage {
   }
 
   public editRecipe(): void {
-    this.router.navigate(['/new-recipe'], {
+    this.router.navigate(['/recipe-form'], {
       queryParams: { edit: true },
       state: { data: { recipe: this.recipe } },
     });

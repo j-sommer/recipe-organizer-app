@@ -22,15 +22,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen class="new-recipe__content ion-padding">
+<ion-content fullscreen class="recipe-form__content ion-padding">
   <div [ngSwitch]="segment">
-    <app-general *ngSwitchCase="'general'" [(recipe)]="newRecipe"></app-general>
+    <app-general
+      *ngSwitchCase="'general'"
+      [(recipe)]="currentRecipe"
+    ></app-general>
     <app-new-ingredients
       *ngSwitchCase="'ingredients'"
-      [(ingredients)]="newRecipe.ingredients"
+      [(ingredients)]="currentRecipe.ingredients"
     ></app-new-ingredients>
     <app-new-preparation
-      [(preparation)]="newRecipe.preparation"
+      [(preparation)]="currentRecipe.preparation"
       *ngSwitchCase="'preparation'"
     ></app-new-preparation>
   </div>

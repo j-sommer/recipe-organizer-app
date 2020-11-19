@@ -6,14 +6,14 @@ import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.ser
 import { ToastController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-new-recipe',
-  templateUrl: './new-recipe.page.html',
-  styleUrls: ['./new-recipe.page.scss'],
+  selector: 'app-recipe-form',
+  templateUrl: './recipe-form.page.html',
+  styleUrls: ['./recipe-form.page.scss'],
 })
-export class NewRecipePage {
+export class RecipeFormPage {
   public segment = 'general';
 
-  public newRecipe: Recipe = {
+  public currentRecipe: Recipe = {
     title: '',
     category: CategoryName.Other,
     tags: [],
@@ -36,7 +36,7 @@ export class NewRecipePage {
         const historyData = history?.state?.data;
 
         if (historyData) {
-          this.newRecipe = historyData.recipe;
+          this.currentRecipe = historyData.recipe;
           this.isEdit = true;
         } else {
           this.router.navigate(['/home']);
@@ -48,13 +48,13 @@ export class NewRecipePage {
   public async saveRecipe(): Promise<void> {
     try {
       if (this.isEdit) {
-        await this.recipeFileHandler.saveRecipe(this.newRecipe);
+        await this.recipeFileHandler.saveRecipe(this.currentRecipe);
       } else {
-        await this.recipeFileHandler.saveNewRecipe(this.newRecipe);
+        await this.recipeFileHandler.saveNewRecipe(this.currentRecipe);
       }
 
       const successToast = await this.toastController.create({
-        message: `Rezept '${this.newRecipe.title}' wurde gespeichert`,
+        message: `Rezept '${this.currentRecipe.title}' wurde gespeichert`,
         duration: 2500,
         color: 'medium',
         position: 'top',

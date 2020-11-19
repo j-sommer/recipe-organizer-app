@@ -3,7 +3,7 @@
 <ion-list>
   <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
     <ion-item *ngFor="let ingredient of ingredients">
-      <div class="new-recipe__content__ingredients__fields">
+      <div class="recipe-form__content__ingredients__fields">
         <ion-input [(ngModel)]="ingredient.name"></ion-input>
         <ion-input [(ngModel)]="ingredient.quantity"></ion-input>
         <ion-item>
@@ -25,7 +25,7 @@
   <div class="space-vertical-xs"></div>
 
   <ion-button
-    class="new-recipe__content__ingredients__add"
+    class="recipe-form__content__ingredients__add"
     (click)="addIngredient()"
     color="secondary"
   >

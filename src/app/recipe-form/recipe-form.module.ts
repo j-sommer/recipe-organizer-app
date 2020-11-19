@@ -7,8 +7,8 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { GeneralComponent } from './general/general.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
-import { NewRecipePageRoutingModule } from './new-recipe-routing.module';
-import { NewRecipePage } from './new-recipe.page';
+import { RecipeFormPageRoutingModule } from './recipe-form-routing.module';
+import { RecipeFormPage } from './recipe-form.page';
 import { PreparationComponent } from './preparation/preparation.component';
 
 @NgModule({
@@ -16,16 +16,16 @@ import { PreparationComponent } from './preparation/preparation.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    NewRecipePageRoutingModule,
+    RecipeFormPageRoutingModule,
     ReactiveFormsModule,
     CoreModule,
     TranslateModule.forChild(),
   ],
   declarations: [
-    NewRecipePage,
+    RecipeFormPage,
     PreparationComponent,
     IngredientsComponent,
     GeneralComponent,
   ],
 })
-export class NewRecipePageModule {}
+export class RecipeFormPageModule {}
