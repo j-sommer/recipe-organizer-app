@@ -22,13 +22,16 @@ export class RecipeViewPage {
     this.recipe = history.state.data;
 
     if (!this.recipe) {
-      this.router.navigate(['/home'], {});
+      this.router.navigate(['/home']);
     } else {
       this.recipeViewService.nextRecipe(this.recipe);
     }
   }
 
   public editRecipe(): void {
-    this.router.navigate(['/new-recipe'], { state: { data: this.recipe } });
+    this.router.navigate(['/new-recipe'], {
+      queryParams: { edit: true },
+      state: { data: { recipe: this.recipe } },
+    });
   }
 }
