@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Recipe } from '@core/models/recipe/recipe.model';
 import { RecipeViewService } from './recipe-view.service';
 
@@ -8,15 +9,29 @@ import { RecipeViewService } from './recipe-view.service';
   styleUrls: ['./recipe-view.page.scss'],
   providers: [RecipeViewService],
 })
-export class RecipeViewPage implements OnInit {
+export class RecipeViewPage {
   public segment = 'ingredients';
   public recipe: Recipe;
 
-  constructor(private recipeViewService: RecipeViewService) {}
+  constructor(
+    private recipeViewService: RecipeViewService,
+    private router: Router
+  ) {}
 
-  public ngOnInit(): void {
+  public ionViewWillEnter(): void {
     this.recipe = history.state.data;
 
-    this.recipeViewService.nextRecipe(this.recipe);
+    if (!this.recipe) {
+      this.router.navigate(['/home']);
+    } else {
+      this.recipeViewService.nextRecipe(this.recipe);
+    }
+  }
+
+  public editRecipe(): void {
+    this.router.navigate(['/recipe-form'], {
+      queryParams: { edit: true },
+      state: { data: { recipe: this.recipe } },
+    });
   }
 }

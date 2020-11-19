@@ -20,7 +20,7 @@ export class AppComponent {
     },
     {
       title: 'new-recipe',
-      url: '/new-recipe',
+      url: '/recipe-form',
       icon: 'add',
     },
   ];

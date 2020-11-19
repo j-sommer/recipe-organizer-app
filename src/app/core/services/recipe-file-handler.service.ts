@@ -36,12 +36,30 @@ export class RecipeFileHandlerService {
     }
   }
 
-  public async writeRecipe(recipe: Recipe): Promise<void> {
+  public async saveNewRecipe(recipe: Recipe): Promise<void> {
     try {
       const fileName = this.generateFileName(recipe.title);
 
       const result = await Filesystem.writeFile({
         path: `${this.recipeDirectory}/${fileName}${this.jsonFileExtension}`,
+        data: JSON.stringify(recipe),
+        directory: this.filesystemDirectory,
+        encoding: FilesystemEncoding.UTF8,
+      });
+
+      console.log('Wrote recipe to', result.uri);
+
+      return Promise.resolve();
+    } catch (error) {
+      console.error('Unable to write recipe', error);
+      return Promise.reject();
+    }
+  }
+
+  public async saveRecipe(recipe: Recipe): Promise<void> {
+    try {
+      const result = await Filesystem.writeFile({
+        path: `${this.recipeDirectory}/${recipe.filePath}`,
         data: JSON.stringify(recipe),
         directory: this.filesystemDirectory,
         encoding: FilesystemEncoding.UTF8,
@@ -77,7 +95,9 @@ export class RecipeFileHandlerService {
                 encoding: FilesystemEncoding.UTF8,
               });
 
-              return JSON.parse(contents.data);
+              const recipeData = JSON.parse(contents.data);
+              recipeData.filePath = recipeFile;
+              return recipeData;
             } catch (error) {
               console.error(error);
             }
@@ -108,7 +128,8 @@ export class RecipeFileHandlerService {
 
   private generateFileName(title: string): string {
     const normalizedTitle = title.replace(/ /g, '-');
-    return `${normalizedTitle.toLowerCase}_${Date.now()}`;
+    const titleWithTimestamp = `${normalizedTitle.toLowerCase()}_${Date.now()}`;
+    return titleWithTimestamp;
   }
 
   private async hasRecipeDir(): Promise<boolean> {

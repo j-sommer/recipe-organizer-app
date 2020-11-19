@@ -1,8 +1,9 @@
-<h3>{{ 'new-recipe.general.heading' | translate }}</h3>
+<h3>{{ 'recipe-form.general.heading' | translate }}</h3>
+<ion-text>{{ 'recipe-form.general.info' | translate }}</ion-text>
 
 <ion-item>
   <ion-label position="floating">{{
-    'new-recipe.general.label-title' | translate
+    'recipe-form.general.label-title' | translate
   }}</ion-label>
   <ion-input [required]="true" [(ngModel)]="recipe.title"></ion-input>
 </ion-item>
@@ -10,17 +11,17 @@
 <div class="space-vertical-l"></div>
 
 <ion-item>
-  <ion-label>{{ 'new-recipe.general.label-category' | translate }}</ion-label>
+  <ion-label>{{ 'recipe-form.general.label-category' | translate }}</ion-label>
   <ion-select
     placeholder="{{
-      'new-recipe.general.category.select-placeholder' | translate
+      'recipe-form.general.category.select-placeholder' | translate
     }}"
-    okText="{{ 'new-recipe.general.category.select-confirm' | translate }}"
-    cancelText="{{ 'new-recipe.general.category.select-cancel' | translate }}"
+    okText="{{ 'recipe-form.general.category.select-confirm' | translate }}"
+    cancelText="{{ 'recipe-form.general.category.select-cancel' | translate }}"
     [(ngModel)]="recipe.category"
   >
     <ion-select-option [value]="category" *ngFor="let category of categories">{{
-      'new-recipe.general.category.' + category | translate
+      'recipe-form.general.category.' + category | translate
     }}</ion-select-option>
   </ion-select>
 </ion-item>
@@ -29,7 +30,7 @@
 
 <form #form="ngForm" (ngSubmit)="addTag(form.value)">
   <ion-item>
-    <ion-label>{{ 'new-recipe.general.tags' | translate }}</ion-label>
+    <ion-label>{{ 'recipe-form.general.tags' | translate }}</ion-label>
     <ion-input [(ngModel)]="tagInputValue" name="tagValue"></ion-input>
     <ion-button type="submit" color="secondary">
       <ion-icon slot="icon-only" name="checkmark"></ion-icon>
@@ -54,6 +55,6 @@
   <div class="space-vertical-xs"></div>
 
   <ion-button (click)="getPhoto()" color="secondary">{{
-    'new-recipe.general.add-photo' | translate
+    'recipe-form.general.add-photo' | translate
   }}</ion-button>
 </div>
