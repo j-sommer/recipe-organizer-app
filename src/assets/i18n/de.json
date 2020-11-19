@@ -20,8 +20,11 @@
       "other": "Andere"
     }
   },
-  "new-recipe": {
-    "heading": "Neues Rezept",
+  "recipe-form": {
+    "heading": {
+      "new": "Neues Rezept",
+      "edit": "Rezept bearbeiten"
+    },
     "general": {
       "heading": "Allgemein",
       "label-title": "Titel",
@@ -45,6 +48,10 @@
       "button-add": "Zutat",
       "confirm-text": "Auswählen",
       "cancel-text": "Abbrechen"
+    },
+    "preparation": {
+      "heading": "Zubereitung",
+      "input-placeholder": "Hier Text eingeben..."
     },
     "segment": {
       "general": "Allgemein",
