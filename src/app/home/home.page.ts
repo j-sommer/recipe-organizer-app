@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryName } from '@core/models/category/category-name.enum';
 import { Category } from '@core/models/category/category.model';
@@ -11,7 +11,7 @@ import { imageBase64Prefix } from '@core/util/image-base64-prefix.const';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
   public readonly imagePrefix = imageBase64Prefix;
 
   public categories: Category[] = [
@@ -31,8 +31,10 @@ export class HomePage implements OnInit {
     private router: Router
   ) {}
 
-  public async ngOnInit(): Promise<void> {
+  public async ionViewWillEnter(): Promise<void> {
     await this.recipeFileHandler.createRecipeDir();
+    this.clearCategories();
+
     const recipes = await this.recipeFileHandler.readRecipes();
     this.hasRecipes = recipes && !!recipes.length;
 
@@ -53,6 +55,12 @@ export class HomePage implements OnInit {
       );
 
       matchingCategory.recipes.push(recipe);
+    });
+  }
+
+  private clearCategories(): void {
+    this.categories.forEach((category: Category) => {
+      category.recipes.length = 0;
     });
   }
 }

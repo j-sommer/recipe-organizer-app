@@ -1,4 +1,4 @@
-<h3>{{ 'new-recipe.ingredients.heading' | translate }}</h3>
+<h3>{{ 'recipe-form.ingredients.heading' | translate }}</h3>
 
 <ion-list>
   <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
@@ -8,8 +8,8 @@
         <ion-input [(ngModel)]="ingredient.quantity"></ion-input>
         <ion-item>
           <ion-select
-            okText="{{ 'new-recipe.ingredients.confirm-text' | translate }}"
-            cancelText="{{ 'new-recipe.ingredients.cancel-text' | translate }}"
+            okText="{{ 'recipe-form.ingredients.confirm-text' | translate }}"
+            cancelText="{{ 'recipe-form.ingredients.cancel-text' | translate }}"
             [(ngModel)]="ingredient.quantityType"
           >
             <ion-select-option *ngFor="let quantityType of quantityTypes">{{
@@ -30,6 +30,6 @@
     color="secondary"
   >
     <ion-icon slot="start" name="add"></ion-icon>
-    {{ 'new-recipe.ingredients.button-add' | translate }}
+    {{ 'recipe-form.ingredients.button-add' | translate }}
   </ion-button>
 </ion-list>

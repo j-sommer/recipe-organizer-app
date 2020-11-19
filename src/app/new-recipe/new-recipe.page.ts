@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryName } from '@core/models/category/category-name.enum';
 import { Recipe } from '@core/models/recipe/recipe.model';
 import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.service';
@@ -20,14 +21,37 @@ export class NewRecipePage {
     preparation: '',
   };
 
+  public isEdit = false;
+
   constructor(
     private recipeFileHandler: RecipeFileHandlerService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
+
+  public ionViewWillEnter(): void {
+    this.route.queryParams.subscribe((params) => {
+      if (params.edit) {
+        const historyData = history?.state?.data;
+
+        if (historyData) {
+          this.newRecipe = historyData.recipe;
+          this.isEdit = true;
+        } else {
+          this.router.navigate(['/home']);
+        }
+      }
+    });
+  }
 
   public async saveRecipe(): Promise<void> {
     try {
-      await this.recipeFileHandler.writeRecipe(this.newRecipe);
+      if (this.isEdit) {
+        await this.recipeFileHandler.saveRecipe(this.newRecipe);
+      } else {
+        await this.recipeFileHandler.saveNewRecipe(this.newRecipe);
+      }
 
       const successToast = await this.toastController.create({
         message: `Rezept '${this.newRecipe.title}' wurde gespeichert`,

@@ -10,7 +10,15 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-title> {{'new-recipe.heading' | translate}} </ion-title>
+    <ion-title>
+      <div *ngIf="isEdit; then editRecipeHeading; else newRecipeHeading"></div>
+      <ng-template #editRecipeHeading>
+        {{'recipe-form.heading.edit' | translate}}
+      </ng-template>
+      <ng-template #newRecipeHeading>
+        {{'recipe-form.heading.new' | translate}}
+      </ng-template>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -30,15 +38,15 @@
 
 <ion-segment color="primary" [(ngModel)]="segment">
   <ion-segment-button value="general">
-    <ion-label>{{'new-recipe.segment.general' | translate}}</ion-label>
+    <ion-label>{{'recipe-form.segment.general' | translate}}</ion-label>
     <ion-icon name="information-circle"></ion-icon>
   </ion-segment-button>
   <ion-segment-button value="ingredients">
-    <ion-label>{{'new-recipe.segment.ingredients' | translate}}</ion-label>
+    <ion-label>{{'recipe-form.segment.ingredients' | translate}}</ion-label>
     <ion-icon name="list"></ion-icon>
   </ion-segment-button>
   <ion-segment-button value="preparation">
-    <ion-label>{{'new-recipe.segment.preparation' | translate}}</ion-label>
+    <ion-label>{{'recipe-form.segment.preparation' | translate}}</ion-label>
     <ion-icon name="reader"></ion-icon>
   </ion-segment-button>
 </ion-segment>
