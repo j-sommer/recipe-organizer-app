@@ -27,6 +27,7 @@
     },
     "general": {
       "heading": "Allgemein",
+      "info":"Generelle Informationen zu deinem Rezept",
       "label-title": "Titel",
       "label-category": "Kategorie",
       "add-photo": "Foto Hinzufügen",
@@ -45,6 +46,7 @@
     },
     "ingredients": {
       "heading": "Zutaten",
+      "info":"Hier kannst du Zutaten zu deinem Rezept hinzufügen",
       "button-add": "Zutat",
       "confirm-text": "Auswählen",
       "cancel-text": "Abbrechen"
