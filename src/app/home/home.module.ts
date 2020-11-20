@@ -7,8 +7,6 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
-import { InitialMessageComponent } from './initial-message/initial-message.component';
-import { ListPlaceholderComponent } from './list-placeholder/list-placeholder.component';
 
 @NgModule({
   imports: [
@@ -19,6 +17,6 @@ import { ListPlaceholderComponent } from './list-placeholder/list-placeholder.co
     CoreModule,
     TranslateModule.forChild(),
   ],
-  declarations: [HomePage, ListPlaceholderComponent, InitialMessageComponent],
+  declarations: [HomePage],
 })
 export class HomePageModule {}

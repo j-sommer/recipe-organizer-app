@@ -2,7 +2,13 @@
   "menu": {
     "item": {
       "home": "Übersicht",
-      "new-recipe": "Neues Rezept"
+      "new-recipe": "Neues Rezept",
+      "meat": "Fleisch",
+      "baking": "Backen",
+      "fish": "Fisch",
+      "dessert": "Dessert",
+      "snacks": "Snacks",
+      "other": "Andere"
     }
   },
   "recipe-overview": {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { categoriesList } from '@core/const/categories-list.const';
 import { CategoryName } from '@core/models/category/category-name.enum';
 import { Category } from '@core/models/category/category.model';
 import { Recipe } from '@core/models/recipe/recipe.model';
@@ -14,14 +15,7 @@ import { imageBase64Prefix } from '@core/util/image-base64-prefix.const';
 export class HomePage {
   public readonly imagePrefix = imageBase64Prefix;
 
-  public categories: Category[] = [
-    { name: CategoryName.Meat, recipes: [], icon: 'flame' },
-    { name: CategoryName.Baking, recipes: [], icon: 'cafe' },
-    { name: CategoryName.Dessert, recipes: [], icon: 'ice-cream' },
-    { name: CategoryName.Fish, recipes: [], icon: 'fish' },
-    { name: CategoryName.Snacks, recipes: [], icon: 'pizza' },
-    { name: CategoryName.Other, recipes: [], icon: 'restaurant' },
-  ];
+  public categories = categoriesList;
 
   public hasRecipes = false;
   public isLoading = true;

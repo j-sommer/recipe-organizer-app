@@ -25,7 +25,11 @@ const routes: Routes = [
       import('./recipe-view/recipe-view.module').then(
         (m) => m.RecipeViewPageModule
       ),
+  },  {
+    path: 'category-view',
+    loadChildren: () => import('./category-view/category-view.module').then( m => m.CategoryViewPageModule)
   },
+
 ];
 
 @NgModule({

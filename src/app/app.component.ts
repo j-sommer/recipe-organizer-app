@@ -5,6 +5,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Platform } from '@ionic/angular';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { TranslateService } from '@ngx-translate/core';
+import { Category } from '@core/models/category/category.model';
+import { categoriesList } from '@core/const/categories-list.const';
 
 @Component({
   selector: 'app-root',
@@ -12,18 +14,15 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  sideMenuItems: SideMenuItem[] = [
-    {
-      title: 'home',
-      url: '/home',
-      icon: 'list',
-    },
-    {
+  public readonly menuItems = {
+    home: { title: 'home', url: '/home', icon: 'list' } as SideMenuItem,
+    recipeForm: {
       title: 'new-recipe',
       url: '/recipe-form',
       icon: 'add',
-    },
-  ];
+    } as SideMenuItem,
+  };
+  public readonly categories: Category[] = categoriesList;
 
   constructor(
     private platform: Platform,
