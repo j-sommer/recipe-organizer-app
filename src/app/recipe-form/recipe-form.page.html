@@ -5,8 +5,12 @@
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <ion-button (click)="saveRecipe()" type="submit">
-        <ion-icon slot="icon-only" name="save"></ion-icon>
+      <ion-button (click)="openRecipeMenu($event)">
+        <ion-icon
+          slot="icon-only"
+          ios="ellipsis-horizontal"
+          md="ellipsis-vertical"
+        ></ion-icon>
       </ion-button>
     </ion-buttons>
 
