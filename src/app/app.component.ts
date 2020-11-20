@@ -23,6 +23,7 @@ export class AppComponent {
     } as SideMenuItem,
   };
   public readonly categories: Category[] = categoriesList;
+  public readonly categoryViewBaseRoute = '/category-view';
 
   constructor(
     private platform: Platform,

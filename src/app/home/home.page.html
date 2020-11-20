@@ -8,17 +8,6 @@
 </ion-header>
 
 <ion-content fullscreen class="ion-padding">
-  <ion-fab
-    (click)="onAddClick()"
-    vertical="bottom"
-    horizontal="end"
-    slot="fixed"
-  >
-    <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
   <ng-container *ngFor="let number of [1, 2, 3]">
     <app-list-placeholder
       [isLoading]="!hasRecipes && isLoading"
@@ -42,37 +31,14 @@
         </ion-text>
       </ion-list-header>
 
-      <ion-item
-        class="recipe-overview__list-item"
-        (click)="onRecipeClick(recipe)"
+      <app-recipe-list-item
         *ngFor="let recipe of category.recipes"
-        detail
-        lines="none"
-      >
-        <ion-thumbnail slot="start">
-          <img
-            class="recipe-overview__list-item__image"
-            [src]="recipe.img ? imagePrefix + recipe.img : 'assets/images/placeholder.jpg'"
-          />
-        </ion-thumbnail>
-        <ion-label>
-          <h2>{{recipe.title}}</h2>
-          <div
-            *ngIf="recipe.tags.length"
-            class="recipe-card__content__categories"
-          >
-            <ion-chip
-              color="secondary"
-              outline
-              *ngFor="let label of recipe.tags"
-            >
-              <ion-label>{{label}}</ion-label>
-            </ion-chip>
-          </div>
-        </ion-label>
-      </ion-item>
+        [recipe]="recipe"
+      ></app-recipe-list-item>
 
       <div class="space-vertical-m"></div>
     </ion-list>
   </ng-container>
 </ion-content>
+
+<app-floating-add-button></app-floating-add-button>

@@ -11,6 +11,16 @@
       "other": "Andere"
     }
   },
+  "category-view": {
+    "header": {
+      "meat": "Fleisch",
+      "baking": "Backen",
+      "fish": "Fisch",
+      "dessert": "Dessert",
+      "snacks": "Snacks",
+      "other": "Andere"
+    }
+  },
   "recipe-overview": {
     "heading": "Übersicht",
     "no-content": {

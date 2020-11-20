@@ -1,7 +1,16 @@
-.recipe-overview {
-    &__no-content {
-      display: flex;
-      flex-direction: column;
-      margin-top: 10vh;
+@import 'src/media-queries';
+
+.no-content-message {
+  display: flex;
+  flex-direction: column;
+  &__text {
+    text-align: center;
+  }
+
+  &__create-button {
+    @include md {
+      width: 30vw;
+      align-self: center;
     }
+  }
 }

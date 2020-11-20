@@ -17,7 +17,11 @@
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle *ngFor="let category of categories" auto-hide="true">
-          <ion-item routerDirection="root">
+          <ion-item
+            [routerLink]="categoryViewBaseRoute"
+            [queryParams]="{ category: category.name }"
+            routerDirection="root"
+          >
             <ion-icon [name]="category.icon" slot="start"></ion-icon>
             {{ 'menu.item.' + category.name | translate }}
           </ion-item>
