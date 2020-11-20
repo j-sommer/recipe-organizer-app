@@ -74,6 +74,22 @@ export class RecipeFileHandlerService {
     }
   }
 
+  public async deleteRecipe(recipe: Recipe): Promise<void> {
+    try {
+      const result = await Filesystem.deleteFile({
+        path: `${this.recipeDirectory}/${recipe.filePath}`,
+        directory: this.filesystemDirectory,
+      });
+
+      console.log('recipe deleted', recipe.filePath);
+
+      return Promise.resolve();
+    } catch (error) {
+      console.error('Unable to delete reipce', error);
+      return Promise.reject();
+    }
+  }
+
   public async readRecipes(): Promise<Recipe[]> {
     try {
       let recipes: Recipe[] = [];

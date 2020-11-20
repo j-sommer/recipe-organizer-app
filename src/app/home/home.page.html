@@ -8,6 +8,17 @@
 </ion-header>
 
 <ion-content fullscreen class="ion-padding">
+  <ion-fab
+    (click)="onAddClick()"
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+  >
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <ng-container *ngFor="let number of [1, 2, 3]">
     <app-list-placeholder
       [isLoading]="!hasRecipes && isLoading"

@@ -25,9 +25,20 @@
       "new": "Neues Rezept",
       "edit": "Rezept bearbeiten"
     },
+    "delete-alert": {
+      "header": "Rezept löschen",
+      "message": "Rezept wirklich löschen?",
+      "cancel-button": "Abbrechen",
+      "confirm-button": "Löschen"
+    },
+    "recipe-menu": {
+      "title": "Aktionen",
+      "save": "speichern",
+      "delete": "löschen"
+    },
     "general": {
       "heading": "Allgemein",
-      "info":"Generelle Informationen zu deinem Rezept",
+      "info": "Generelle Informationen zu deinem Rezept",
       "label-title": "Titel",
       "label-category": "Kategorie",
       "add-photo": "Foto Hinzufügen",
@@ -46,7 +57,7 @@
     },
     "ingredients": {
       "heading": "Zutaten",
-      "info":"Hier kannst du Zutaten zu deinem Rezept hinzufügen",
+      "info": "Hier kannst du Zutaten zu deinem Rezept hinzufügen",
       "button-add": "Zutat",
       "confirm-text": "Auswählen",
       "cancel-text": "Abbrechen"

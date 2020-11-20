@@ -7,9 +7,10 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { GeneralComponent } from './general/general.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
+import { PreparationComponent } from './preparation/preparation.component';
 import { RecipeFormPageRoutingModule } from './recipe-form-routing.module';
 import { RecipeFormPage } from './recipe-form.page';
-import { PreparationComponent } from './preparation/preparation.component';
+import { RecipeMenuComponent } from './recipe-menu/recipe-menu.component';
 
 @NgModule({
   imports: [
@@ -23,9 +24,11 @@ import { PreparationComponent } from './preparation/preparation.component';
   ],
   declarations: [
     RecipeFormPage,
+    RecipeMenuComponent,
     PreparationComponent,
     IngredientsComponent,
     GeneralComponent,
   ],
+  entryComponents: [RecipeMenuComponent],
 })
 export class RecipeFormPageModule {}
