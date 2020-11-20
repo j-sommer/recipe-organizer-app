@@ -48,6 +48,10 @@ export class HomePage {
     this.router.navigate(['/recipe-view'], { state: { data: recipe } });
   }
 
+  public onAddClick(): void {
+    this.router.navigate(['/recipe-form']);
+  }
+
   private fillCategories(recipes: Recipe[]): void {
     recipes.forEach((recipe: Recipe) => {
       const matchingCategory = this.categories.find(
