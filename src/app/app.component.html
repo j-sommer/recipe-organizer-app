@@ -9,11 +9,36 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-list *ngFor="let sideMenuItem of sideMenuItems">
+      <ion-list>
         <ion-menu-toggle auto-hide="true">
-          <ion-item [routerLink]="sideMenuItem.url" routerDirection="root">
-            <ion-icon [name]="sideMenuItem.icon" slot="start"></ion-icon>
-            {{ 'menu.item.' + sideMenuItem.title | translate }}
+          <ion-item [routerLink]="menuItems.home.url" routerDirection="root">
+            <ion-icon [name]="menuItems.home.icon" slot="start"></ion-icon>
+            {{ 'menu.item.' + menuItems.home.title | translate }}
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle *ngFor="let category of categories" auto-hide="true">
+          <ion-item
+            [routerLink]="categoryViewBaseRoute"
+            [queryParams]="{ category: category.name }"
+            routerDirection="root"
+          >
+            <ion-icon [name]="category.icon" slot="start"></ion-icon>
+            {{ 'menu.item.' + category.name | translate }}
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+
+      <ion-list>
+        <ion-menu-toggle auto-hide="true">
+          <ion-item
+            [routerLink]="menuItems.recipeForm.url"
+            routerDirection="root"
+          >
+            <ion-icon
+              [name]="menuItems.recipeForm.icon"
+              slot="start"
+            ></ion-icon>
+            {{ 'menu.item.' + menuItems.recipeForm.title | translate }}
           </ion-item>
         </ion-menu-toggle>
       </ion-list>

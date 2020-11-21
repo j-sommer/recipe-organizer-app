@@ -5,18 +5,18 @@ import { CoreModule } from '@core/core.module';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { HomePageRoutingModule } from './home-routing.module';
-import { HomePage } from './home.page';
+import { CategoryViewPageRoutingModule } from './category-view-routing.module';
+import { CategoryViewPage } from './category-view.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
+    CategoryViewPageRoutingModule,
     CoreModule,
     TranslateModule.forChild(),
   ],
-  declarations: [HomePage],
+  declarations: [CategoryViewPage],
 })
-export class HomePageModule {}
+export class CategoryViewPageModule {}

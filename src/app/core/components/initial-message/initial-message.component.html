@@ -1,0 +1,19 @@
+<div *ngIf="show" class="no-content-message">
+  <div class="space-vertical-l"></div>
+
+  <ion-text class="no-content-message__text">{{
+    'recipe-overview.no-content.info-text' | translate
+  }}</ion-text>
+
+  <div class="space-vertical-m"></div>
+
+  <ion-button
+    class="no-content-message__create-button"
+    [routerLink]="'/recipe-form'"
+    routerDirection="root"
+    fill="outline"
+    size="default"
+  >
+    {{ 'recipe-overview.no-content.button' | translate }}
+  </ion-button>
+</div>

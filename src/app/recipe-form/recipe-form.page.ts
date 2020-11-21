@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryName } from '@core/models/category/category-name.enum';
 import { Recipe } from '@core/models/recipe/recipe.model';
@@ -9,6 +9,7 @@ import {
   ToastController,
 } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 import { RecipeMenuComponent } from './recipe-menu/recipe-menu.component';
 
 @Component({
@@ -16,7 +17,7 @@ import { RecipeMenuComponent } from './recipe-menu/recipe-menu.component';
   templateUrl: './recipe-form.page.html',
   styleUrls: ['./recipe-form.page.scss'],
 })
-export class RecipeFormPage {
+export class RecipeFormPage implements OnDestroy {
   public segment = 'general';
 
   public currentRecipe: Recipe = {
@@ -29,6 +30,8 @@ export class RecipeFormPage {
 
   public isEdit = false;
 
+  private subscription: Subscription;
+
   constructor(
     private recipeFileHandler: RecipeFileHandlerService,
     private toastController: ToastController,
@@ -40,7 +43,7 @@ export class RecipeFormPage {
   ) {}
 
   public ionViewWillEnter(): void {
-    this.route.queryParams.subscribe((params) => {
+    this.subscription = this.route.queryParams.subscribe((params) => {
       if (params.edit) {
         const historyData = history?.state?.data;
 
@@ -52,6 +55,10 @@ export class RecipeFormPage {
         }
       }
     });
+  }
+
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   public async openRecipeMenu(event): Promise<void> {

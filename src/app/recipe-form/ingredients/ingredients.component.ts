@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Ingredient } from '@core/models/recipe/ingredient.model';
-import { quantityTypesDE } from '@core/models/recipe/quantity-types.const';
+import { quantityTypesDE } from '@core/const/quantity-types.const';
 import { ItemReorderEventDetail } from '@ionic/core';
 
 @Component({

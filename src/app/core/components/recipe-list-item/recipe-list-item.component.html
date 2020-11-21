@@ -1,0 +1,24 @@
+<ion-item
+  class="recipe-list-item"
+  (click)="onRecipeClick(recipe)"
+  *ngIf="recipe"
+  detail
+  lines="none"
+>
+  <ion-thumbnail slot="start">
+    <img
+      class="recipe-list-item__image"
+      [src]="
+        recipe.img ? imagePrefix + recipe.img : 'assets/images/placeholder.jpg'
+      "
+    />
+  </ion-thumbnail>
+  <ion-label>
+    <h2>{{ recipe.title }}</h2>
+    <div *ngIf="recipe.tags.length">
+      <ion-chip color="secondary" outline *ngFor="let label of recipe.tags">
+        <ion-label>{{ label }}</ion-label>
+      </ion-chip>
+    </div>
+  </ion-label>
+</ion-item>
