@@ -1,17 +1,9 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <div *ngIf="isLoading; then titlePending; else titleNotPending"></div>
-    <ng-template #titlePending>
-      <ion-skeleton-text animated style="width: 80px"></ion-skeleton-text>
-    </ng-template>
-    <ng-template #titleNotPending>
-      <ion-title>{{'category-view.header.' + category | translate}}</ion-title>
-    </ng-template>
-  </ion-toolbar>
-</ion-header>
+<app-recipe-view-toolbar
+  [isLoading]="isLoading"
+  [title]="'category-view.header.' + category"
+  (searchChange)="onSearchChange($event)"
+  (startSearch)="onStartSearch($event)"
+></app-recipe-view-toolbar>
 
 <ion-content fullscreen class="ion-padding">
   <ng-container *ngFor="let number of [1, 2, 3]">
@@ -21,11 +13,12 @@
   </ng-container>
 
   <app-initial-message [show]="!isLoading && !hasRecipes"></app-initial-message>
-
-  <app-recipe-list-item
-    *ngFor="let recipe of categoryRecipes"
-    [recipe]="recipe"
-  ></app-recipe-list-item>
+  <ng-container *ngFor="let recipe of categoryRecipes">
+    <app-recipe-list-item
+      *ngIf="recipe.shouldShow"
+      [recipe]="recipe"
+    ></app-recipe-list-item>
+  </ng-container>
 </ion-content>
 
 <app-floating-add-button></app-floating-add-button>

@@ -1,8 +1,8 @@
-import { Recipe } from '../recipe/recipe.model';
+import { RecipeForList } from '../recipe/recipe-for-list.model';
 import { CategoryName } from './category-name.enum';
 
 export interface Category {
   name: CategoryName;
-  recipes: Recipe[];
+  recipes: RecipeForList[];
   icon: string;
 }
