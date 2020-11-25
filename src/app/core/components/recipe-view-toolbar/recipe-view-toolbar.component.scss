@@ -1,0 +1,12 @@
+@import 'src/media-queries';
+
+.recipe-view {
+  &__toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &__searchbar {
+    }
+  }
+}

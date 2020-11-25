@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <div class="recipe-view__toolbar ion-padding-end">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+
+      <div *ngIf="isSearching; then search; else noSearch"></div>
+
+      <ng-template #noSearch>
+        <div *ngIf="isLoading; then titlePending; else titleNotPending"></div>
+        <ng-template #titlePending>
+          <ion-skeleton-text animated style="width: 80px"></ion-skeleton-text>
+        </ng-template>
+        <ng-template #titleNotPending>
+          <ion-title @title>{{ title | translate }}</ion-title>
+        </ng-template>
+      </ng-template>
+
+      <ng-template #search>
+        <ion-searchbar
+          class="recipe-view__toolbar__search"
+          @searchBar
+          showCancelButton="always"
+          placeholder="{{ 'search-placeholder' | translate }}"
+          animated
+          cancelButtonIcon="close-outline"
+          clearIcon="tash-outline"
+          (ionCancel)="cancelSearch()"
+          (ionInput)="searchChange.emit($event)"
+        ></ion-searchbar>
+      </ng-template>
+
+      <ion-buttons (click)="onSearchClick()" slot="end">
+        <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+      </ion-buttons>
+    </div>
+  </ion-toolbar>
+</ion-header>

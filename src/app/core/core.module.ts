@@ -8,6 +8,7 @@ import { FloatingAddButtonComponent } from './components/floating-add-button/flo
 import { InitialMessageComponent } from './components/initial-message/initial-message.component';
 import { ListPlaceholderComponent } from './components/list-placeholder/list-placeholder.component';
 import { RecipeListItemComponent } from './components/recipe-list-item/recipe-list-item.component';
+import { RecipeViewToolbarComponent } from './components/recipe-view-toolbar/recipe-view-toolbar.component';
 import { RecipeFileHandlerService } from './services/recipe-file-handler.service';
 
 @NgModule({
@@ -16,6 +17,7 @@ import { RecipeFileHandlerService } from './services/recipe-file-handler.service
     InitialMessageComponent,
     RecipeListItemComponent,
     FloatingAddButtonComponent,
+    RecipeViewToolbarComponent,
   ],
   imports: [
     CommonModule,
@@ -29,6 +31,7 @@ import { RecipeFileHandlerService } from './services/recipe-file-handler.service
     InitialMessageComponent,
     RecipeListItemComponent,
     FloatingAddButtonComponent,
+    RecipeViewToolbarComponent,
   ],
 })
 export class CoreModule {}
