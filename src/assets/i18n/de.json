@@ -4,6 +4,10 @@
     "de": "Deutsch",
     "en": "Englisch"
   },
+  "general": {
+    "select-confirm": "auswählen",
+    "select-cancel": "abbrechen"
+  },
   "menu": {
     "item": {
       "home": "Übersicht",

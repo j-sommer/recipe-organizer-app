@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 
+import { LanguageComponent } from './language/language.component';
 import { SettingsPageRoutingModule } from './settings-routing.module';
 import { SettingsPage } from './settings.page';
 
@@ -15,6 +16,6 @@ import { SettingsPage } from './settings.page';
     SettingsPageRoutingModule,
     TranslateModule.forChild(),
   ],
-  declarations: [SettingsPage],
+  declarations: [SettingsPage, LanguageComponent],
 })
 export class SettingsPageModule {}
