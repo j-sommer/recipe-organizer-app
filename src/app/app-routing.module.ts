@@ -29,6 +29,10 @@ const routes: Routes = [
     path: 'category-view',
     loadChildren: () => import('./category-view/category-view.module').then( m => m.CategoryViewPageModule)
   },
+  {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+  },
 
 ];
 

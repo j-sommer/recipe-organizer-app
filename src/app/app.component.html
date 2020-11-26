@@ -42,6 +42,18 @@
           </ion-item>
         </ion-menu-toggle>
       </ion-list>
+
+      <ion-list>
+        <ion-menu-toggle auto-hide="true">
+          <ion-item
+            [routerLink]="menuItems.settings.url"
+            routerDirection="root"
+          >
+            <ion-icon [name]="menuItems.settings.icon" slot="start"></ion-icon>
+            {{ 'menu.item.' + menuItems.settings.title | translate }}
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
     </ion-content>
   </ion-menu>
 

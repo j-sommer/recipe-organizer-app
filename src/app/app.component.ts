@@ -21,6 +21,11 @@ export class AppComponent {
       url: '/recipe-form',
       icon: 'add',
     } as SideMenuItem,
+    settings: {
+      title: 'settings',
+      url: '/settings',
+      icon: 'settings-outline',
+    } as SideMenuItem,
   };
   public readonly categories: Category[] = categoriesList;
   public readonly categoryViewBaseRoute = '/category-view';
@@ -46,6 +51,7 @@ export class AppComponent {
     });
 
     this.translate.setDefaultLang('de');
+    this.translate.use(this.translate.defaultLang);
   }
 
   private initializeAndroidPermissions(): void {
