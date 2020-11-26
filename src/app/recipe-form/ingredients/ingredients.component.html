@@ -1,5 +1,19 @@
-<h3>{{ 'recipe-form.ingredients.heading' | translate }}</h3>
-<ion-text>{{ 'recipe-form.ingredients.info' | translate }}</ion-text>
+<app-form-header
+  heading="recipe-form.ingredients.heading"
+  infoText="recipe-form.ingredients.info"
+></app-form-header>
+
+<div *ngIf="!ingredients.length">
+  <div class="space-vertical-m"></div>
+
+  <ion-button
+    class="recipe-form__content__ingredients__no-content__button"
+    fill="outline"
+    size="default"
+  >
+    {{ 'recipe-form.ingredients.no-content.button' | translate }}
+  </ion-button>
+</div>
 
 <ion-list>
   <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
