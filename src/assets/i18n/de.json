@@ -1,9 +1,18 @@
 {
   "search-placeholder": "Rezept suchen",
+  "language": {
+    "de": "Deutsch",
+    "en": "Englisch"
+  },
+  "general": {
+    "select-confirm": "auswählen",
+    "select-cancel": "abbrechen"
+  },
   "menu": {
     "item": {
       "home": "Übersicht",
       "new-recipe": "Neues Rezept",
+      "settings": "Einstellungen",
       "meat": "Fleisch",
       "baking": "Backen",
       "fish": "Fisch",
@@ -20,6 +29,13 @@
       "dessert": "Dessert",
       "snacks": "Snacks",
       "other": "Andere"
+    }
+  },
+  "settings": {
+    "heading": "Einstellungen",
+    "general": {
+      "heading": "Allgemein",
+      "language": "Sprache"
     }
   },
   "recipe-overview": {
