@@ -11,6 +11,9 @@
       flex-direction: column;
 
       &__no-content {
+        display: flex;
+        flex-direction: column;
+        
         &__button {
           @include md {
             width: 30vw;

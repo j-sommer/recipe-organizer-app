@@ -3,11 +3,15 @@
   infoText="recipe-form.ingredients.info"
 ></app-form-header>
 
-<div *ngIf="!ingredients.length">
+<div
+  class="recipe-form__content__ingredients__no-content"
+  *ngIf="!ingredients.length"
+>
   <div class="space-vertical-m"></div>
 
   <ion-button
     class="recipe-form__content__ingredients__no-content__button"
+    (click)="addIngredient()"
     fill="outline"
     size="default"
   >
@@ -16,35 +20,34 @@
 </div>
 
 <ion-list>
-  <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="false">
-    <ion-item *ngFor="let ingredient of ingredients">
-      <div class="recipe-form__content__ingredients__fields">
-        <ion-input [(ngModel)]="ingredient.name"></ion-input>
-        <ion-input [(ngModel)]="ingredient.quantity"></ion-input>
-        <ion-item>
-          <ion-select
-            okText="{{ 'recipe-form.ingredients.confirm-text' | translate }}"
-            cancelText="{{ 'recipe-form.ingredients.cancel-text' | translate }}"
-            [(ngModel)]="ingredient.quantityType"
-          >
-            <ion-select-option *ngFor="let quantityType of quantityTypes">{{
-              quantityType
-            }}</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </div>
-      <ion-reorder slot="end"></ion-reorder>
-    </ion-item>
-  </ion-reorder-group>
+  <ion-item
+    (click)="editIngredient(ingredient)"
+    *ngFor="let ingredient of ingredients"
+  >
+    <ion-label>
+      <h2>{{ ingredient.name }}</h2>
+
+      <p>{{ ingredient.quantity + ' ' + ingredient.quantityType }}</p>
+    </ion-label>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon
+          slot="icon-only"
+          ios="ellipsis-horizontal"
+          md="ellipsis-vertical"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
 
   <div class="space-vertical-xs"></div>
 
   <ion-button
+    *ngIf="ingredients.length"
     class="recipe-form__content__ingredients__add"
     (click)="addIngredient()"
     color="secondary"
   >
-    <ion-icon slot="start" name="add"></ion-icon>
-    {{ 'recipe-form.ingredients.button-add' | translate }}
+    <ion-icon slot="icon-only" name="add"></ion-icon>
   </ion-button>
 </ion-list>

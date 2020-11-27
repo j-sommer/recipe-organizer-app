@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormHeaderComponent } from './form-header/form-header.component';
 
 import { GeneralComponent } from './general/general.component';
+import { IngredientFormComponent } from './ingredients/ingredient-form/ingredient-form.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { PreparationComponent } from './preparation/preparation.component';
 import { RecipeFormPageRoutingModule } from './recipe-form-routing.module';
@@ -30,6 +31,7 @@ import { RecipeMenuComponent } from './recipe-menu/recipe-menu.component';
     IngredientsComponent,
     GeneralComponent,
     FormHeaderComponent,
+    IngredientFormComponent,
   ],
   entryComponents: [RecipeMenuComponent],
 })

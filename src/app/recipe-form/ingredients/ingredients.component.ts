@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Ingredient } from '@core/models/recipe/ingredient.model';
 import { quantityTypesDE } from '@core/const/quantity-types.const';
-import { ItemReorderEventDetail } from '@ionic/core';
+import { Ingredient } from '@core/models/recipe/ingredient.model';
+import { ModalController } from '@ionic/angular';
+
+import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
 
 @Component({
   selector: 'app-new-ingredients',
@@ -17,20 +19,24 @@ export class IngredientsComponent {
   @Output()
   public ingredientsChange = new EventEmitter<Ingredient[]>();
 
-  public doReorder(ev: CustomEvent<ItemReorderEventDetail>): void {
-    const item = this.ingredients.splice(ev.detail.from, 1);
+  constructor(private modalController: ModalController) {}
 
-    this.ingredients.splice(ev.detail.to, 0, item[0]);
+  public async editIngredient(ingredient: Ingredient): Promise<void> {
+    const modal = await this.modalController.create({
+      component: IngredientFormComponent,
+      componentProps: {
+        ingredient,
+      },
+    });
 
-    ev.detail.complete();
-    this.ingredientsChange.emit(this.ingredients);
+    return await modal.present();
   }
 
   public addIngredient(): void {
     const newIngredient: Ingredient = {
-      name: '',
-      quantity: null,
-      quantityType: '',
+      name: 'Mehl',
+      quantity: 200,
+      quantityType: 'g',
     };
     this.ingredients.push(newIngredient);
     this.ingredientsChange.emit(this.ingredients);
