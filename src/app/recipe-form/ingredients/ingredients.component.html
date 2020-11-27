@@ -20,17 +20,20 @@
 </div>
 
 <ion-list>
-  <ion-item
-    (click)="editIngredient(ingredient)"
-    *ngFor="let ingredient of ingredients"
-  >
-    <ion-label>
-      <h2>{{ ingredient.name }}</h2>
+  <ion-item *ngFor="let ingredient of ingredients">
+    <div
+      (click)="editIngredient(ingredient)"
+      class="recipe-form__content__ingredients__list__clickable-area"
+    >
+      <ion-label>
+        <h2>{{ ingredient.name }}</h2>
 
-      <p>{{ ingredient.quantity + ' ' + ingredient.quantityType }}</p>
-    </ion-label>
+        <p>{{ ingredient.quantity + ' ' + ingredient.quantityType }}</p>
+      </ion-label>
+    </div>
+
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="openIngredientMenu()">
         <ion-icon
           slot="icon-only"
           ios="ellipsis-horizontal"

@@ -37,12 +37,14 @@
   </ion-item>
 </ion-content>
 
-<ion-footer class="ion-no-border">
+<ion-footer class="ion-no-border ion-padding">
   <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-button (click)="dismissModal()">{{
-        'recipe-form.ingredients.edit.confirm' | translate
-      }}</ion-button>
-    </ion-buttons>
+    <ion-button
+      fill="solid"
+      color="primary"
+      expand="block"
+      (click)="dismissModal()"
+      >{{ 'recipe-form.ingredients.edit.confirm' | translate }}</ion-button
+    >
   </ion-toolbar>
 </ion-footer>

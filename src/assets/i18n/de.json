@@ -98,7 +98,10 @@
         "name-label": "Zutat",
         "quantity-label": "Menge",
         "quantity-type-label": "Einheit",
-        "confirm": "Fertig"
+        "confirm": "Fertig",
+        "menu": {
+          "delete-button": "löschen"
+        }
       },
       "no-content": {
         "button": "Zutat hinzufügen"

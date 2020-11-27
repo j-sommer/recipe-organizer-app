@@ -13,13 +13,19 @@
       &__no-content {
         display: flex;
         flex-direction: column;
-        
+
         &__button {
           @include md {
             width: 30vw;
             margin-left: auto;
             margin-right: auto;
           }
+        }
+      }
+
+      &__list {
+        &__clickable-area {
+          width: 100%;
         }
       }
 
