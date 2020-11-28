@@ -1,14 +1,9 @@
 <ion-content class="ion-padding">
   <ion-list>
-    <ion-list-header>
-      <ion-label>{{ 'recipe-form.recipe-menu.title' | translate }} </ion-label>
-    </ion-list-header>
-    <ion-item lines="full" (click)="onSaveClick()">
-      <ion-icon slot="end" name="save-outline"></ion-icon>
+    <ion-item lines="none" (click)="onSaveClick()">
       {{ 'recipe-form.recipe-menu.save' | translate }}</ion-item
     >
     <ion-item lines="none" *ngIf="edit" button (click)="onDeleteClick()">
-      <ion-icon slot="end" name="trash-outline"></ion-icon>
       {{ 'recipe-form.recipe-menu.delete' | translate }}</ion-item
     >
   </ion-list>

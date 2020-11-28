@@ -45,16 +45,33 @@
 
       <ion-list>
         <ion-menu-toggle auto-hide="true">
-          <ion-item
-            [routerLink]="menuItems.settings.url"
-            routerDirection="root"
-          >
-            <ion-icon [name]="menuItems.settings.icon" slot="start"></ion-icon>
-            {{ 'menu.item.' + menuItems.settings.title | translate }}
+          <ion-item [routerLink]="menuItems.planner.url" routerDirection="root">
+            <ion-icon [name]="menuItems.planner.icon" slot="start"></ion-icon>
+            {{ 'menu.item.' + menuItems.planner.title | translate }}
           </ion-item>
         </ion-menu-toggle>
       </ion-list>
     </ion-content>
+
+    <ion-footer class="ion-no-border">
+      <ion-toolbar>
+        <ion-list>
+          <ion-menu-toggle auto-hide="true">
+            <ion-item
+              [routerLink]="menuItems.settings.url"
+              routerDirection="root"
+              lines="none"
+            >
+              <ion-icon
+                [name]="menuItems.settings.icon"
+                slot="start"
+              ></ion-icon>
+              {{ 'menu.item.' + menuItems.settings.title | translate }}
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-toolbar>
+    </ion-footer>
   </ion-menu>
 
   <ion-router-outlet id="content1"></ion-router-outlet>
