@@ -19,4 +19,11 @@ export class RecipeListItemComponent {
   public onRecipeClick(recipe: Recipe): void {
     this.router.navigate(['/recipe-view'], { state: { data: recipe } });
   }
+
+  public editRecipe(): void {
+    this.router.navigate(['/recipe-form'], {
+      queryParams: { edit: true },
+      state: { data: { recipe: this.recipe } },
+    });
+  }
 }
