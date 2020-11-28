@@ -15,12 +15,21 @@ import { categoriesList } from '@core/const/categories-list.const';
 })
 export class AppComponent {
   public readonly menuItems = {
-    home: { title: 'home', url: '/home', icon: 'list' } as SideMenuItem,
+    home: {
+      title: 'home',
+      url: '/home',
+      icon: 'library-outline',
+    } as SideMenuItem,
     recipeForm: {
       title: 'new-recipe',
       url: '/recipe-form',
-      icon: 'add',
+      icon: 'add-circle-outline',
     } as SideMenuItem,
+    planner: {
+      title: 'planner',
+      url: '/planner',
+      icon: 'calendar-outline',
+    },
     settings: {
       title: 'settings',
       url: '/settings',
@@ -46,7 +55,8 @@ export class AppComponent {
 
   private initializeApp(): void {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      this.statusBar.backgroundColorByHexString('#006D77');
+      this.statusBar.styleLightContent();
       this.splashScreen.hide();
     });
 

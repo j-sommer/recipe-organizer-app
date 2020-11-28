@@ -5,8 +5,8 @@
   (startSearch)="onSearchStart($event)"
 ></app-recipe-view-toolbar>
 
-<ion-content fullscreen class="ion-padding">
-  <ng-container *ngFor="let number of [1, 2, 3]">
+<ion-content fullscreen class="ion-padding background">
+  <ng-container *ngFor="let number of [1, 2, 3, 4, 5]">
     <app-list-placeholder
       [isLoading]="!hasRecipes && isLoading"
     ></app-list-placeholder>
@@ -15,17 +15,15 @@
   <app-initial-message [show]="!isLoading && !hasRecipes"></app-initial-message>
 
   <ng-container *ngFor="let category of categories">
-    <ion-list *ngIf="showCategory(category) && category.recipes.length">
+    <ion-list
+      class="recipe-overview__list"
+      *ngIf="showCategory(category) && category.recipes.length"
+    >
       <ion-list-header lines="full">
         <ion-text>
-          <h2 class="recipe-overview__list-header">
-            <ion-icon
-              color="primary"
-              name="{{category.icon}}"
-              class="recipe-overview__list-header__icon"
-            ></ion-icon>
+          <h3 class="recipe-overview__list-header">
             {{'recipe-overview.categories.' + category.name | translate}}
-          </h2>
+          </h3>
         </ion-text>
       </ion-list-header>
 
@@ -35,8 +33,6 @@
           [recipe]="recipe"
         ></app-recipe-list-item>
       </ng-container>
-
-      <div class="space-vertical-m"></div>
     </ion-list>
   </ng-container>
 </ion-content>

@@ -6,13 +6,15 @@
   },
   "general": {
     "select-confirm": "auswählen",
-    "select-cancel": "abbrechen"
+    "select-cancel": "abbrechen",
+    "edit": "Bearbeiten"
   },
   "menu": {
     "item": {
       "home": "Übersicht",
       "new-recipe": "Neues Rezept",
       "settings": "Einstellungen",
+      "planner": "Weekly Planner",
       "meat": "Fleisch",
       "baking": "Backen",
       "fish": "Fisch",

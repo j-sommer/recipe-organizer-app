@@ -1,4 +1,7 @@
 .recipe-overview {
+  &__list {
+    background-color: transparent;
+  }
   &__no-content {
     display: flex;
     flex-direction: column;
