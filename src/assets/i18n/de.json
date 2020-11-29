@@ -7,7 +7,8 @@
   "general": {
     "select-confirm": "auswählen",
     "select-cancel": "abbrechen",
-    "edit": "Bearbeiten"
+    "edit": "Bearbeiten",
+    "delete": "Löschen"
   },
   "menu": {
     "item": {

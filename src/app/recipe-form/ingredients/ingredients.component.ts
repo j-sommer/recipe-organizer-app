@@ -20,10 +20,7 @@ export class IngredientsComponent {
   @Output()
   public ingredientsChange = new EventEmitter<Ingredient[]>();
 
-  constructor(
-    private modalController: ModalController,
-    private popoverController: PopoverController
-  ) {}
+  constructor(private modalController: ModalController) {}
 
   public async editIngredient(ingredient: Ingredient): Promise<void> {
     const modal = await this.modalController.create({
@@ -36,14 +33,8 @@ export class IngredientsComponent {
     return await modal.present();
   }
 
-  public async openIngredientMenu(): Promise<void> {
-    const popover = await this.popoverController.create({
-      component: IngredientMenuComponent,
-      event,
-      translucent: true,
-      animated: true,
-    });
-    return await popover.present();
+  public deleteIngredient(index: number): void {
+    this.ingredients.splice(index, 1);
   }
 
   public addIngredient(): void {
