@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { quantityTypesDE } from '@core/const/quantity-types.const';
 import { Ingredient } from '@core/models/recipe/ingredient.model';
-import { ModalController, PopoverController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 
 import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
-import { IngredientMenuComponent } from './ingredient-menu/ingredient-menu.component';
 
 @Component({
   selector: 'app-new-ingredients',
