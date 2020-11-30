@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-form-header',
@@ -11,4 +11,10 @@ export class FormHeaderComponent {
 
   @Input()
   public infoText: string;
+
+  @Input()
+  public additionalActions: boolean;
+
+  @Output()
+  public additionalActionsClick = new EventEmitter<Event>();
 }

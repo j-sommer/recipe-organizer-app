@@ -1,0 +1,7 @@
+.form-header {
+  display: flex;
+  flex-direction: row;
+  &__additional-actions {
+    margin-left: auto;
+  }
+}

@@ -108,6 +108,9 @@
       },
       "no-content": {
         "button": "Zutat hinzufügen"
+      },
+      "menu": {
+        "add-group": "Weitere Gruppe hinzufügen"
       }
     },
     "preparation": {

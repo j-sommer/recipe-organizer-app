@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { quantityTypesDE } from '@core/const/quantity-types.const';
 import { Ingredient } from '@core/models/recipe/ingredient.model';
-import { ModalController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 
 import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
+import { IngredientMenuComponent } from './ingredient-menu/ingredient-menu.component';
 
 @Component({
   selector: 'app-new-ingredients',
@@ -19,7 +20,10 @@ export class IngredientsComponent {
   @Output()
   public ingredientsChange = new EventEmitter<Ingredient[]>();
 
-  constructor(private modalController: ModalController) {}
+  constructor(
+    private modalController: ModalController,
+    private popoverController: PopoverController
+  ) {}
 
   public async editIngredient(ingredient: Ingredient): Promise<void> {
     const modal = await this.modalController.create({
@@ -30,6 +34,16 @@ export class IngredientsComponent {
     });
 
     return await modal.present();
+  }
+
+  public async openIngredientsMenu(event): Promise<void> {
+    const popover = await this.popoverController.create({
+      component: IngredientMenuComponent,
+      event,
+      translucent: true,
+      animated: true,
+    });
+    return await popover.present();
   }
 
   public deleteIngredient(index: number): void {

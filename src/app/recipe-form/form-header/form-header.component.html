@@ -1,2 +1,17 @@
-<h3>{{ heading | translate }}</h3>
+<div class="form-header">
+  <h3>{{ heading | translate }}</h3>
+  <ion-buttons
+    *ngIf="additionalActions"
+    class="form-header__additional-actions"
+    slot="end"
+  >
+    <ion-button (click)="additionalActionsClick.emit($event)">
+      <ion-icon
+        slot="icon-only"
+        ios="ellipsis-horizontal"
+        md="ellipsis-vertical"
+      ></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</div>
 <ion-text *ngIf="infoText">{{ infoText | translate }}</ion-text>
