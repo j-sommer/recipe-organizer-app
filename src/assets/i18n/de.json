@@ -8,7 +8,8 @@
     "select-confirm": "auswählen",
     "select-cancel": "abbrechen",
     "edit": "Bearbeiten",
-    "delete": "Löschen"
+    "delete": "Löschen",
+    "add": "Hinzufügen"
   },
   "menu": {
     "item": {
@@ -102,6 +103,11 @@
         "quantity-label": "Menge",
         "quantity-type-label": "Einheit",
         "confirm": "Fertig",
+        "add-group": {
+          "header": "Gruppe hinzufügen",
+          "title-input": "Gruppenname"
+        },
+        "remove-group": "Gruppe {{group}} entfernen?",
         "menu": {
           "delete-button": "löschen"
         }

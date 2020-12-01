@@ -34,7 +34,7 @@
     ></app-general>
     <app-new-ingredients
       *ngSwitchCase="'ingredients'"
-      [(ingredients)]="currentRecipe.ingredients"
+      [(ingredientGroups)]="currentRecipe.ingredientsGroups"
     ></app-new-ingredients>
     <app-new-preparation
       [(preparation)]="currentRecipe.preparation"

@@ -7,13 +7,16 @@
 
 <div
   class="recipe-form__content__ingredients__no-content"
-  *ngIf="!ingredients.length"
+  *ngIf="
+    !ingredientGroups[defaultGroupIndex].ingredients.length &&
+    ingredientGroups.length < 2
+  "
 >
   <div class="space-vertical-m"></div>
 
   <ion-button
     class="recipe-form__content__ingredients__no-content__button"
-    (click)="addIngredient()"
+    (click)="addIngredient(defaultGroupIndex)"
     fill="outline"
     size="default"
   >
@@ -21,36 +24,54 @@
   </ion-button>
 </div>
 
-<ion-list>
-  <ion-item-sliding *ngFor="let ingredient of ingredients; index as i">
-    <ion-item detail>
-      <div
-        (click)="editIngredient(ingredient)"
-        class="recipe-form__content__ingredients__list__clickable-area"
-      >
-        <ion-label>
-          <h2>{{ ingredient.name }}</h2>
-
-          <p>{{ ingredient.quantity + ' ' + ingredient.quantityType }}</p>
-        </ion-label>
-      </div>
-    </ion-item>
-
-    <ion-item-options side="end">
-      <ion-item-option (click)="deleteIngredient(i)" color="danger">{{
-        'general.delete' | translate
-      }}</ion-item-option>
-    </ion-item-options>
-  </ion-item-sliding>
-
-  <div class="space-vertical-xs"></div>
-
-  <ion-button
-    *ngIf="ingredients.length"
-    class="recipe-form__content__ingredients__add"
-    (click)="addIngredient()"
-    color="secondary"
+<ng-container
+  *ngIf="
+    ingredientGroups.length > 1 ||
+    ingredientGroups[defaultGroupIndex].ingredients.length
+  "
+>
+  <ion-list
+    *ngFor="let ingredientGroup of ingredientGroups; index as groupIndex"
   >
-    <ion-icon slot="icon-only" name="add"></ion-icon>
-  </ion-button>
-</ion-list>
+    <ion-list-header>
+      <ion-label>{{ ingredientGroup.title }}</ion-label>
+    </ion-list-header>
+    <ion-item-sliding
+      *ngFor="
+        let ingredient of ingredientGroup.ingredients;
+        index as ingredientIndex
+      "
+    >
+      <ion-item detail>
+        <div
+          (click)="editIngredient(ingredient)"
+          class="recipe-form__content__ingredients__list__clickable-area"
+        >
+          <ion-label>
+            <h2>{{ ingredient.name }}</h2>
+
+            <p>{{ ingredient.quantity + ' ' + ingredient.quantityType }}</p>
+          </ion-label>
+        </div>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option
+          (click)="deleteIngredient(ingredientIndex, groupIndex)"
+          color="danger"
+          >{{ 'general.delete' | translate }}</ion-item-option
+        >
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <div class="space-vertical-xs"></div>
+
+    <ion-button
+      class="recipe-form__content__ingredients__add"
+      (click)="addIngredient(groupIndex)"
+      color="secondary"
+    >
+      <ion-icon slot="icon-only" name="add"></ion-icon>
+    </ion-button>
+  </ion-list>
+</ng-container>

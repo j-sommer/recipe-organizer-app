@@ -24,7 +24,7 @@ export class RecipeFormPage implements OnDestroy {
     title: '',
     category: CategoryName.Other,
     tags: [],
-    ingredients: [],
+    ingredientsGroups: [{ title: 'Hauptzutaten', ingredients: [] }],
     preparation: '',
   };
 
@@ -115,7 +115,7 @@ export class RecipeFormPage implements OnDestroy {
       const successToast = await this.toastController.create({
         message: `Rezept '${this.currentRecipe.title}' wurde gespeichert`,
         duration: 2500,
-        color: 'medium',
+        color: 'success',
         position: 'bottom',
       });
 

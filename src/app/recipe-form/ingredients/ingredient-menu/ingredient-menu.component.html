@@ -1,6 +1,9 @@
 <ion-content>
   <ion-list>
-    <ion-item lines="none" (click)="addNewGroup.emit()">
+    <ion-item
+      lines="none"
+      (click)="propagateAction(IngredientMenuAction.AddGroup)"
+    >
       {{ 'recipe-form.ingredients.menu.add-group' | translate }}</ion-item
     >
   </ion-list>

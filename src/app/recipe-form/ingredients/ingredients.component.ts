@@ -1,10 +1,19 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { quantityTypesDE } from '@core/const/quantity-types.const';
-import { Ingredient } from '@core/models/recipe/ingredient.model';
-import { ModalController, PopoverController } from '@ionic/angular';
+import { IngredientGroup } from '@core/models/recipe/ingredient/ingredient-group.model';
+import { Ingredient } from '@core/models/recipe/ingredient/ingredient.model';
+import {
+  AlertController,
+  ModalController,
+  PopoverController,
+} from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
-import { IngredientMenuComponent } from './ingredient-menu/ingredient-menu.component';
+import {
+  IngredientMenuAction,
+  IngredientMenuComponent,
+} from './ingredient-menu/ingredient-menu.component';
 
 @Component({
   selector: 'app-new-ingredients',
@@ -13,16 +22,19 @@ import { IngredientMenuComponent } from './ingredient-menu/ingredient-menu.compo
 })
 export class IngredientsComponent {
   public readonly quantityTypes: string[] = quantityTypesDE;
+  public readonly defaultGroupIndex = 0;
 
   @Input()
-  public ingredients: Ingredient[];
+  public ingredientGroups: IngredientGroup[];
 
   @Output()
-  public ingredientsChange = new EventEmitter<Ingredient[]>();
+  public ingredientGroupsChange = new EventEmitter<IngredientGroup[]>();
 
   constructor(
+    private translate: TranslateService,
     private modalController: ModalController,
-    private popoverController: PopoverController
+    private popoverController: PopoverController,
+    private alertController: AlertController
   ) {}
 
   public async editIngredient(ingredient: Ingredient): Promise<void> {
@@ -43,20 +55,110 @@ export class IngredientsComponent {
       translucent: true,
       animated: true,
     });
-    return await popover.present();
+    popover.present();
+
+    return popover.onDidDismiss().then((dismissEvent: any) => {
+      const action = dismissEvent.data.action;
+      switch (action) {
+        case IngredientMenuAction.AddGroup:
+          this.groupCreation();
+      }
+    });
   }
 
-  public deleteIngredient(index: number): void {
-    this.ingredients.splice(index, 1);
+  private async groupCreation(): Promise<void> {
+    const alert = await this.alertController.create({
+      header: this.translate.instant(
+        'recipe-form.ingredients.edit.add-group.header'
+      ),
+      inputs: [
+        {
+          name: 'title',
+          type: 'text',
+          placeholder: this.translate.instant(
+            'recipe-form.ingredients.edit.add-group.title-input'
+          ),
+          attributes: {
+            required: true,
+          },
+        },
+      ],
+      buttons: [
+        {
+          text: this.translate.instant('general.select-cancel'),
+          role: 'cancel',
+        },
+        {
+          text: this.translate.instant('general.add'),
+          handler: (alertData) => {
+            if (alertData.title) {
+              this.addGroup(alertData.title);
+            }
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
-  public addIngredient(): void {
+  public async deleteIngredient(
+    ingredientIndex: number,
+    groupIndex: number
+  ): Promise<void> {
+    const currentGroup = this.ingredientGroups[groupIndex];
+
+    currentGroup.ingredients.splice(ingredientIndex, 1);
+
+    if (
+      !currentGroup.ingredients.length &&
+      groupIndex !== this.defaultGroupIndex
+    ) {
+      const alert = await this.alertController.create({
+        header: this.translate.instant(
+          'recipe-form.ingredients.edit.remove-group',
+          { group: this.ingredientGroups[groupIndex].title }
+        ),
+        buttons: [
+          {
+            text: this.translate.instant('general.select-cancel'),
+            role: 'cancel',
+          },
+          {
+            text: this.translate.instant('general.delete'),
+            handler: () => {
+              this.ingredientGroups.splice(groupIndex, 1);
+            },
+          },
+        ],
+      });
+
+      await alert.present();
+    }
+  }
+
+  public addGroup(title: string): void {
     const newIngredient: Ingredient = {
       name: 'Mehl',
       quantity: 200,
       quantityType: 'g',
     };
-    this.ingredients.push(newIngredient);
-    this.ingredientsChange.emit(this.ingredients);
+
+    const newGroup: IngredientGroup = {
+      title,
+      ingredients: [newIngredient],
+    };
+    this.ingredientGroups.push(newGroup);
+    this.ingredientGroupsChange.emit(this.ingredientGroups);
+  }
+
+  public addIngredient(groupIndex: number): void {
+    const newIngredient: Ingredient = {
+      name: 'Mehl',
+      quantity: 200,
+      quantityType: 'g',
+    };
+    this.ingredientGroups[groupIndex].ingredients.push(newIngredient);
+    this.ingredientGroupsChange.emit(this.ingredientGroups);
   }
 }

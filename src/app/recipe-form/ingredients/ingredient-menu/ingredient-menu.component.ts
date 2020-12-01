@@ -1,4 +1,9 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
+
+export enum IngredientMenuAction {
+  AddGroup = 'AddGroup',
+}
 
 @Component({
   selector: 'app-ingredient-menu',
@@ -6,6 +11,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./ingredient-menu.component.scss'],
 })
 export class IngredientMenuComponent {
-  @Output()
-  public addNewGroup = new EventEmitter<void>();
+  public readonly IngredientMenuAction = IngredientMenuAction;
+
+  constructor(private popoverController: PopoverController) {}
+
+  public propagateAction(action: IngredientMenuAction): void {
+    this.popoverController.dismiss({ action });
+  }
 }
