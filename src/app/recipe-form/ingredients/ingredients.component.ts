@@ -30,6 +30,8 @@ export class IngredientsComponent {
   @Output()
   public ingredientGroupsChange = new EventEmitter<IngredientGroup[]>();
 
+  private focusedGroupInput: { index: number; title: string };
+
   constructor(
     private translate: TranslateService,
     private modalController: ModalController,
@@ -102,6 +104,17 @@ export class IngredientsComponent {
     await alert.present();
   }
 
+  public onInputFocus(event, groupIndex: number) {
+    this.focusedGroupInput = { title: event.target.value, index: groupIndex };
+  }
+
+  public onInputBlur(event, groupIndex: number) {
+    if (groupIndex === this.focusedGroupInput.index && !event.target.value) {
+      this.showDeleteGroupAlert(groupIndex, this.focusedGroupInput.title);
+      delete this.focusedGroupInput;
+    }
+  }
+
   public async deleteIngredient(
     ingredientIndex: number,
     groupIndex: number
@@ -114,27 +127,39 @@ export class IngredientsComponent {
       !currentGroup.ingredients.length &&
       groupIndex !== this.defaultGroupIndex
     ) {
-      const alert = await this.alertController.create({
-        header: this.translate.instant(
-          'recipe-form.ingredients.edit.remove-group',
-          { group: this.ingredientGroups[groupIndex].title }
-        ),
-        buttons: [
-          {
-            text: this.translate.instant('general.select-cancel'),
-            role: 'cancel',
-          },
-          {
-            text: this.translate.instant('general.delete'),
-            handler: () => {
-              this.ingredientGroups.splice(groupIndex, 1);
-            },
-          },
-        ],
-      });
-
-      await alert.present();
+      this.showDeleteGroupAlert(groupIndex);
     }
+  }
+
+  private async showDeleteGroupAlert(
+    groupIndex: number,
+    title?: string
+  ): Promise<void> {
+    const alert = await this.alertController.create({
+      header: this.translate.instant(
+        'recipe-form.ingredients.edit.remove-group',
+        { group: title ? title : this.ingredientGroups[groupIndex].title }
+      ),
+      buttons: [
+        {
+          text: this.translate.instant('general.select-cancel'),
+          role: 'cancel',
+          handler: () => {
+            if (title) {
+              this.ingredientGroups[groupIndex].title = title;
+            }
+          },
+        },
+        {
+          text: this.translate.instant('general.delete'),
+          handler: () => {
+            this.ingredientGroups.splice(groupIndex, 1);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   public addGroup(title: string): void {

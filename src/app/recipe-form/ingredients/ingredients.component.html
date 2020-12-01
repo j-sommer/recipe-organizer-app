@@ -33,9 +33,13 @@
   <ion-list
     *ngFor="let ingredientGroup of ingredientGroups; index as groupIndex"
   >
-    <ion-list-header>
-      <ion-label>{{ ingredientGroup.title }}</ion-label>
-    </ion-list-header>
+    <ion-item lines="none">
+      <ion-input
+        (ionFocus)="onInputFocus($event, groupIndex)"
+        (ionBlur)="onInputBlur($event, groupIndex)"
+        [(ngModel)]="ingredientGroup.title"
+      ></ion-input>
+    </ion-item>
     <ion-item-sliding
       *ngFor="
         let ingredient of ingredientGroup.ingredients;
