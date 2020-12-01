@@ -1,0 +1,53 @@
+<ion-content class="ion-padding">
+  <app-form-header
+    heading="recipe-form.ingredients.edit.heading"
+  ></app-form-header>
+  <ion-item>
+    <ion-label position="floating">{{
+      'recipe-form.ingredients.edit.name-label' | translate
+    }}</ion-label>
+    <ion-input [(ngModel)]="ingredient.name"></ion-input>
+  </ion-item>
+
+  <div class="space-vertical-m"></div>
+
+  <ion-item>
+    <ion-label position="floating"
+      >{{ 'recipe-form.ingredients.edit.quantity-label' | translate }}
+    </ion-label>
+    <ion-input [(ngModel)]="ingredient.quantity"></ion-input>
+  </ion-item>
+
+  <div class="space-vertical-m"></div>
+
+  <ion-item>
+    <ion-label>{{
+      'recipe-form.ingredients.edit.quantity-type-label' | translate
+    }}</ion-label>
+    <ion-select
+      okText="{{
+        'recipe-form.ingredients.edit.confirm-quantity-type' | translate
+      }}"
+      cancelText="{{
+        'recipe-form.ingredients.edit.cancel-quantity-type' | translate
+      }}"
+      [(ngModel)]="ingredient.quantityType"
+    >
+      <ion-select-option *ngFor="let quantityType of quantityTypes">{{
+        quantityType
+      }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-content>
+
+<ion-footer class="ion-no-border ion-padding">
+  <ion-toolbar>
+    <ion-button
+      fill="solid"
+      color="primary"
+      expand="block"
+      (click)="dismissModal()"
+      >{{ 'recipe-form.ingredients.edit.confirm' | translate }}</ion-button
+    >
+  </ion-toolbar>
+</ion-footer>

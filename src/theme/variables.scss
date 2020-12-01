@@ -1,3 +1,7 @@
+ion-segment {
+  --background: #F1F9F9;
+}
+
 :root {
   --ion-background-color: #F1F9F9;
   --ion-text-color: #002d31;
@@ -24,21 +28,21 @@
 
   --ion-color-success: #03CEA4;
   --ion-color-success-rgb: 3,206,164;
-  --ion-color-success-contrast: #000000;
+  --ion-color-success-contrast: #F1F9F9;
   --ion-color-success-contrast-rgb: 0,0,0;
   --ion-color-success-shade: #03b590;
   --ion-color-success-tint: #1cd3ad;
 
   --ion-color-warning: #FED766;
   --ion-color-warning-rgb: 254,215,102;
-  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast: #F1F9F9;
   --ion-color-warning-contrast-rgb: 0,0,0;
   --ion-color-warning-shade: #e0bd5a;
   --ion-color-warning-tint: #fedb75;
 
   --ion-color-danger: #FF595E;
   --ion-color-danger-rgb: 255,89,94;
-  --ion-color-danger-contrast: #000000;
+  --ion-color-danger-contrast: #F1F9F9;
   --ion-color-danger-contrast-rgb: 0,0,0;
   --ion-color-danger-shade: #e04e53;
   --ion-color-danger-tint: #ff6a6e;

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Recipe } from '@core/models/recipe/recipe.model';
+
 import { RecipeViewService } from './recipe-view.service';
 
 @Component({

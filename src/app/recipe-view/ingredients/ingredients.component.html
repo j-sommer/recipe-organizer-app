@@ -13,18 +13,26 @@
   </div>
 
   <h3>{{ 'recipe-view.ingredients.heading' | translate }}</h3>
-  <p *ngIf="!recipe.ingredients.length">
+  <p *ngIf="!recipe.ingredientsGroups.length">
     {{ 'recipe-view.ingredients.no-content' | translate }}
   </p>
 
-  <ion-list *ngIf="recipe.ingredients.length">
-    <ion-item *ngFor="let ingredient of recipe.ingredients">
-      <ion-label>
-        <div class="recipe-view__ingredients__list">
-          <span>{{ ingredient.name }}</span
-          ><span>{{ ingredient.quantity }} {{ ingredient.quantityType }}</span>
-        </div>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <ng-container *ngIf="recipe.ingredientsGroups.length">
+    <ion-list *ngFor="let ingredientGroup of recipe.ingredientsGroups">
+      <ion-list-header>
+        <ion-label>{{ ingredientGroup.title }}</ion-label>
+      </ion-list-header>
+
+      <ion-item *ngFor="let ingredient of ingredientGroup.ingredients">
+        <ion-label>
+          <div class="recipe-view__ingredients__list">
+            <span>{{ ingredient.name }}</span
+            ><span
+              >{{ ingredient.quantity }} {{ ingredient.quantityType }}</span
+            >
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
 </div>

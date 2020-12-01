@@ -7,7 +7,9 @@
   "general": {
     "select-confirm": "auswählen",
     "select-cancel": "abbrechen",
-    "edit": "Bearbeiten"
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "add": "Hinzufügen"
   },
   "menu": {
     "item": {
@@ -93,9 +95,29 @@
     "ingredients": {
       "heading": "Zutaten",
       "info": "Hier kannst du Zutaten zu deinem Rezept hinzufügen",
-      "button-add": "Zutat",
-      "confirm-text": "Auswählen",
-      "cancel-text": "Abbrechen"
+      "edit": {
+        "heading": "Zutat bearbeiten",
+        "confirm-quantity-type": "Auswählen",
+        "cancel-quantity-type": "Abbrechen",
+        "name-label": "Zutat",
+        "quantity-label": "Menge",
+        "quantity-type-label": "Einheit",
+        "confirm": "Fertig",
+        "add-group": {
+          "header": "Gruppe hinzufügen",
+          "title-input": "Gruppenname"
+        },
+        "remove-group": "Gruppe {{group}} entfernen?",
+        "menu": {
+          "delete-button": "löschen"
+        }
+      },
+      "no-content": {
+        "button": "Zutat hinzufügen"
+      },
+      "menu": {
+        "add-group": "Weitere Gruppe hinzufügen"
+      }
     },
     "preparation": {
       "heading": "Zubereitung",

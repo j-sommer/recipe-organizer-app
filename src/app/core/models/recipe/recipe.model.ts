@@ -1,12 +1,12 @@
 import { CategoryName } from '../category/category-name.enum';
-import { Ingredient } from './ingredient.model';
+import { IngredientGroup } from './ingredient/ingredient-group.model';
 
 export interface Recipe {
   title: string;
   category: CategoryName;
   img?: string;
   tags: string[];
-  ingredients: Ingredient[];
+  ingredientsGroups: IngredientGroup[];
   preparation: string;
   filePath?: string;
 }
