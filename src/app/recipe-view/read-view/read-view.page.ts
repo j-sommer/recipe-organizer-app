@@ -29,4 +29,8 @@ export class ReadViewPage implements OnInit, OnDestroy {
       this.router.navigate(['/home']);
     }
   }
+
+  public navigateBack(): void {
+    this.router.navigate(['/recipe-view'], { state: { data: this.recipe } });
+  }
 }

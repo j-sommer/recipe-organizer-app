@@ -1,3 +1,14 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="navigateBack()">
+        <ion-icon slot="start" name="arrow-back-circle-outline"></ion-icon>
+        {{ 'general.back'| translate}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content class="ion-padding">
   <ng-container *ngIf="recipe">
     <h1>{{recipe.title}}</h1>
