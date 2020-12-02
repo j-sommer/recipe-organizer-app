@@ -1,0 +1,45 @@
+<ion-content class="ion-padding">
+  <ng-container *ngIf="recipe">
+    <h1>{{recipe.title}}</h1>
+
+    <div class="space-vertical-s"></div>
+
+    <h3>{{ 'recipe-view.ingredients.heading' | translate }}</h3>
+    <div class="divider primary"></div>
+
+    <p *ngIf="!recipe.ingredientsGroups?.length">
+      {{ 'recipe-view.ingredients.no-content' | translate }}
+    </p>
+
+    <ng-container *ngIf="recipe.ingredientsGroups?.length">
+      <ion-list *ngFor="let ingredientGroup of recipe.ingredientsGroups">
+        <ion-list-header>
+          <ion-label>{{ ingredientGroup.title }}</ion-label>
+        </ion-list-header>
+
+        <ion-item *ngFor="let ingredient of ingredientGroup.ingredients">
+          <ion-label>
+            <div class="recipe-view__ingredients__list">
+              <span>{{ ingredient.name }}</span
+              ><span
+                >{{ ingredient.quantity }} {{ ingredient.quantityType }}</span
+              >
+            </div>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ng-container>
+
+    <div class="space-vertical-s"></div>
+
+    <h3>{{ 'recipe-view.preparation.heading' | translate }}</h3>
+    <div class="divider primary"></div>
+
+    <p *ngIf="!recipe.preparation">
+      {{ 'recipe-view.preparation.no-content' | translate }}
+    </p>
+    <p *ngIf="recipe.preparation" class="recipe-view__preparation">
+      {{ recipe.preparation }}
+    </p>
+  </ng-container>
+</ion-content>

@@ -1,0 +1,12 @@
+.recipe-view {
+  &__ingredients {
+    &__list {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  &__preparation {
+    white-space: pre-line;
+  }
+}

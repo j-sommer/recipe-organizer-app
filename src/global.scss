@@ -41,6 +41,15 @@
   height: 24px;
 }
 
+.divider {
+  height: 1px;
+  width: 100%;
+
+  &.primary {
+    background-color: var(--ion-color-primary);
+  }
+}
+
 img {
   border-radius: 1%;
 }

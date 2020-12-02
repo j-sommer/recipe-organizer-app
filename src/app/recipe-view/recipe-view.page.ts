@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Recipe } from '@core/models/recipe/recipe.model';
 
 import { RecipeViewService } from './recipe-view.service';
@@ -16,7 +16,8 @@ export class RecipeViewPage {
 
   constructor(
     private recipeViewService: RecipeViewService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   public ionViewWillEnter(): void {
@@ -36,5 +37,10 @@ export class RecipeViewPage {
     });
   }
 
-  public readRecipe(): void {}
+  public readRecipe(): void {
+    this.router.navigate(['read-view'], {
+      relativeTo: this.route,
+      state: { data: { recipe: this.recipe } },
+    });
+  }
 }
