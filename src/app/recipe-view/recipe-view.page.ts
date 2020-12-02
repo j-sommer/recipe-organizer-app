@@ -35,4 +35,6 @@ export class RecipeViewPage {
       state: { data: { recipe: this.recipe } },
     });
   }
+
+  public readRecipe(): void {}
 }
