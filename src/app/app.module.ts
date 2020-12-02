@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouteReuseStrategy } from '@angular/router';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { Insomnia } from '@ionic-native/insomnia/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -38,6 +39,7 @@ function createTranslateLoader(http: HttpClient) {
   ],
   providers: [
     StatusBar,
+    Insomnia,
     SplashScreen,
     AndroidPermissions,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
