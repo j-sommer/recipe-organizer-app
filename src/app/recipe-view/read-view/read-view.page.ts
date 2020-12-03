@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Recipe } from '@core/models/recipe/recipe.model';
 
 import { Insomnia } from '@ionic-native/insomnia/ngx';
+import { destinations } from 'src/app/app-routing.module';
 
 @Component({
   selector: 'app-read-view',
@@ -26,11 +27,13 @@ export class ReadViewPage implements OnInit, OnDestroy {
     this.recipe = history.state.data?.recipe;
 
     if (!this.recipe) {
-      this.router.navigate(['/home']);
+      this.router.navigate([destinations.home]);
     }
   }
 
   public navigateBack(): void {
-    this.router.navigate(['/recipe-view'], { state: { data: this.recipe } });
+    this.router.navigate([destinations.recipeView], {
+      state: { data: this.recipe },
+    });
   }
 }
