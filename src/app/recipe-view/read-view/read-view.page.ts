@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Recipe } from '@core/models/recipe/recipe.model';
-
 import { Insomnia } from '@ionic-native/insomnia/ngx';
 import { destinations } from 'src/app/app-routing.module';
 
@@ -12,6 +11,16 @@ import { destinations } from 'src/app/app-routing.module';
 })
 export class ReadViewPage implements OnInit, OnDestroy {
   public recipe: Recipe;
+
+  public fontSize = 1;
+
+  public increaseFont(): void {
+    this.fontSize = this.fontSize * 1.1;
+  }
+
+  public decreaseFont(): void {
+    this.fontSize = this.fontSize * 0.9;
+  }
 
   constructor(private router: Router, private insomnia: Insomnia) {}
 

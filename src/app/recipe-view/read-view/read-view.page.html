@@ -8,8 +8,13 @@
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon slot="icon-only" name="text-outline"></ion-icon>
+      <ion-button (click)="decreaseFont()">
+        <ion-icon slot="icon-only" name="remove-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="increaseFont()">
+        <ion-icon slot="icon-only" name="add-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -31,14 +36,17 @@
     <ng-container *ngIf="recipe.ingredientsGroups?.length">
       <ion-list *ngFor="let ingredientGroup of recipe.ingredientsGroups">
         <ion-list-header>
-          <ion-label>{{ ingredientGroup.title }}</ion-label>
+          <span [style.font-size]="fontSize + 'em'"
+            >{{ ingredientGroup.title }}</span
+          >
         </ion-list-header>
 
         <ion-item *ngFor="let ingredient of ingredientGroup.ingredients">
           <ion-label>
             <div class="recipe-view__ingredients__list">
-              <span>{{ ingredient.name }}</span
-              ><span
+              <span [style.font-size]="fontSize + 'em'"
+                >{{ ingredient.name }}</span
+              ><span [style.font-size]="fontSize + 'em'"
                 >{{ ingredient.quantity }} {{ ingredient.quantityType }}</span
               >
             </div>
@@ -52,10 +60,14 @@
     <h3>{{ 'recipe-view.preparation.heading' | translate }}</h3>
     <div class="divider primary"></div>
 
-    <p *ngIf="!recipe.preparation">
+    <p [style.font-size]="fontSize + 'em'" *ngIf="!recipe.preparation">
       {{ 'recipe-view.preparation.no-content' | translate }}
     </p>
-    <p *ngIf="recipe.preparation" class="recipe-view__preparation">
+    <p
+      [style.font-size]="fontSize + 'em'"
+      *ngIf="recipe.preparation"
+      class="recipe-view__preparation"
+    >
       {{ recipe.preparation }}
     </p>
   </ng-container>
