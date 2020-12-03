@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { destinations } from 'src/app/app-routing.module';
 
 @Component({
   selector: 'app-floating-add-button',
@@ -10,6 +11,6 @@ export class FloatingAddButtonComponent {
   constructor(private router: Router) {}
 
   public onAddClick(): void {
-    this.router.navigate(['/recipe-form']);
+    this.router.navigate([destinations.recipeForm]);
   }
 }

@@ -5,6 +5,7 @@ import { RecipeForList } from '@core/models/recipe/recipe-for-list.model';
 import { Recipe } from '@core/models/recipe/recipe.model';
 import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.service';
 import { Subscription } from 'rxjs';
+import { destinations } from '../app-routing.module';
 
 @Component({
   selector: 'app-category-view',
@@ -57,7 +58,7 @@ export class CategoryViewPage implements OnDestroy {
   private extractCategoryFromRoute(): void {
     this.subscription = this.route.queryParams.subscribe((params) => {
       if (!params.category) {
-        this.router.navigate(['/home']);
+        this.router.navigate([destinations.home]);
       }
 
       this.category = params.category;

@@ -1,39 +1,52 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+export const destinations = {
+  home: 'home',
+  recipeForm: 'recipe-form',
+  recipeView: 'recipe-view',
+  readView: 'read-view',
+  categoryView: 'category-view',
+  settings: 'settings',
+};
+
 const routes: Routes = [
   {
-    path: 'home',
+    path: destinations.home,
     loadChildren: () =>
       import('./home/home.module').then((m) => m.HomePageModule),
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: destinations.home,
     pathMatch: 'full',
   },
   {
-    path: 'recipe-form',
+    path: destinations.recipeForm,
     loadChildren: () =>
       import('./recipe-form/recipe-form.module').then(
         (m) => m.RecipeFormPageModule
       ),
   },
   {
-    path: 'recipe-view',
+    path: destinations.recipeView,
     loadChildren: () =>
       import('./recipe-view/recipe-view.module').then(
         (m) => m.RecipeViewPageModule
       ),
-  },  {
-    path: 'category-view',
-    loadChildren: () => import('./category-view/category-view.module').then( m => m.CategoryViewPageModule)
   },
   {
-    path: 'settings',
-    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+    path: destinations.categoryView,
+    loadChildren: () =>
+      import('./category-view/category-view.module').then(
+        (m) => m.CategoryViewPageModule
+      ),
   },
-
+  {
+    path: destinations.settings,
+    loadChildren: () =>
+      import('./settings/settings.module').then((m) => m.SettingsPageModule),
+  },
 ];
 
 @NgModule({

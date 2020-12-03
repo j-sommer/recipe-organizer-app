@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: RecipeViewPage,
+  },  {
+    path: 'read-view',
+    loadChildren: () => import('./read-view/read-view.module').then( m => m.ReadViewPageModule)
   },
+
 ];
 
 @NgModule({

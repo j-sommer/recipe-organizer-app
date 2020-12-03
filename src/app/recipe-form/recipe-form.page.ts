@@ -10,6 +10,7 @@ import {
 } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { destinations } from '../app-routing.module';
 import { RecipeMenuComponent } from './recipe-menu/recipe-menu.component';
 
 @Component({
@@ -51,7 +52,7 @@ export class RecipeFormPage implements OnDestroy {
           this.currentRecipe = historyData.recipe;
           this.isEdit = true;
         } else {
-          this.router.navigate(['/home']);
+          this.router.navigate([destinations.home]);
         }
       }
     });
@@ -95,7 +96,7 @@ export class RecipeFormPage implements OnDestroy {
           handler: async () => {
             await this.recipeFileHandler.deleteRecipe(this.currentRecipe);
 
-            this.router.navigate(['/home']);
+            this.router.navigate([destinations.home]);
           },
         },
       ],

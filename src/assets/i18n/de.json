@@ -9,7 +9,8 @@
     "select-cancel": "abbrechen",
     "edit": "Bearbeiten",
     "delete": "Löschen",
-    "add": "Hinzufügen"
+    "add": "Hinzufügen",
+    "back":"Zurück"
   },
   "menu": {
     "item": {
