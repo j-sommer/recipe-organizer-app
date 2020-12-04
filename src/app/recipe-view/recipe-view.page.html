@@ -5,14 +5,12 @@
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <ion-button (click)="editRecipe()" type="submit">
-        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-
-    <ion-buttons slot="end">
-      <ion-button (click)="readRecipe()">
-        <ion-icon slot="icon-only" name="eye-outline"></ion-icon>
+      <ion-button (click)="openActionSheet()">
+        <ion-icon
+          slot="icon-only"
+          ios="ellipsis-horizontal"
+          md="ellipsis-vertical"
+        ></ion-icon>
       </ion-button>
     </ion-buttons>
 

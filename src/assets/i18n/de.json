@@ -10,7 +10,7 @@
     "edit": "Bearbeiten",
     "delete": "Löschen",
     "add": "Hinzufügen",
-    "back":"Zurück"
+    "back": "Zurück"
   },
   "menu": {
     "item": {
@@ -132,6 +132,11 @@
   },
   "recipe-view": {
     "heading": "Rezeptansicht",
+    "action-sheet": {
+      "title": "Aktionen",
+      "edit": "Bearbeiten",
+      "read-view": "Kochansicht"
+    },
     "segment": {
       "ingredients": "Zutaten",
       "preparation": "Zubereitung"

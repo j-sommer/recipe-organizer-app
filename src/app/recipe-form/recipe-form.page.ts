@@ -62,7 +62,7 @@ export class RecipeFormPage implements OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  public async openRecipeActionSheet(): Promise<void> {
+  public async openActionSheet(): Promise<void> {
     const actionSheet = await this.actionSheetController.create({
       header: this.translate.instant('recipe-form.recipe-menu.title'),
       buttons: [
