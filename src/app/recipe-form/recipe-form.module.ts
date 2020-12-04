@@ -13,7 +13,6 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
 import { PreparationComponent } from './preparation/preparation.component';
 import { RecipeFormPageRoutingModule } from './recipe-form-routing.module';
 import { RecipeFormPage } from './recipe-form.page';
-import { RecipeMenuComponent } from './recipe-menu/recipe-menu.component';
 
 @NgModule({
   imports: [
@@ -27,7 +26,6 @@ import { RecipeMenuComponent } from './recipe-menu/recipe-menu.component';
   ],
   declarations: [
     RecipeFormPage,
-    RecipeMenuComponent,
     PreparationComponent,
     IngredientsComponent,
     GeneralComponent,
@@ -35,6 +33,6 @@ import { RecipeMenuComponent } from './recipe-menu/recipe-menu.component';
     IngredientFormComponent,
     IngredientMenuComponent,
   ],
-  entryComponents: [RecipeMenuComponent, IngredientMenuComponent],
+  entryComponents: [IngredientMenuComponent],
 })
 export class RecipeFormPageModule {}

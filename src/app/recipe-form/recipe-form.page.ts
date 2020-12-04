@@ -4,14 +4,14 @@ import { CategoryName } from '@core/models/category/category-name.enum';
 import { Recipe } from '@core/models/recipe/recipe.model';
 import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.service';
 import {
+  ActionSheetController,
   AlertController,
-  PopoverController,
   ToastController,
 } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+
 import { destinations } from '../app-routing.module';
-import { RecipeMenuComponent } from './recipe-menu/recipe-menu.component';
 
 @Component({
   selector: 'app-recipe-form',
@@ -39,8 +39,8 @@ export class RecipeFormPage implements OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private translate: TranslateService,
-    private popoverController: PopoverController,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private actionSheetController: ActionSheetController
   ) {}
 
   public ionViewWillEnter(): void {
@@ -62,19 +62,23 @@ export class RecipeFormPage implements OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  public async openRecipeMenu(event): Promise<void> {
-    const popover = await this.popoverController.create({
-      component: RecipeMenuComponent,
-      event,
-      translucent: true,
-      animated: true,
-      componentProps: {
-        edit: this.isEdit,
-        save: this.saveRecipe.bind(this),
-        delete: this.deleteRecipe.bind(this),
-      },
+  public async openRecipeActionSheet(): Promise<void> {
+    const actionSheet = await this.actionSheetController.create({
+      header: this.translate.instant('recipe-form.recipe-menu.title'),
+      buttons: [
+        {
+          text: this.translate.instant('recipe-form.recipe-menu.save'),
+          handler: this.saveRecipe.bind(this),
+        },
+        {
+          text: this.translate.instant('recipe-form.recipe-menu.delete'),
+          role: 'destructive',
+          cssClass: 'danger',
+          handler: this.deleteRecipe.bind(this),
+        },
+      ],
     });
-    return await popover.present();
+    await actionSheet.present();
   }
 
   public async deleteRecipe(): Promise<void> {
@@ -93,6 +97,8 @@ export class RecipeFormPage implements OnDestroy {
           text: this.translate.instant(
             'recipe-form.delete-alert.confirm-button'
           ),
+          role: 'destructive',
+          cssClass: 'danger',
           handler: async () => {
             await this.recipeFileHandler.deleteRecipe(this.currentRecipe);
 
