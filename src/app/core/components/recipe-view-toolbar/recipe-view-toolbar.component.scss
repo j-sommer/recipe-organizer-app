@@ -6,7 +6,9 @@
     flex-direction: row;
     justify-content: space-between;
 
-    &__searchbar {
+    &__skeleton-title {
+      width: 75vw;
+      margin-right: auto;
     }
   }
 }

@@ -6,10 +6,10 @@
 ></app-recipe-view-toolbar>
 
 <ion-content fullscreen class="ion-padding background">
-  <ng-container *ngFor="let number of [1, 2, 3, 4, 5]">
-    <app-list-placeholder
-      [isLoading]="!hasRecipes && isLoading"
-    ></app-list-placeholder>
+  <ng-container *ngIf="isLoading && !hasRecipes">
+    <ng-container *ngFor="let number of [1, 2, 3, 4, 5]">
+      <app-list-placeholder></app-list-placeholder>
+    </ng-container>
   </ng-container>
 
   <app-initial-message [show]="!isLoading && !hasRecipes"></app-initial-message>

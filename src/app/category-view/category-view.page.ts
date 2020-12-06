@@ -75,8 +75,9 @@ export class CategoryViewPage implements OnDestroy {
 
     if (anyRecipes) {
       this.fillCategory(recipes, category);
-      this.isLoading = false;
     }
+
+    this.isLoading = false;
   }
 
   private setShowValue(recipes: Recipe[]): RecipeForList[] {

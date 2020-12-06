@@ -27,8 +27,9 @@ export class HomePage {
 
     if (this.hasRecipes) {
       this.fillCategories(recipes);
-      this.isLoading = false;
     }
+
+    this.isLoading = false;
   }
 
   public onSearchChange(event): void {
