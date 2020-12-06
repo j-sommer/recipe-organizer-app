@@ -1,7 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryName } from '@core/models/category/category-name.enum';
-import { RecipeForList } from '@core/models/recipe/recipe-for-list.model';
+import {
+  createRecipeForList,
+  RecipeForList,
+} from '@core/models/recipe/recipe-for-list.model';
 import { Recipe } from '@core/models/recipe/recipe.model';
 import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.service';
 import { Subscription } from 'rxjs';
@@ -71,24 +74,23 @@ export class CategoryViewPage implements OnDestroy {
     const anyRecipes = recipes && !!recipes.length;
 
     if (anyRecipes) {
-      this.categoryRecipes = this.setShowValue(recipes);
-      this.fillCategory(this.categoryRecipes, category);
+      this.fillCategory(recipes, category);
       this.isLoading = false;
     }
   }
 
   private setShowValue(recipes: Recipe[]): RecipeForList[] {
-    return recipes.map((recipe) => ({ ...recipe, shouldShow: true }));
+    return recipes.map((recipe) => createRecipeForList(recipe));
   }
 
-  private fillCategory(recipes: RecipeForList[], category: CategoryName): void {
+  private fillCategory(recipes: Recipe[], category: CategoryName): void {
     this.clearCategory();
 
-    this.categoryRecipes = recipes.filter(
-      (recipe) => recipe.category === category
-    );
+    const filteredRecipes = recipes.filter((recipe: Recipe) => {
+      return recipe.category === category;
+    });
 
-    this.categoryRecipes.forEach((item) => (item.shouldShow = true));
+    this.categoryRecipes = this.setShowValue(filteredRecipes);
 
     this.hasRecipes = this.categoryRecipes.length > 0;
   }
