@@ -18,6 +18,15 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-segment [(ngModel)]="segment">
+  <ion-segment-button value="ingredients">
+    <ion-label>{{'recipe-view.segment.ingredients' | translate}}</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="preparation">
+    <ion-label>{{'recipe-view.segment.preparation' | translate}}</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
 <ion-content class="recipe-view ion-padding">
   <div *ngIf="recipe" class="recipe-view__content">
     <h1 class="recipe-view__content__title">{{recipe.title}}</h1>
@@ -28,14 +37,3 @@
     </div>
   </div>
 </ion-content>
-
-<ion-segment color="primary" [(ngModel)]="segment">
-  <ion-segment-button value="ingredients">
-    <ion-label>{{'recipe-view.segment.ingredients' | translate}}</ion-label>
-    <ion-icon name="list-outline"></ion-icon>
-  </ion-segment-button>
-  <ion-segment-button value="preparation">
-    <ion-label>{{'recipe-view.segment.preparation' | translate}}</ion-label>
-    <ion-icon name="reader-outline"></ion-icon>
-  </ion-segment-button>
-</ion-segment>

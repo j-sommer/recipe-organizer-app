@@ -63,21 +63,28 @@ export class RecipeFormPage implements OnDestroy {
   }
 
   public async openActionSheet(): Promise<void> {
-    const actionSheet = await this.actionSheetController.create({
+    const actionSheetOptions: any = {
       header: this.translate.instant('recipe-form.recipe-menu.title'),
       buttons: [
         {
           text: this.translate.instant('recipe-form.recipe-menu.save'),
           handler: this.saveRecipe.bind(this),
         },
-        {
-          text: this.translate.instant('recipe-form.recipe-menu.delete'),
-          role: 'destructive',
-          cssClass: 'danger',
-          handler: this.deleteRecipe.bind(this),
-        },
       ],
-    });
+    };
+
+    if (this.isEdit) {
+      actionSheetOptions.buttons.push({
+        text: this.translate.instant('recipe-form.recipe-menu.delete'),
+        role: 'destructive',
+        cssClass: 'danger',
+        handler: this.deleteRecipe.bind(this),
+      });
+    }
+
+    const actionSheet = await this.actionSheetController.create(
+      actionSheetOptions
+    );
     await actionSheet.present();
   }
 

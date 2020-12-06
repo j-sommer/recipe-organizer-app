@@ -3,6 +3,10 @@
 <p *ngIf="!($recipe | async).preparation">
   {{ 'recipe-view.preparation.no-content' | translate }}
 </p>
-<p *ngIf="($recipe | async).preparation" class="recipe-view__preparation">
-  {{ ($recipe | async).preparation }}
-</p>
+
+<quill-view
+  *ngIf="($recipe | async).preparation"
+  [content]="($recipe | async).preparation"
+  format="html"
+  theme="snow"
+></quill-view>

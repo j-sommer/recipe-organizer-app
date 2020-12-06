@@ -12,8 +12,8 @@ export class PreparationComponent {
   @Output()
   public preparationChange = new EventEmitter<string>();
 
-  public onChange(val: string): void {
-    this.preparation = val;
+  public onChange(val): void {
+    this.preparation = val.html;
     this.preparationChange.emit(this.preparation);
   }
 }

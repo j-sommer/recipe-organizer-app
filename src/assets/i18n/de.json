@@ -79,7 +79,7 @@
       "info": "Generelle Informationen zu deinem Rezept",
       "label-title": "Titel",
       "label-category": "Kategorie",
-      "add-photo": "Foto Hinzufügen",
+      "add-photo": "Bild Hinzufügen",
       "tags": "Tags",
       "category": {
         "meat": "Fleisch",
@@ -117,12 +117,13 @@
         "button": "Zutat hinzufügen"
       },
       "menu": {
-        "add-group": "Weitere Gruppe hinzufügen"
+        "add-group": "Weitere Gruppe hinzufügen",
+        "delete-group": "Gruppe löschen"
       }
     },
     "preparation": {
       "heading": "Zubereitung",
-      "input-placeholder": "Hier Text eingeben..."
+      "input-placeholder": "Hier Zubereitungstext eingeben..."
     },
     "segment": {
       "general": "Allgemein",

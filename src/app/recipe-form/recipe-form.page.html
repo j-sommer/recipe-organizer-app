@@ -26,8 +26,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen class="recipe-form__content ion-padding">
-  <div [ngSwitch]="segment">
+<ion-segment [(ngModel)]="segment">
+  <ion-segment-button value="general">
+    <ion-label>{{'recipe-form.segment.general' | translate}}</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="ingredients">
+    <ion-label>{{'recipe-form.segment.ingredients' | translate}}</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="preparation">
+    <ion-label>{{'recipe-form.segment.preparation' | translate}}</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+<ion-content>
+  <ng-container [ngSwitch]="segment">
     <app-general
       *ngSwitchCase="'general'"
       [(recipe)]="currentRecipe"
@@ -40,20 +52,5 @@
       [(preparation)]="currentRecipe.preparation"
       *ngSwitchCase="'preparation'"
     ></app-new-preparation>
-  </div>
+  </ng-container>
 </ion-content>
-
-<ion-segment color="primary" [(ngModel)]="segment">
-  <ion-segment-button value="general">
-    <ion-label>{{'recipe-form.segment.general' | translate}}</ion-label>
-    <ion-icon name="information-circle-outline"></ion-icon>
-  </ion-segment-button>
-  <ion-segment-button value="ingredients">
-    <ion-label>{{'recipe-form.segment.ingredients' | translate}}</ion-label>
-    <ion-icon name="list-outline"></ion-icon>
-  </ion-segment-button>
-  <ion-segment-button value="preparation">
-    <ion-label>{{'recipe-form.segment.preparation' | translate}}</ion-label>
-    <ion-icon name="reader-outline"></ion-icon>
-  </ion-segment-button>
-</ion-segment>

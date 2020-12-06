@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 
 export enum IngredientMenuAction {
   AddGroup = 'AddGroup',
+  DeleteGroup = 'DeleteGroup',
 }
 
 @Component({
@@ -13,9 +14,12 @@ export enum IngredientMenuAction {
 export class IngredientMenuComponent {
   public readonly IngredientMenuAction = IngredientMenuAction;
 
+  @Input()
+  public groupIndex: number;
+
   constructor(private popoverController: PopoverController) {}
 
   public propagateAction(action: IngredientMenuAction): void {
-    this.popoverController.dismiss({ action });
+    this.popoverController.dismiss({ action, groupIndex: this.groupIndex });
   }
 }

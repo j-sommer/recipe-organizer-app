@@ -1,11 +1,8 @@
-<app-form-header heading="recipe-form.preparation.heading"> </app-form-header>
-
-<ion-item>
-  <ion-textarea
-    placeholder="{{ 'recipe-form.preparation.input-placeholder' | translate }}"
-    [rows]="24"
-    [autoGrow]="true"
+<div class="ion-padding">
+  <quill-editor
     [ngModel]="preparation"
-    (ngModelChange)="onChange($event)"
-  ></ion-textarea>
-</ion-item>
+    (onContentChanged)="onChange($event)"
+    [styles]="{ height: '100vh' }"
+    placeholder="{{ 'recipe-form.preparation.input-placeholder' | translate }}"
+  ></quill-editor>
+</div>

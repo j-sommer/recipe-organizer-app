@@ -15,6 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 
+import { QuillModule } from 'ngx-quill';
+
 function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -36,6 +38,7 @@ function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
+    QuillModule.forRoot(),
   ],
   providers: [
     StatusBar,
