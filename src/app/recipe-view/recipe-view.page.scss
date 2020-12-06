@@ -2,13 +2,5 @@
   &__content {
     display: flex;
     flex-direction: column;
-
-    &__title {
-      text-align: center;
-    }
-
-    &__preparation {
-      white-space: pre-line;
-    }
   }
 }

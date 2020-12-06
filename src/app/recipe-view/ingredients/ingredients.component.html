@@ -1,10 +1,18 @@
-<div class="recipe-view__ingredients" *ngIf="$recipe | async as recipe">
-  <img
-    class="recipe-view__ingredients__image"
-    [src]="
-      recipe.img ? imagePrefix + recipe.img : 'assets/images/placeholder.jpg'
-    "
-  />
+<ng-container *ngIf="$recipe | async as recipe">
+  <div class="recipe-view__ingredients">
+    <img
+      class="recipe-view__ingredients__image"
+      [src]="
+        recipe.img ? imagePrefix + recipe.img : 'assets/images/placeholder.jpg'
+      "
+    />
+
+    <h1 class="recipe-view__ingredients__title recipe-title">
+      {{ recipe.title }}
+    </h1>
+  </div>
+
+  <div class="space-vertical-xs"></div>
 
   <div class="recipe-view__ingredients__tags">
     <ion-chip *ngFor="let tag of recipe.tags" color="secondary">
@@ -12,27 +20,29 @@
     </ion-chip>
   </div>
 
-  <h3>{{ 'recipe-view.ingredients.heading' | translate }}</h3>
-  <p *ngIf="!recipe.ingredientsGroups.length">
-    {{ 'recipe-view.ingredients.no-content' | translate }}
-  </p>
+  <div class="ion-padding-horizontal">
+    <h3 class="heading">{{ 'recipe-view.ingredients.heading' | translate }}</h3>
+    <p *ngIf="!recipe.ingredientsGroups.length">
+      {{ 'recipe-view.ingredients.no-content' | translate }}
+    </p>
 
-  <ng-container *ngIf="recipe.ingredientsGroups.length">
-    <ion-list *ngFor="let ingredientGroup of recipe.ingredientsGroups">
-      <ion-list-header>
-        <ion-label>{{ ingredientGroup.title }}</ion-label>
-      </ion-list-header>
+    <ng-container *ngIf="recipe.ingredientsGroups.length">
+      <ion-list *ngFor="let ingredientGroup of recipe.ingredientsGroups">
+        <ion-list-header>
+          <ion-label>{{ ingredientGroup.title }}</ion-label>
+        </ion-list-header>
 
-      <ion-item *ngFor="let ingredient of ingredientGroup.ingredients">
-        <ion-label>
-          <div class="recipe-view__ingredients__list">
-            <span>{{ ingredient.name }}</span
-            ><span
-              >{{ ingredient.quantity }} {{ ingredient.quantityType }}</span
-            >
-          </div>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </ng-container>
-</div>
+        <ion-item *ngFor="let ingredient of ingredientGroup.ingredients">
+          <ion-label>
+            <div class="recipe-view__ingredients__list">
+              <span>{{ ingredient.name }}</span
+              ><span
+                >{{ ingredient.quantity }} {{ ingredient.quantityType }}</span
+              >
+            </div>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ng-container>
+  </div>
+</ng-container>

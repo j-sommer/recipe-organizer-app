@@ -27,13 +27,9 @@
   </ion-segment-button>
 </ion-segment>
 
-<ion-content class="recipe-view ion-padding">
-  <div *ngIf="recipe" class="recipe-view__content">
-    <h1 class="recipe-view__content__title">{{recipe.title}}</h1>
-
-    <div [ngSwitch]="segment">
-      <app-ingredients *ngSwitchCase="'ingredients'"></app-ingredients>
-      <app-preparation *ngSwitchCase="'preparation'"></app-preparation>
-    </div>
-  </div>
+<ion-content *ngIf="recipe" class="recipe-view__content">
+  <ng-container [ngSwitch]="segment">
+    <app-ingredients *ngSwitchCase="'ingredients'"></app-ingredients>
+    <app-preparation *ngSwitchCase="'preparation'"></app-preparation>
+  </ng-container>
 </ion-content>
