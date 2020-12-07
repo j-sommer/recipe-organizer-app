@@ -5,7 +5,7 @@
   (startSearch)="onSearchStart($event)"
 ></app-recipe-view-toolbar>
 
-<ion-content fullscreen class="ion-padding background">
+<ion-content class="ion-padding">
   <ng-container *ngIf="isLoading && !hasRecipes">
     <ng-container *ngFor="let number of [1, 2, 3, 4, 5]">
       <app-list-placeholder></app-list-placeholder>
