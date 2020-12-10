@@ -7,7 +7,9 @@ import {
 } from '@core/models/recipe/recipe-for-list.model';
 import { Recipe } from '@core/models/recipe/recipe.model';
 import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.service';
+import { imageBase64Prefix } from '@core/util/image-base64-prefix.const';
 import { Subscription } from 'rxjs';
+
 import { destinations } from '../app-routing.module';
 
 @Component({
@@ -16,6 +18,8 @@ import { destinations } from '../app-routing.module';
   styleUrls: ['./category-view.page.scss'],
 })
 export class CategoryViewPage implements OnDestroy {
+  public readonly imagePrefix = imageBase64Prefix;
+
   public category: CategoryName;
   public categoryRecipes: RecipeForList[] = [];
 
@@ -36,6 +40,12 @@ export class CategoryViewPage implements OnDestroy {
 
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  public onRecipeClick(recipe: Recipe): void {
+    this.router.navigate([destinations.recipeView], {
+      state: { data: recipe },
+    });
   }
 
   public onSearchChange(event): void {

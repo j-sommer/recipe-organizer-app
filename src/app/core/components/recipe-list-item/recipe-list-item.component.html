@@ -1,5 +1,5 @@
 <ion-item-sliding class="recipe-list-item" *ngIf="recipe" lines="none">
-  <ion-item (click)="onRecipeClick(recipe)" lines="none" detail>
+  <ion-item (click)="onRecipeClick(recipe)" lines="none">
     <ion-thumbnail slot="start">
       <img
         class="recipe-list-item__image"
@@ -11,9 +11,13 @@
       />
     </ion-thumbnail>
     <ion-label>
-      <h2>{{ recipe.title }}</h2>
+      <h2 class="recipe-list-item__title">{{ recipe.title }}</h2>
       <div *ngIf="recipe.tags.length">
-        <ion-chip color="secondary" outline *ngFor="let label of recipe.tags">
+        <ion-chip
+          class="recipe-list-item__chip"
+          color="secondary"
+          *ngFor="let label of recipe.tags"
+        >
           <ion-label>{{ label }}</ion-label>
         </ion-chip>
       </div>
