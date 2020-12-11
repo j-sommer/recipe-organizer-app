@@ -1,22 +1,27 @@
 @import 'src/media-queries';
 
 .category-view {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include md {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include xl {
+    grid-template-columns: repeat(5, 1fr);
+  }
 
   &__list-item {
     display: flex;
     flex-direction: column;
-    justify-self: flex-start;
 
     max-height: 300px;
-    height: fit-content;
-    width: 45%;
-
-    @include md {
-      width: 22%;
-    }
+    height: 300px;
 
     cursor: pointer;
 
