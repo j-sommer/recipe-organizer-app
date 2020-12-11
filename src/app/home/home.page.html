@@ -19,7 +19,11 @@
       class="recipe-overview__list"
       *ngIf="showCategory(category) && category.recipes.length"
     >
-      <ion-list-header lines="inset">
+      <ion-list-header
+      [routerLink]="categoryViewBaseRoute"
+      [queryParams]="{ category: category.name }"
+      routerDirection="root"
+      lines="inset">
         <ion-text>
           <h3 class="recipe-overview__list-header heading">
             {{'recipe-overview.categories.' + category.name | translate}}

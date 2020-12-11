@@ -11,6 +11,7 @@ import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.ser
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  public readonly categoryViewBaseRoute = '/category-view';
   public categories = categoriesList;
 
   public hasRecipes = false;
