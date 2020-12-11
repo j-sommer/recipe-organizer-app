@@ -16,16 +16,33 @@
             {{ 'menu.item.' + menuItems.home.title | translate }}
           </ion-item>
         </ion-menu-toggle>
-        <ion-menu-toggle *ngFor="let category of categories" auto-hide="true">
+      </ion-list>
+
+      <ion-list>
+        <ion-menu-toggle auto-hide="true">
           <ion-item
-            [routerLink]="categoryViewBaseRoute"
-            [queryParams]="{ category: category.name }"
+            [routerLink]="menuItems.categories.url"
             routerDirection="root"
           >
-            <ion-icon [name]="category.icon" slot="start"></ion-icon>
-            {{ 'menu.item.' + category.name | translate }}
+            <ion-icon
+              [name]="menuItems.categories.icon"
+              slot="start"
+            ></ion-icon>
+            {{ 'menu.item.' + menuItems.categories.title | translate }}
           </ion-item>
         </ion-menu-toggle>
+
+        <ion-list class="ion-padding-start">
+          <ion-menu-toggle *ngFor="let category of categories" auto-hide="true">
+            <ion-item
+              [routerLink]="categoryViewBaseRoute"
+              [queryParams]="{ category: category.name }"
+              routerDirection="root"
+            >
+              {{ 'menu.item.' + category.name | translate }}
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
       </ion-list>
 
       <ion-list>

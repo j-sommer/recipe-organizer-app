@@ -20,6 +20,11 @@ export class AppComponent {
       url: '/home',
       icon: 'library-outline',
     } as SideMenuItem,
+    categories: {
+      title: 'categories',
+      url: '/categories',
+      icon: 'file-tray-full-outline',
+    } as SideMenuItem,
     recipeForm: {
       title: 'new-recipe',
       url: '/recipe-form',
@@ -36,6 +41,7 @@ export class AppComponent {
       icon: 'settings-outline',
     } as SideMenuItem,
   };
+
   public readonly categories: Category[] = categoriesList;
   public readonly categoryViewBaseRoute = '/category-view';
 
