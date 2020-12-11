@@ -37,6 +37,9 @@
       "other": "Andere"
     }
   },
+  "categories": {
+    "heading": "Kategorien"
+  },
   "settings": {
     "heading": "Einstellungen",
     "general": {
