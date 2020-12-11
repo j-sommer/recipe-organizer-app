@@ -9,7 +9,7 @@ import { InitialMessageComponent } from './components/initial-message/initial-me
 import { ListPlaceholderComponent } from './components/list-placeholder/list-placeholder.component';
 import { RecipeListItemComponent } from './components/recipe-list-item/recipe-list-item.component';
 import { RecipeViewToolbarComponent } from './components/recipe-view-toolbar/recipe-view-toolbar.component';
-import { RecipeFileHandlerService } from './services/recipe-file-handler.service';
+import { RecipeFileHandlerService } from './services/recipe-file-handler/recipe-file-handler.service';
 
 @NgModule({
   declarations: [

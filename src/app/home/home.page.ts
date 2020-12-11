@@ -3,7 +3,7 @@ import { categoriesList } from '@core/const/categories-list.const';
 import { Category } from '@core/models/category/category.model';
 import { RecipeForList } from '@core/models/recipe/recipe-for-list.model';
 import { Recipe } from '@core/models/recipe/recipe.model';
-import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.service';
+import { RecipeFileHandlerService } from '@core/services/recipe-file-handler/recipe-file-handler.service';
 
 @Component({
   selector: 'app-home',

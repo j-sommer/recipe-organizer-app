@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { getCategories } from '@core/models/category/category-name.enum';
 import { Recipe } from '@core/models/recipe/recipe.model';
-import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.service';
+import { RecipeFileHandlerService } from '@core/services/recipe-file-handler/recipe-file-handler.service';
 import { imageBase64Prefix } from '@core/util/image-base64-prefix.const';
 
 @Component({

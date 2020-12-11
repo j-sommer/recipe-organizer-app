@@ -6,7 +6,7 @@ import {
   RecipeForList,
 } from '@core/models/recipe/recipe-for-list.model';
 import { Recipe } from '@core/models/recipe/recipe.model';
-import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.service';
+import { RecipeFileHandlerService } from '@core/services/recipe-file-handler/recipe-file-handler.service';
 import { imageBase64Prefix } from '@core/util/image-base64-prefix.const';
 import { Subscription } from 'rxjs';
 
