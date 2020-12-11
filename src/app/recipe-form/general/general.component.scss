@@ -4,17 +4,25 @@
   &__image-selection {
     display: flex;
     flex-direction: column;
-    max-width: 60vw;
-    margin-right: auto;
-    margin-left: auto;
+    position: relative;
+    width: 100%;
 
     @include md {
       max-width: 30vw;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    &__button {
+      position: absolute;
+      right: 0;
+      bottom: 0;
     }
 
     &__image-preview {
       width: 100%;
-      height: auto;
+      max-height: 33vh;
+      object-fit: cover;
     }
   }
 }

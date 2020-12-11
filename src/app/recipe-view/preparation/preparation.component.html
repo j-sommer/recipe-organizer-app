@@ -1,8 +1,14 @@
-<h3>{{ 'recipe-view.preparation.heading' | translate }}</h3>
+<div class="ion-padding-horizontal">
+  <h3 class="heading">{{ 'recipe-view.preparation.heading' | translate }}</h3>
 
-<p *ngIf="!($recipe | async).preparation">
-  {{ 'recipe-view.preparation.no-content' | translate }}
-</p>
-<p *ngIf="($recipe | async).preparation" class="recipe-view__preparation">
-  {{ ($recipe | async).preparation }}
-</p>
+  <p *ngIf="!($recipe | async).preparation">
+    {{ 'recipe-view.preparation.no-content' | translate }}
+  </p>
+
+  <quill-view
+    *ngIf="($recipe | async).preparation"
+    [content]="($recipe | async).preparation"
+    format="html"
+    theme="snow"
+  ></quill-view>
+</div>

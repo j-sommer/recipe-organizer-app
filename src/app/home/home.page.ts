@@ -11,6 +11,7 @@ import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.ser
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  public readonly categoryViewBaseRoute = '/category-view';
   public categories = categoriesList;
 
   public hasRecipes = false;
@@ -27,8 +28,9 @@ export class HomePage {
 
     if (this.hasRecipes) {
       this.fillCategories(recipes);
-      this.isLoading = false;
     }
+
+    this.isLoading = false;
   }
 
   public onSearchChange(event): void {

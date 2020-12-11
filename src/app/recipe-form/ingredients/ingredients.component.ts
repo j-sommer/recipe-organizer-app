@@ -50,20 +50,28 @@ export class IngredientsComponent {
     return await modal.present();
   }
 
-  public async openIngredientsMenu(event): Promise<void> {
+  public async openIngredientsMenu(event, groupIndex): Promise<void> {
     const popover = await this.popoverController.create({
       component: IngredientMenuComponent,
       event,
       translucent: true,
       animated: true,
+      componentProps: {
+        groupIndex,
+      },
     });
     popover.present();
 
     return popover.onDidDismiss().then((dismissEvent: any) => {
       const action = dismissEvent.data.action;
+      const toDelete = dismissEvent.data.groupIndex;
+
       switch (action) {
         case IngredientMenuAction.AddGroup:
           this.groupCreation();
+          break;
+        case IngredientMenuAction.DeleteGroup:
+          this.showDeleteGroupAlert(toDelete);
       }
     });
   }

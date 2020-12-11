@@ -22,11 +22,11 @@
 
 <ion-content class="ion-padding">
   <ng-container *ngIf="recipe">
-    <h1>{{recipe.title}}</h1>
+    <h1 class="recipe-title">{{recipe.title}}</h1>
 
     <div class="space-vertical-s"></div>
 
-    <h3>{{ 'recipe-view.ingredients.heading' | translate }}</h3>
+    <h3 class="heading">{{ 'recipe-view.ingredients.heading' | translate }}</h3>
     <div class="divider primary"></div>
 
     <p *ngIf="!recipe.ingredientsGroups?.length">
@@ -57,7 +57,7 @@
 
     <div class="space-vertical-s"></div>
 
-    <h3>{{ 'recipe-view.preparation.heading' | translate }}</h3>
+    <h3 class="heading">{{ 'recipe-view.preparation.heading' | translate }}</h3>
     <div class="divider primary"></div>
 
     <p [style.font-size]="fontSize + 'em'" *ngIf="!recipe.preparation">

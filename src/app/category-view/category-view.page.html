@@ -5,20 +5,54 @@
   (startSearch)="onStartSearch($event)"
 ></app-recipe-view-toolbar>
 
-<ion-content fullscreen class="ion-padding">
-  <ng-container *ngFor="let number of [1, 2, 3, 4, 5]">
-    <app-list-placeholder
-      [isLoading]="!hasRecipes && isLoading"
-    ></app-list-placeholder>
+<ion-content fullscreen>
+  <ng-container *ngIf="!hasRecipes && isLoading">
+    <ng-container *ngFor="let number of [1, 2, 3, 4, 5]">
+      <app-list-placeholder></app-list-placeholder>
+    </ng-container>
   </ng-container>
 
   <app-initial-message [show]="!isLoading && !hasRecipes"></app-initial-message>
-  <ng-container *ngFor="let recipe of categoryRecipes">
-    <app-recipe-list-item
-      *ngIf="recipe.shouldShow"
-      [recipe]="recipe"
-    ></app-recipe-list-item>
-  </ng-container>
+
+  <div class="category-view">
+    <ng-container *ngFor="let recipe of categoryRecipes">
+      <ion-card
+        *ngIf="recipe.shouldShow"
+        (click)="onRecipeClick(recipe)"
+        class="category-view__list-item"
+      >
+        <img
+          class="category-view__list-item__image"
+          [src]="
+          recipe.img
+            ? imagePrefix + recipe.img
+            : 'assets/images/placeholder.jpg'
+        "
+        />
+        <ion-card-header class="category-view__list-item__header">
+          <ion-card-subtitle
+            *ngIf="recipe.tags.length"
+            class="category-view__list-item__sub-title"
+          >
+            <ng-container *ngFor="let tag of recipe.tags; last as last">
+              <ion-label>{{ tag }}<span *ngIf="!last">, </span></ion-label>
+            </ng-container>
+          </ion-card-subtitle>
+          <ion-card-title class="heading2"> {{recipe.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="category-view__list-item__preparation">
+          <quill-view
+            *ngIf="recipe.preparation"
+            class="category-view__list-item__preparation__text"
+            [content]="recipe.preparation"
+            format="html"
+            theme="snow"
+          ></quill-view>
+          <div *ngIf="!recipe.preparation" class="space-vertical-s"></div>
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </div>
 </ion-content>
 
 <app-floating-add-button></app-floating-add-button>
