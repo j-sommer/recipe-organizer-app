@@ -1,5 +1,5 @@
 <ion-app>
-  <ion-menu side="start" menuId="first" contentId="content1">
+  <ion-menu side="start" menuId="first" contentId="content">
     <ion-header>
       <ion-toolbar color="primary">
         <ion-buttons slot="start">
@@ -32,16 +32,24 @@
           </ion-item>
         </ion-menu-toggle>
 
-        <ion-list class="ion-padding-start">
-          <ion-menu-toggle *ngFor="let category of categories" auto-hide="true">
-            <ion-item
-              [routerLink]="categoryViewBaseRoute"
-              [queryParams]="{ category: category.name }"
-              routerDirection="root"
+        <ion-list
+          *ngIf="categories$ | async as categories"
+          class="ion-padding-start"
+        >
+          <ng-container *ngIf="categories.length">
+            <ion-menu-toggle
+              *ngFor="let category of categories"
+              auto-hide="true"
             >
-              {{ 'menu.item.' + category.name | translate }}
-            </ion-item>
-          </ion-menu-toggle>
+              <ion-item
+                [routerLink]="categoryViewBaseRoute"
+                [queryParams]="{ categoryid: category.id }"
+                routerDirection="root"
+              >
+                {{ category.name }}
+              </ion-item>
+            </ion-menu-toggle>
+          </ng-container>
         </ion-list>
       </ion-list>
 
@@ -91,5 +99,5 @@
     </ion-footer>
   </ion-menu>
 
-  <ion-router-outlet id="content1"></ion-router-outlet>
+  <ion-router-outlet id="content"></ion-router-outlet>
 </ion-app>

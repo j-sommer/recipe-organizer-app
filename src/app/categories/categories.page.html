@@ -7,4 +7,22 @@
     <ion-title>{{'categories.heading' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content> </ion-content>
+<ion-content>
+  <ng-container *ngIf="(categories$ | async) as categories">
+    <ion-list>
+      <ng-container *ngFor="let category of categories">
+        <ion-item lines="none">
+          <ion-input
+            [disabled]="category.id === defaultCategoryId"
+            (ionBlur)="saveCategories()"
+            [(ngModel)]="category.name"
+          ></ion-input>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+  </ng-container>
+
+  <ion-button (click)="addCategory()" color="secondary">
+    <ion-icon slot="icon-only" name="add"></ion-icon>
+  </ion-button>
+</ion-content>

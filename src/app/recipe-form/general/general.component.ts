@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { getCategories } from '@core/models/category/category-name.enum';
+import { Category } from '@core/models/category/category.model';
 import { Recipe } from '@core/models/recipe/recipe.model';
+import { CategoryService } from '@core/services/category/category.service';
 import { RecipeFileHandlerService } from '@core/services/recipe-file-handler/recipe-file-handler.service';
 import { imageBase64Prefix } from '@core/util/image-base64-prefix.const';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-general',
@@ -16,14 +18,18 @@ export class GeneralComponent {
   @Output()
   public recipeChange = new EventEmitter<Recipe>();
 
-  public readonly categories: string[] = getCategories();
+  public readonly categories$: Observable<Category[]> = this.categoryService
+    .categories$;
   public readonly imagePrefix = imageBase64Prefix;
 
   public tagInputValue = '';
 
-  constructor(private recipeFileService: RecipeFileHandlerService) {}
+  constructor(
+    private recipeFileService: RecipeFileHandlerService,
+    private categoryService: CategoryService
+  ) {}
 
-  public addTag(formValue) {
+  public addTag(formValue): void {
     const tagValue = formValue.tagValue;
 
     if (tagValue) {

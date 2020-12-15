@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { categoriesList } from '@core/const/categories-list.const';
+import { CategoryForList } from '@core/models/category/category-for-list.model';
 import { Category } from '@core/models/category/category.model';
 import { RecipeForList } from '@core/models/recipe/recipe-for-list.model';
 import { Recipe } from '@core/models/recipe/recipe.model';
+import { CategoryService } from '@core/services/category/category.service';
 import { RecipeFileHandlerService } from '@core/services/recipe-file-handler/recipe-file-handler.service';
 
 @Component({
@@ -12,22 +13,27 @@ import { RecipeFileHandlerService } from '@core/services/recipe-file-handler/rec
 })
 export class HomePage {
   public readonly categoryViewBaseRoute = '/category-view';
-  public categories = categoriesList;
+  public categoriesForList: CategoryForList[] = [];
 
-  public hasRecipes = false;
+  public hasContent = false;
   public isLoading = true;
 
-  constructor(private recipeFileHandler: RecipeFileHandlerService) {}
+  constructor(
+    private recipeFileHandler: RecipeFileHandlerService,
+    private categoryService: CategoryService
+  ) {}
 
   public async ionViewWillEnter(): Promise<void> {
     await this.recipeFileHandler.createRecipeDir();
-    this.clearCategories();
+    const categories = await this.loadCategories();
 
-    const recipes = await this.recipeFileHandler.readRecipes();
-    this.hasRecipes = recipes && !!recipes.length;
+    if (categories?.length) {
+      const recipes = await this.recipeFileHandler.readRecipes();
 
-    if (this.hasRecipes) {
-      this.fillCategories(recipes);
+      if (recipes && !!recipes.length) {
+        this.fillCategories(recipes);
+        this.hasContent = true;
+      }
     }
 
     this.isLoading = false;
@@ -36,7 +42,7 @@ export class HomePage {
   public onSearchChange(event): void {
     const query = event.target.value.toLowerCase();
 
-    this.categories.forEach((category) => {
+    this.categoriesForList.forEach((category) => {
       category.recipes.forEach((recipe) => {
         if (!query) {
           recipe.shouldShow = true;
@@ -51,7 +57,7 @@ export class HomePage {
 
   public onSearchStart(isSearching: boolean): void {
     if (!isSearching) {
-      this.categories.forEach((category) => {
+      this.categoriesForList.forEach((category) => {
         category.recipes.forEach((recipe) => {
           recipe.shouldShow = true;
         });
@@ -59,24 +65,28 @@ export class HomePage {
     }
   }
 
-  public showCategory(category: Category): boolean {
+  public shouldShowCategory(category: CategoryForList): boolean {
     return category.recipes.some((recipe) => recipe.shouldShow);
+  }
+
+  private async loadCategories(): Promise<Category[]> {
+    const loadedCategories: Category[] = await this.categoryService.getCategoriesInstant();
+
+    loadedCategories.forEach((category: Category) =>
+      this.categoriesForList.push({ category, recipes: [] })
+    );
+
+    return Promise.resolve(loadedCategories);
   }
 
   private fillCategories(recipes: Recipe[]): void {
     recipes.forEach((recipe: RecipeForList) => {
-      const matchingCategory = this.categories.find(
-        (category) => category.name === recipe.category
+      const matchingCategory = this.categoriesForList.find(
+        (forList) => forList.category.id === recipe.categoryId
       );
 
       recipe.shouldShow = true;
       matchingCategory.recipes.push(recipe);
-    });
-  }
-
-  private clearCategories(): void {
-    this.categories.forEach((category: Category) => {
-      category.recipes.length = 0;
     });
   }
 }

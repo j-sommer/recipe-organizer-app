@@ -3,7 +3,7 @@ import { IngredientGroup } from './ingredient/ingredient-group.model';
 
 export interface Recipe {
   title: string;
-  category: CategoryName;
+  categoryId: number;
   img?: string;
   tags: string[];
   ingredientsGroups: IngredientGroup[];

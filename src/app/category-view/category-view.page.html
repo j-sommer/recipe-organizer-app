@@ -1,6 +1,6 @@
 <app-recipe-view-toolbar
   [isLoading]="isLoading"
-  [title]="'category-view.header.' + category"
+  [title]="category?.name"
   (searchChange)="onSearchChange($event)"
   (startSearch)="onStartSearch($event)"
 ></app-recipe-view-toolbar>

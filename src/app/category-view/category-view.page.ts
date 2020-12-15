@@ -1,11 +1,12 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoryName } from '@core/models/category/category-name.enum';
+import { Category } from '@core/models/category/category.model';
 import {
   createRecipeForList,
   RecipeForList,
 } from '@core/models/recipe/recipe-for-list.model';
 import { Recipe } from '@core/models/recipe/recipe.model';
+import { CategoryService } from '@core/services/category/category.service';
 import { RecipeFileHandlerService } from '@core/services/recipe-file-handler/recipe-file-handler.service';
 import { imageBase64Prefix } from '@core/util/image-base64-prefix.const';
 import { Subscription } from 'rxjs';
@@ -20,7 +21,7 @@ import { destinations } from '../app-routing.module';
 export class CategoryViewPage implements OnDestroy {
   public readonly imagePrefix = imageBase64Prefix;
 
-  public category: CategoryName;
+  public category: Category;
   public categoryRecipes: RecipeForList[] = [];
 
   public hasRecipes = false;
@@ -31,7 +32,8 @@ export class CategoryViewPage implements OnDestroy {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private recipeFileHandler: RecipeFileHandlerService
+    private recipeFileHandler: RecipeFileHandlerService,
+    private categoryService: CategoryService
   ) {}
 
   public async ionViewWillEnter(): Promise<void> {
@@ -70,21 +72,32 @@ export class CategoryViewPage implements OnDestroy {
 
   private extractCategoryFromRoute(): void {
     this.subscription = this.route.queryParams.subscribe((params) => {
-      if (!params.category) {
+      const categoryId = +params.categoryid;
+
+      if (!categoryId == null || typeof categoryId !== 'number') {
         this.router.navigate([destinations.home]);
       }
 
-      this.category = params.category;
-      this.loadRecipes(params.category);
+      const requestedCategory: Category = this.categoryService
+        .getCategoriesInstant()
+        .find((category) => category.id === categoryId);
+
+      if (!requestedCategory) {
+        this.router.navigate([destinations.home]);
+      }
+
+      this.category = requestedCategory;
+
+      this.loadRecipes(categoryId);
     });
   }
 
-  private async loadRecipes(category: CategoryName): Promise<void> {
+  private async loadRecipes(categoryId: number): Promise<void> {
     const recipes = await this.recipeFileHandler.readRecipes();
     const anyRecipes = recipes && !!recipes.length;
 
     if (anyRecipes) {
-      this.fillCategory(recipes, category);
+      this.fillCategory(recipes, categoryId);
     }
 
     this.isLoading = false;
@@ -94,11 +107,11 @@ export class CategoryViewPage implements OnDestroy {
     return recipes.map((recipe) => createRecipeForList(recipe));
   }
 
-  private fillCategory(recipes: Recipe[], category: CategoryName): void {
+  private fillCategory(recipes: Recipe[], categoryId: number): void {
     this.clearCategory();
 
     const filteredRecipes = recipes.filter((recipe: Recipe) => {
-      return recipe.category === category;
+      return recipe.categoryId === categoryId;
     });
 
     this.categoryRecipes = this.setShowValue(filteredRecipes);
