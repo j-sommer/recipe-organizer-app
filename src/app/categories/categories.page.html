@@ -13,6 +13,7 @@
       <ng-container *ngFor="let category of categories">
         <ion-item *ngIf="category.id !== defaultCategoryId" lines="inset">
           <ion-input
+            [placeholder]="'categories.input-placeholder' | translate"
             (ionBlur)="saveCategories()"
             [(ngModel)]="category.name"
           ></ion-input>

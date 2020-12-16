@@ -32,6 +32,7 @@
   },
   "categories": {
     "heading": "Kategorien",
+    "input-placeholder": "Kategorie",
     "add-button": "Kategorie hinzufügen"
   },
   "settings": {
