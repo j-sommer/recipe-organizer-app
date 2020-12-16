@@ -23,7 +23,7 @@ export class RecipeFormPage implements OnDestroy {
 
   public currentRecipe: Recipe = {
     title: '',
-    categoryId: this.categoryService.defaultCategory.id,
+    categoryId: CategoryService.defaultCategoryId,
     tags: [],
     ingredientsGroups: [{ title: 'Hauptzutaten', ingredients: [] }],
     preparation: '',
@@ -40,8 +40,7 @@ export class RecipeFormPage implements OnDestroy {
     private router: Router,
     private translate: TranslateService,
     private alertController: AlertController,
-    private actionSheetController: ActionSheetController,
-    private categoryService: CategoryService
+    private actionSheetController: ActionSheetController
   ) {}
 
   public ionViewWillEnter(): void {

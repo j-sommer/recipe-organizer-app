@@ -28,17 +28,11 @@
     }
   },
   "category-view": {
-    "header": {
-      "meat": "Fleisch",
-      "baking": "Backen",
-      "fish": "Fisch",
-      "dessert": "Dessert",
-      "snacks": "Snacks",
-      "other": "Andere"
-    }
+    "default": "Allgemein"
   },
   "categories": {
-    "heading": "Kategorien"
+    "heading": "Kategorien",
+    "add-button": "Kategorie hinzufügen"
   },
   "settings": {
     "heading": "Einstellungen",

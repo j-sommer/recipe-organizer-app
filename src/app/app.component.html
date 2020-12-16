@@ -46,7 +46,11 @@
                 [queryParams]="{ categoryid: category.id }"
                 routerDirection="root"
               >
-                {{ category.name }}
+                {{
+                  category.id === defaultCategoryId
+                    ? (defaultCategoryTranslationKey | translate)
+                    : category.name
+                }}
               </ion-item>
             </ion-menu-toggle>
           </ng-container>

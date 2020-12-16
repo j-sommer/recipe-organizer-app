@@ -1,6 +1,6 @@
 <app-recipe-view-toolbar
   [isLoading]="isLoading"
-  [title]="category?.name"
+  [title]="category?.id === defaultCategoryId ? (defaultCategoryTranslationKey | translate) : category?.name"
   (searchChange)="onSearchChange($event)"
   (startSearch)="onStartSearch($event)"
 ></app-recipe-view-toolbar>

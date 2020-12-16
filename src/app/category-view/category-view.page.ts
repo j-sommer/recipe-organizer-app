@@ -20,6 +20,9 @@ import { destinations } from '../app-routing.module';
 })
 export class CategoryViewPage implements OnDestroy {
   public readonly imagePrefix = imageBase64Prefix;
+  public readonly defaultCategoryId = CategoryService.defaultCategoryId;
+  public readonly defaultCategoryTranslationKey =
+    CategoryService.defaultCategoryTranslationKey;
 
   public category: Category;
   public categoryRecipes: RecipeForList[] = [];

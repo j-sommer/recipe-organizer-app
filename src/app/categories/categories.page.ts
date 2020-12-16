@@ -9,7 +9,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./categories.page.scss'],
 })
 export class CategoriesPage {
-  public readonly defaultCategoryId = this.categoryService.defaultCategory.id;
+  public readonly defaultCategoryId = CategoryService.defaultCategoryId;
+  public readonly defaultCategoryTranslationKey =
+    CategoryService.defaultCategoryTranslationKey;
+
   public categories$: Observable<Category[]> = this.categoryService.categories$;
 
   public isSaving = false;

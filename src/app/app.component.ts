@@ -45,6 +45,10 @@ export class AppComponent implements OnInit {
 
   public readonly categoryViewBaseRoute = '/category-view';
 
+  public readonly defaultCategoryId = CategoryService.defaultCategoryId;
+  public readonly defaultCategoryTranslationKey =
+    CategoryService.defaultCategoryTranslationKey;
+
   public categories$: Observable<Category[]> = this.categoryService.categories$;
 
   constructor(
