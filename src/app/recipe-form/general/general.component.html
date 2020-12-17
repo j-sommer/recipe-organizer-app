@@ -40,13 +40,15 @@
       cancelText="{{
         'recipe-form.general.category.select-cancel' | translate
       }}"
-      [(ngModel)]="recipe.category"
+      [(ngModel)]="recipe.categoryId"
     >
       <ion-select-option
-        [value]="category"
-        *ngFor="let category of categories"
+        [value]="category.id"
+        *ngFor="let category of categories$ | async"
         >{{
-          'recipe-form.general.category.' + category | translate
+          category.id === defaultCategoryId
+            ? (defaultCategoryTranslationKey | translate)
+            : category.name
         }}</ion-select-option
       >
     </ion-select>

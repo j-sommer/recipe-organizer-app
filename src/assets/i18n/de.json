@@ -16,6 +16,7 @@
     "item": {
       "home": "Übersicht",
       "new-recipe": "Neues Rezept",
+      "categories": "Kategorien",
       "settings": "Einstellungen",
       "planner": "Weekly Planner",
       "meat": "Fleisch",
@@ -27,14 +28,14 @@
     }
   },
   "category-view": {
-    "header": {
-      "meat": "Fleisch",
-      "baking": "Backen",
-      "fish": "Fisch",
-      "dessert": "Dessert",
-      "snacks": "Snacks",
-      "other": "Andere"
-    }
+    "default": "Allgemein"
+  },
+  "categories": {
+    "heading": "Kategorien",
+    "input-placeholder": "Kategorie",
+    "add-button": "Kategorie hinzufügen",
+    "remove-category": "Kategorie '{{category}}' entfernen",
+    "remove-category-message": " Dadurch werden alle zugewiesenen Rezepte in die 'Allgemein'-Kategorie verschoben."
   },
   "settings": {
     "heading": "Einstellungen",

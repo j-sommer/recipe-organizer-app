@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoryName } from '@core/models/category/category-name.enum';
 import { Recipe } from '@core/models/recipe/recipe.model';
-import { RecipeFileHandlerService } from '@core/services/recipe-file-handler.service';
+import { CategoryService } from '@core/services/category/category.service';
+import { RecipeFileHandlerService } from '@core/services/recipe-file-handler/recipe-file-handler.service';
 import {
   ActionSheetController,
   AlertController,
@@ -23,7 +23,7 @@ export class RecipeFormPage implements OnDestroy {
 
   public currentRecipe: Recipe = {
     title: '',
-    category: CategoryName.Other,
+    categoryId: CategoryService.defaultCategoryId,
     tags: [],
     ingredientsGroups: [{ title: 'Hauptzutaten', ingredients: [] }],
     preparation: '',

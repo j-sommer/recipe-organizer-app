@@ -3,13 +3,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
-import { FloatingAddButtonComponent } from './components/floating-add-button/floating-add-button.component';
 
+import { FloatingAddButtonComponent } from './components/floating-add-button/floating-add-button.component';
 import { InitialMessageComponent } from './components/initial-message/initial-message.component';
 import { ListPlaceholderComponent } from './components/list-placeholder/list-placeholder.component';
 import { RecipeListItemComponent } from './components/recipe-list-item/recipe-list-item.component';
 import { RecipeViewToolbarComponent } from './components/recipe-view-toolbar/recipe-view-toolbar.component';
-import { RecipeFileHandlerService } from './services/recipe-file-handler.service';
+import { AppSettingsService } from './services/app-settings/app-settings.service';
+import { CategoryPersistenceService } from './services/category-persistence/category-persistence.service';
+import { RecipeFileHandlerService } from './services/recipe-file-handler/recipe-file-handler.service';
+import { RecipeService } from './services/recipe/recipe.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,12 @@ import { RecipeFileHandlerService } from './services/recipe-file-handler.service
     IonicModule,
     TranslateModule.forChild(),
   ],
-  providers: [RecipeFileHandlerService],
+  providers: [
+    RecipeFileHandlerService,
+    AppSettingsService,
+    CategoryPersistenceService,
+    RecipeService,
+  ],
   exports: [
     ListPlaceholderComponent,
     InitialMessageComponent,

@@ -1,43 +1,48 @@
 <app-recipe-view-toolbar
   [isLoading]="false"
-  [title]="'recipe-overview.heading'"
+  [title]="'recipe-overview.heading' | translate"
   (searchChange)="onSearchChange($event)"
   (startSearch)="onSearchStart($event)"
 ></app-recipe-view-toolbar>
 
 <ion-content class="ion-padding">
-  <ng-container *ngIf="isLoading && !hasRecipes">
+  <ng-container *ngIf="isLoading && !hasContent">
     <ng-container *ngFor="let number of [1, 2, 3, 4, 5]">
       <app-list-placeholder></app-list-placeholder>
     </ng-container>
   </ng-container>
 
-  <app-initial-message [show]="!isLoading && !hasRecipes"></app-initial-message>
+  <app-initial-message [show]="!isLoading && !hasContent"></app-initial-message>
 
-  <ng-container *ngFor="let category of categories">
-    <ion-list
-      class="recipe-overview__list"
-      *ngIf="showCategory(category) && category.recipes.length"
-    >
-      <ion-list-header
-      [routerLink]="categoryViewBaseRoute"
-      [queryParams]="{ category: category.name }"
-      routerDirection="root"
-      lines="inset">
-        <ion-text>
-          <h3 class="recipe-overview__list-header heading">
-            {{'recipe-overview.categories.' + category.name | translate}}
-          </h3>
-        </ion-text>
-      </ion-list-header>
+  <ng-container *ngIf="!isLoading && hasContent">
+    <ng-container *ngFor="let category of categoriesForList">
+      <ion-list
+        class="recipe-overview__list"
+        *ngIf="shouldShowCategory(category) && category?.recipes.length"
+      >
+        <ion-list-header
+          [routerLink]="categoryViewBaseRoute"
+          [queryParams]="{ categoryid: category.category.id }"
+          routerDirection="root"
+          lines="inset"
+        >
+          <ion-text>
+            <h3 class="recipe-overview__list-header heading">
+              {{ category.category.id === defaultCategoryId ?
+              (defaultCategoryTranslationKey | translate) :
+              category.category.name }}
+            </h3>
+          </ion-text>
+        </ion-list-header>
 
-      <ng-container *ngFor="let recipe of category.recipes">
-        <app-recipe-list-item
-          *ngIf="recipe.shouldShow"
-          [recipe]="recipe"
-        ></app-recipe-list-item>
-      </ng-container>
-    </ion-list>
+        <ng-container *ngFor="let recipe of category.recipes">
+          <app-recipe-list-item
+            *ngIf="recipe.shouldShow"
+            [recipe]="recipe"
+          ></app-recipe-list-item>
+        </ng-container>
+      </ion-list>
+    </ng-container>
   </ng-container>
 </ion-content>
 

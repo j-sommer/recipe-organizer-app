@@ -1,0 +1,10 @@
+@import 'src/media-queries';
+
+.categories {
+  &__add {
+    @include md {
+      max-width: fit-content;
+      margin-left: auto;
+    }
+  }
+}
