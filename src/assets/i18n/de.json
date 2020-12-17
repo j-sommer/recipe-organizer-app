@@ -33,7 +33,9 @@
   "categories": {
     "heading": "Kategorien",
     "input-placeholder": "Kategorie",
-    "add-button": "Kategorie hinzufügen"
+    "add-button": "Kategorie hinzufügen",
+    "remove-category": "Kategorie '{{category}}' entfernen",
+    "remove-category-message": " Dadurch werden alle zugewiesenen Rezepte in die 'Allgemein'-Kategorie verschoben."
   },
   "settings": {
     "heading": "Einstellungen",

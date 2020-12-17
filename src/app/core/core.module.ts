@@ -12,6 +12,7 @@ import { RecipeViewToolbarComponent } from './components/recipe-view-toolbar/rec
 import { AppSettingsService } from './services/app-settings/app-settings.service';
 import { CategoryPersistenceService } from './services/category-persistence/category-persistence.service';
 import { RecipeFileHandlerService } from './services/recipe-file-handler/recipe-file-handler.service';
+import { RecipeService } from './services/recipe/recipe.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { RecipeFileHandlerService } from './services/recipe-file-handler/recipe-
     RecipeFileHandlerService,
     AppSettingsService,
     CategoryPersistenceService,
+    RecipeService,
   ],
   exports: [
     ListPlaceholderComponent,

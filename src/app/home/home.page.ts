@@ -13,6 +13,11 @@ import { RecipeFileHandlerService } from '@core/services/recipe-file-handler/rec
 })
 export class HomePage {
   public readonly categoryViewBaseRoute = '/category-view';
+
+  public readonly defaultCategoryId = CategoryService.defaultCategoryId;
+  public readonly defaultCategoryTranslationKey =
+    CategoryService.defaultCategoryTranslationKey;
+
   public categoriesForList: CategoryForList[] = [];
 
   public hasContent = false;

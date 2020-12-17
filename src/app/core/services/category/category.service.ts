@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Category } from '@core/models/category/category.model';
-import { TranslateService } from '@ngx-translate/core';
 import { cloneDeep } from 'lodash';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { CategoryPersistenceService } from '../category-persistence/category-persistence.service';
+import { RecipeService } from '../recipe/recipe.service';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +20,7 @@ export class CategoryService {
 
   constructor(
     private categoryPersistence: CategoryPersistenceService,
-    private translate: TranslateService
+    private recipeService: RecipeService
   ) {
     this.categories$ = this.categoriesSource.asObservable();
   }
@@ -46,11 +46,11 @@ export class CategoryService {
     }
   }
 
-  public async saveCategories(categories: Category[]): Promise<void> {
+  public async saveCategories(): Promise<void> {
     try {
-      await this.categoryPersistence.saveCategories(categories);
-
-      this.categoriesSource.next(categories);
+      await this.categoryPersistence.saveCategories(
+        this.categoriesSource.value
+      );
     } catch (error) {
       return Promise.reject();
     }
@@ -65,6 +65,17 @@ export class CategoryService {
     });
 
     this.categoriesSource.next(categories);
+  }
+
+  public async deleteCategory(toDelete: Category): Promise<void> {
+    const currentCategories = this.categoriesSource.value;
+
+    const indexToRemove = currentCategories.findIndex(
+      (category) => category.id === toDelete.id
+    );
+    currentCategories.splice(indexToRemove, 1);
+
+    this.recipeService.onCategoryRemoval(toDelete);
   }
 
   public getCategoriesInstant(): Category[] {

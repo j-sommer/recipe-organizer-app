@@ -20,6 +20,10 @@ export class GeneralComponent {
 
   public readonly categories$: Observable<Category[]> = this.categoryService
     .categories$;
+  public readonly defaultCategoryId = CategoryService.defaultCategoryId;
+  public readonly defaultCategoryTranslationKey =
+    CategoryService.defaultCategoryTranslationKey;
+
   public readonly imagePrefix = imageBase64Prefix;
 
   public tagInputValue = '';

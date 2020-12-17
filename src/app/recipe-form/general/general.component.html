@@ -45,7 +45,11 @@
       <ion-select-option
         [value]="category.id"
         *ngFor="let category of categories$ | async"
-        >{{ category.name }}</ion-select-option
+        >{{
+          category.id === defaultCategoryId
+            ? (defaultCategoryTranslationKey | translate)
+            : category.name
+        }}</ion-select-option
       >
     </ion-select>
   </ion-item>

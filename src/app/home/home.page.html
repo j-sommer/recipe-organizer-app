@@ -28,7 +28,9 @@
         >
           <ion-text>
             <h3 class="recipe-overview__list-header heading">
-              {{ category.category.name }}
+              {{ category.category.id === defaultCategoryId ?
+              (defaultCategoryTranslationKey | translate) :
+              category.category.name }}
             </h3>
           </ion-text>
         </ion-list-header>
