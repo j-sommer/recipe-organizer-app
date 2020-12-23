@@ -36,12 +36,12 @@ export class RecipeFileHandlerService {
     }
   }
 
-  public async saveNewRecipe(recipe: Recipe): Promise<void> {
+  public async saveNewRecipe(recipe: Recipe): Promise<string> {
     try {
       const fileName = this.generateFileName(recipe.title);
 
       const result = await Filesystem.writeFile({
-        path: `${this.recipeDirectory}/${fileName}${this.jsonFileExtension}`,
+        path: `${this.recipeDirectory}/${fileName}`,
         data: JSON.stringify(recipe),
         directory: this.filesystemDirectory,
         encoding: FilesystemEncoding.UTF8,
@@ -49,7 +49,7 @@ export class RecipeFileHandlerService {
 
       console.log('Wrote recipe to', result.uri);
 
-      return Promise.resolve();
+      return Promise.resolve(fileName);
     } catch (error) {
       console.error('Unable to write recipe', error);
       return Promise.reject();
@@ -144,8 +144,10 @@ export class RecipeFileHandlerService {
 
   private generateFileName(title: string): string {
     const normalizedTitle = title.replace(/ /g, '-');
-    const titleWithTimestamp = `${normalizedTitle.toLowerCase()}_${Date.now()}`;
-    return titleWithTimestamp;
+    const titleWithTimestampAndExtension = `${normalizedTitle.toLowerCase()}_${Date.now()}${
+      this.jsonFileExtension
+    }`;
+    return titleWithTimestampAndExtension;
   }
 
   private async hasRecipeDir(): Promise<boolean> {
