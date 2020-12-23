@@ -123,7 +123,11 @@ export class RecipeFormPage implements OnDestroy {
       if (this.isEdit) {
         await this.recipeFileHandler.saveRecipe(this.currentRecipe);
       } else {
-        await this.recipeFileHandler.saveNewRecipe(this.currentRecipe);
+        this.currentRecipe.filePath = await this.recipeFileHandler.saveNewRecipe(
+          this.currentRecipe
+        );
+
+        this.isEdit = true;
       }
 
       const successToast = await this.toastController.create({
