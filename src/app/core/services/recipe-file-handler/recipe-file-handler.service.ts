@@ -76,7 +76,7 @@ export class RecipeFileHandlerService {
 
   public async deleteRecipe(recipe: Recipe): Promise<void> {
     try {
-      const result = await Filesystem.deleteFile({
+      await Filesystem.deleteFile({
         path: `${this.recipeDirectory}/${recipe.filePath}`,
         directory: this.filesystemDirectory,
       });

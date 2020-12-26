@@ -107,9 +107,20 @@ export class RecipeFormPage implements OnDestroy {
           role: 'destructive',
           cssClass: 'danger',
           handler: async () => {
-            await this.recipeFileHandler.deleteRecipe(this.currentRecipe);
+            try {
+              await this.recipeFileHandler.deleteRecipe(this.currentRecipe);
 
-            this.router.navigate([destinations.home]);
+              this.router.navigate([destinations.home]);
+            } catch (error) {
+              const errorToast = await this.toastController.create({
+                message: 'Fehler beim Löschen',
+                duration: 2000,
+                color: 'danger',
+                position: 'bottom',
+              });
+
+              errorToast.present();
+            }
           },
         },
       ],

@@ -75,6 +75,7 @@ export class HomePage {
   }
 
   private async loadCategories(): Promise<Category[]> {
+    this.categoriesForList = [];
     const loadedCategories: Category[] = await this.categoryService.getCategoriesInstant();
 
     loadedCategories.forEach((category: Category) =>
