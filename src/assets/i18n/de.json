@@ -18,13 +18,7 @@
       "new-recipe": "Neues Rezept",
       "categories": "Kategorien",
       "settings": "Einstellungen",
-      "planner": "Weekly Planner",
-      "meat": "Fleisch",
-      "baking": "Backen",
-      "fish": "Fisch",
-      "dessert": "Dessert",
-      "snacks": "Snacks",
-      "other": "Andere"
+      "planner": "Weekly Planner"
     }
   },
   "category-view": {
@@ -49,14 +43,6 @@
     "no-content": {
       "info-text": "Es sieht so aus als hättest du keine Rezepte.",
       "button": "Rezept erstellen"
-    },
-    "categories": {
-      "meat": "Fleisch",
-      "baking": "Backen",
-      "fish": "Fisch",
-      "dessert": "Dessert",
-      "snacks": "Snacks",
-      "other": "Andere"
     }
   },
   "recipe-form": {
@@ -83,12 +69,6 @@
       "add-photo": "Bild Hinzufügen",
       "tags": "Tags",
       "category": {
-        "meat": "Fleisch",
-        "baking": "Backen",
-        "fish": "Fisch",
-        "dessert": "Dessert",
-        "snacks": "Snacks",
-        "other": "Andere",
         "select-placeholder": "Auswählen",
         "select-confirm": "Auswählen",
         "select-cancel": "Abbrechen"
