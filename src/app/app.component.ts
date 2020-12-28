@@ -31,11 +31,6 @@ export class AppComponent implements OnInit {
       url: '/recipe-form',
       icon: 'add-circle-outline',
     } as SideMenuItem,
-    planner: {
-      title: 'planner',
-      url: '/planner',
-      icon: 'calendar-outline',
-    },
     settings: {
       title: 'settings',
       url: '/settings',
