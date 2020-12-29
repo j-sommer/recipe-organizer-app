@@ -1,15 +1,15 @@
 <ion-list>
   <ion-list-header>
-    <ion-label>{{'settings.general.heading' | translate}}</ion-label>
+    <ion-label>{{ 'settings.general.heading' | translate }}</ion-label>
   </ion-list-header>
   <ion-item>
     <ion-label>
-      <h2>{{'settings.general.language' | translate}}</h2>
+      <h2>{{ 'settings.general.language' | translate }}</h2>
 
-      <p>{{'language.' + currentLanguage | translate}}</p>
+      <p>{{ 'language.' + (currentLanguage | async) | translate }}</p>
     </ion-label>
     <ion-select
-      [interfaceOptions]="{header: 'settings.general.language' | translate}"
+      [interfaceOptions]="{ header: 'settings.general.language' | translate }"
       okText="{{ 'general.select-confirm' | translate }}"
       cancelText="{{ 'general.select-cancel' | translate }}"
       selectedText=" "
@@ -18,7 +18,7 @@
       <ion-select-option
         *ngFor="let language of availLanguages"
         [value]="language"
-        >{{'language.' + language | translate}}</ion-select-option
+        >{{ 'language.' + language | translate }}</ion-select-option
       >
     </ion-select>
   </ion-item>

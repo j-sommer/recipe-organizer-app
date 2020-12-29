@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from '@core/models/category/category.model';
 import { SideMenuItem } from '@core/models/side-menu-item.model';
 import { CategoryService } from '@core/services/category/category.service';
+import { InternationalizationService } from '@core/services/internationalization/internationalization.service';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Platform } from '@ionic/angular';
-import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private androidPermissions: AndroidPermissions,
-    private translate: TranslateService,
+    private internationalization: InternationalizationService,
     private categoryService: CategoryService
   ) {
     this.initializeApp();
@@ -66,14 +66,13 @@ export class AppComponent implements OnInit {
   }
 
   private initializeApp(): void {
+    this.internationalization.initialize();
+
     this.platform.ready().then(() => {
       this.statusBar.backgroundColorByHexString('#006D77');
       this.statusBar.styleLightContent();
       this.splashScreen.hide();
     });
-
-    this.translate.setDefaultLang('de');
-    this.translate.use(this.translate.defaultLang);
   }
 
   private initializeAndroidPermissions(): void {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { InternationalizationService } from '@core/services/internationalization/internationalization.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-language',
@@ -7,15 +8,15 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./language.component.scss'],
 })
 export class LanguageComponent {
-  public currentLanguage: string = this.translate.currentLang;
-  public availLanguages: string[] = this.translate.langs;
+  public currentLanguage: BehaviorSubject<string> = this.internationalization
+    .curentLang;
+  public availLanguages: string[] = this.internationalization.availableLocales;
 
-  constructor(private translate: TranslateService) {}
+  constructor(private internationalization: InternationalizationService) {}
 
   public setLanguage(event): void {
-    const selected = event.detail.value;
-    if (this.translate.langs.includes(selected)) {
-      this.translate.use(selected);
-    }
+    const lang = event.detail.value;
+
+    this.internationalization.changeLanguage(lang);
   }
 }
