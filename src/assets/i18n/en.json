@@ -1,0 +1,135 @@
+{
+  "search-placeholder": "Search Recipe",
+  "language": {
+    "de": "German",
+    "en": "English"
+  },
+  "general": {
+    "select-confirm": "select",
+    "select-cancel": "cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "add": "Add",
+    "back": "Back"
+  },
+  "menu": {
+    "item": {
+      "home": "Overview",
+      "new-recipe": "New Recipe",
+      "categories": "Categories",
+      "settings": "Settings",
+      "planner": "Weekly Planner"
+    }
+  },
+  "category-view": {
+    "default": "General"
+  },
+  "categories": {
+    "heading": "Categories",
+    "input-placeholder": "Category",
+    "add-button": "Add Category",
+    "remove-category": "Remove category '{{category}}'",
+    "remove-category-message": "All attached recipes will be moved into the 'General'-category."
+  },
+  "settings": {
+    "heading": "Settings",
+    "general": {
+      "heading": "General",
+      "language": "Language"
+    }
+  },
+  "recipe-overview": {
+    "heading": "Overview",
+    "no-content": {
+      "info-text": "Es sieht so aus als hättest du keine Rezepte.",
+      "button": "Create Recipe"
+    }
+  },
+  "recipe-form": {
+    "heading": {
+      "new": "New Recipe",
+      "edit": "Edit Recipe"
+    },
+    "delete-alert": {
+      "header": "Rezept löschen",
+      "message": "Rezept wirklich löschen?",
+      "cancel-button": "Cancel",
+      "confirm-button": "Delete"
+    },
+    "recipe-menu": {
+      "title": "Aktionen",
+      "save": "Save",
+      "delete": "Delete"
+    },
+    "general": {
+      "heading": "Allgemein",
+      "info": "Generelle Informationen zu deinem Rezept",
+      "label-title": "Title",
+      "label-category": "Category",
+      "add-photo": "Add Image",
+      "tags": "Tags",
+      "category": {
+        "select-placeholder": "Auswählen",
+        "select-confirm": "Auswählen",
+        "select-cancel": "Abbrechen"
+      }
+    },
+    "ingredients": {
+      "heading": "Zutaten",
+      "info": "Hier kannst du Zutaten zu deinem Rezept hinzufügen",
+      "edit": {
+        "heading": "Zutat bearbeiten",
+        "confirm-quantity-type": "Auswählen",
+        "cancel-quantity-type": "Abbrechen",
+        "name-label": "Zutat",
+        "quantity-label": "Menge",
+        "quantity-type-label": "Einheit",
+        "confirm": "Fertig",
+        "add-group": {
+          "header": "Gruppe hinzufügen",
+          "title-input": "Gruppenname"
+        },
+        "remove-group": "Gruppe {{group}} entfernen?",
+        "menu": {
+          "delete-button": "löschen"
+        }
+      },
+      "no-content": {
+        "button": "Zutat hinzufügen"
+      },
+      "menu": {
+        "add-group": "Weitere Gruppe hinzufügen",
+        "delete-group": "Gruppe löschen"
+      }
+    },
+    "preparation": {
+      "heading": "Zubereitung",
+      "input-placeholder": "Hier Zubereitungstext eingeben..."
+    },
+    "segment": {
+      "general": "Allgemein",
+      "ingredients": "Zutaten",
+      "preparation": "Zubereitung"
+    }
+  },
+  "recipe-view": {
+    "heading": "Rezeptansicht",
+    "action-sheet": {
+      "title": "Aktionen",
+      "edit": "Bearbeiten",
+      "read-view": "Kochansicht"
+    },
+    "segment": {
+      "ingredients": "Zutaten",
+      "preparation": "Zubereitung"
+    },
+    "preparation": {
+      "heading": "Zubereitung",
+      "no-content": "Es gibt noch keine Angaben zur Zubereitung"
+    },
+    "ingredients": {
+      "heading": "Zutaten",
+      "no-content": "Noch keine Zutaten hinzugefügt"
+    }
+  }
+}
