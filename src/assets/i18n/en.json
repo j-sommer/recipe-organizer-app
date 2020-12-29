@@ -41,7 +41,7 @@
   "recipe-overview": {
     "heading": "Overview",
     "no-content": {
-      "info-text": "Es sieht so aus als hättest du keine Rezepte.",
+      "info-text": "It looks like you don't have any recipes.",
       "button": "Create Recipe"
     }
   },
@@ -51,85 +51,83 @@
       "edit": "Edit Recipe"
     },
     "delete-alert": {
-      "header": "Rezept löschen",
-      "message": "Rezept wirklich löschen?",
+      "header": "Delete Recipe",
+      "message": "Do you really want to delete this recipe?",
       "cancel-button": "Cancel",
       "confirm-button": "Delete"
     },
     "recipe-menu": {
-      "title": "Aktionen",
+      "title": "Actions",
       "save": "Save",
       "delete": "Delete"
     },
     "general": {
-      "heading": "Allgemein",
-      "info": "Generelle Informationen zu deinem Rezept",
+      "heading": "General",
       "label-title": "Title",
       "label-category": "Category",
-      "add-photo": "Add Image",
+      "add-photo": "Add an Image",
       "tags": "Tags",
       "category": {
-        "select-placeholder": "Auswählen",
-        "select-confirm": "Auswählen",
-        "select-cancel": "Abbrechen"
+        "select-placeholder": "Select",
+        "select-confirm": "Select",
+        "select-cancel": "Cancel"
       }
     },
     "ingredients": {
-      "heading": "Zutaten",
-      "info": "Hier kannst du Zutaten zu deinem Rezept hinzufügen",
+      "heading": "Intredients",
       "edit": {
-        "heading": "Zutat bearbeiten",
-        "confirm-quantity-type": "Auswählen",
-        "cancel-quantity-type": "Abbrechen",
-        "name-label": "Zutat",
-        "quantity-label": "Menge",
-        "quantity-type-label": "Einheit",
-        "confirm": "Fertig",
+        "heading": "Edit Ingredient",
+        "confirm-quantity-type": "Select",
+        "cancel-quantity-type": "Cancel",
+        "name-label": "Ingredient",
+        "quantity-label": "Quantity",
+        "quantity-type-label": "Unit",
+        "confirm": "Confirm",
         "add-group": {
-          "header": "Gruppe hinzufügen",
-          "title-input": "Gruppenname"
+          "header": "Add Group",
+          "title-input": "Group Name"
         },
-        "remove-group": "Gruppe {{group}} entfernen?",
+        "remove-group": "Remove group {{group}}?",
         "menu": {
-          "delete-button": "löschen"
+          "delete-button": "Remove"
         }
       },
       "no-content": {
-        "button": "Zutat hinzufügen"
+        "button": "Add Ingredient"
       },
       "menu": {
-        "add-group": "Weitere Gruppe hinzufügen",
-        "delete-group": "Gruppe löschen"
+        "add-group": "Add Additional Group",
+        "delete-group": "Remove Group"
       }
     },
     "preparation": {
-      "heading": "Zubereitung",
-      "input-placeholder": "Hier Zubereitungstext eingeben..."
+      "heading": "Preparation",
+      "input-placeholder": "Insert your preparation text here..."
     },
     "segment": {
-      "general": "Allgemein",
-      "ingredients": "Zutaten",
-      "preparation": "Zubereitung"
+      "general": "General",
+      "ingredients": "Ingredients",
+      "preparation": "Preparation"
     }
   },
   "recipe-view": {
-    "heading": "Rezeptansicht",
+    "heading": "Recipe View",
     "action-sheet": {
-      "title": "Aktionen",
-      "edit": "Bearbeiten",
-      "read-view": "Kochansicht"
+      "title": "Actions",
+      "edit": "Edit",
+      "read-view": "Cooking View"
     },
     "segment": {
-      "ingredients": "Zutaten",
-      "preparation": "Zubereitung"
+      "ingredients": "Ingredients",
+      "preparation": "Preparation"
     },
     "preparation": {
-      "heading": "Zubereitung",
-      "no-content": "Es gibt noch keine Angaben zur Zubereitung"
+      "heading": "Preparation",
+      "no-content": "No preparation specified, yet"
     },
     "ingredients": {
-      "heading": "Zutaten",
-      "no-content": "Noch keine Zutaten hinzugefügt"
+      "heading": "Ingredients",
+      "no-content": "No ingredients added, yet"
     }
   }
 }
