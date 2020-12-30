@@ -18,22 +18,10 @@
   <div class="space-vertical-m"></div>
 
   <ion-item>
-    <ion-label>{{
-      'recipe-form.ingredients.edit.quantity-type-label' | translate
-    }}</ion-label>
-    <ion-select
-      okText="{{
-        'recipe-form.ingredients.edit.confirm-quantity-type' | translate
-      }}"
-      cancelText="{{
-        'recipe-form.ingredients.edit.cancel-quantity-type' | translate
-      }}"
-      [(ngModel)]="ingredient.quantityType"
-    >
-      <ion-select-option *ngFor="let quantityType of quantityTypes">{{
-        quantityType
-      }}</ion-select-option>
-    </ion-select>
+    <ion-label position="floating"
+      >{{ 'recipe-form.ingredients.edit.quantity-type-label' | translate }}
+    </ion-label>
+    <ion-input [(ngModel)]="ingredient.quantityType"></ion-input>
   </ion-item>
 </ion-content>
 
