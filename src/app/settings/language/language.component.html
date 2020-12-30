@@ -14,6 +14,7 @@
       cancelText="{{ 'general.select-cancel' | translate }}"
       selectedText=" "
       (ionChange)="setLanguage($event)"
+      [value]="currentLanguage | async"
     >
       <ion-select-option
         *ngFor="let language of availLanguages"
