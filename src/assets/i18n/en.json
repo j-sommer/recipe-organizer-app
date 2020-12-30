@@ -1,0 +1,140 @@
+{
+  "search-placeholder": "Search Recipe",
+  "language": {
+    "de": "German",
+    "en": "English"
+  },
+  "general": {
+    "select-confirm": "select",
+    "select-cancel": "cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "add": "Add",
+    "back": "Back"
+  },
+  "menu": {
+    "item": {
+      "home": "Overview",
+      "new-recipe": "New Recipe",
+      "categories": "Categories",
+      "settings": "Settings",
+      "planner": "Weekly Planner"
+    }
+  },
+  "category-view": {
+    "default": "General"
+  },
+  "categories": {
+    "heading": "Categories",
+    "input-placeholder": "Category",
+    "add-button": "Add Category",
+    "remove-category": "Remove category '{{category}}'",
+    "remove-category-message": "All attached recipes will be moved into the 'General'-category."
+  },
+  "settings": {
+    "heading": "Settings",
+    "general": {
+      "heading": "General",
+      "language": "Language"
+    }
+  },
+  "recipe-overview": {
+    "heading": "Overview",
+    "no-content": {
+      "info-text": "It looks like you don't have any recipes.",
+      "button": "Create Recipe"
+    }
+  },
+  "recipe-form": {
+    "on-save": {
+      "success": "Recipe {{recipe}} saved",
+      "error": "Error while saving recipe"
+    },
+    "heading": {
+      "new": "New Recipe",
+      "edit": "Edit Recipe"
+    },
+    "delete-alert": {
+      "header": "Delete Recipe",
+      "message": "Do you really want to delete this recipe?",
+      "error": "Could not delete recipe",
+      "cancel-button": "Cancel",
+      "confirm-button": "Delete"
+    },
+    "recipe-menu": {
+      "title": "Actions",
+      "save": "Save",
+      "delete": "Delete"
+    },
+    "general": {
+      "heading": "General",
+      "label-title": "Title",
+      "label-category": "Category",
+      "add-photo": "Add an Image",
+      "tags": "Tags",
+      "category": {
+        "select-placeholder": "Select",
+        "select-confirm": "Select",
+        "select-cancel": "Cancel"
+      }
+    },
+    "ingredients": {
+      "heading": "Intredients",
+      "initial-name": "Ingredient",
+      "initial-group-name": "Main Ingredients",
+      "edit": {
+        "heading": "Edit Ingredient",
+        "confirm-quantity-type": "Select",
+        "cancel-quantity-type": "Cancel",
+        "name-label": "Ingredient",
+        "quantity-label": "Quantity",
+        "quantity-type-label": "Unit",
+        "confirm": "Confirm",
+        "add-group": {
+          "header": "Add Group",
+          "title-input": "Group Name"
+        },
+        "remove-group": "Remove group {{group}}?",
+        "menu": {
+          "delete-button": "Remove"
+        }
+      },
+      "no-content": {
+        "button": "Add Ingredient"
+      },
+      "menu": {
+        "add-group": "Add Additional Group",
+        "delete-group": "Remove Group"
+      }
+    },
+    "preparation": {
+      "heading": "Preparation",
+      "input-placeholder": "Insert your preparation text here..."
+    },
+    "segment": {
+      "general": "General",
+      "ingredients": "Ingredients",
+      "preparation": "Preparation"
+    }
+  },
+  "recipe-view": {
+    "heading": "Recipe View",
+    "action-sheet": {
+      "title": "Actions",
+      "edit": "Edit",
+      "read-view": "Cooking View"
+    },
+    "segment": {
+      "ingredients": "Ingredients",
+      "preparation": "Preparation"
+    },
+    "preparation": {
+      "heading": "Preparation",
+      "no-content": "No preparation specified, yet"
+    },
+    "ingredients": {
+      "heading": "Ingredients",
+      "no-content": "No ingredients added, yet"
+    }
+  }
+}

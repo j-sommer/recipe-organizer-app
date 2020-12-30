@@ -25,7 +25,14 @@ export class RecipeFormPage implements OnDestroy {
     title: '',
     categoryId: CategoryService.defaultCategoryId,
     tags: [],
-    ingredientsGroups: [{ title: 'Hauptzutaten', ingredients: [] }],
+    ingredientsGroups: [
+      {
+        title: this.translate.instant(
+          'recipe-form.ingredients.initial-group-name'
+        ),
+        ingredients: [],
+      },
+    ],
     preparation: '',
   };
 
@@ -113,7 +120,9 @@ export class RecipeFormPage implements OnDestroy {
               this.router.navigate([destinations.home]);
             } catch (error) {
               const errorToast = await this.toastController.create({
-                message: 'Fehler beim Löschen',
+                message: this.translate.instant(
+                  'recipe-form.delete-alert.error'
+                ),
                 duration: 2000,
                 color: 'danger',
                 position: 'bottom',
@@ -142,7 +151,9 @@ export class RecipeFormPage implements OnDestroy {
       }
 
       const successToast = await this.toastController.create({
-        message: `Rezept '${this.currentRecipe.title}' wurde gespeichert`,
+        message: this.translate.instant('recipe-form.on-save.sucess', {
+          recipe: this.currentRecipe.title,
+        }),
         duration: 2500,
         color: 'success',
         position: 'bottom',
@@ -151,7 +162,7 @@ export class RecipeFormPage implements OnDestroy {
       successToast.present();
     } catch (error) {
       const errorToast = await this.toastController.create({
-        message: 'Fehler beim Speichern',
+        message: this.translate.instant('recipe-form.on-save.error'),
         duration: 2000,
         color: 'danger',
         position: 'bottom',

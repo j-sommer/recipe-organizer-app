@@ -18,13 +18,7 @@
       "new-recipe": "Neues Rezept",
       "categories": "Kategorien",
       "settings": "Einstellungen",
-      "planner": "Weekly Planner",
-      "meat": "Fleisch",
-      "baking": "Backen",
-      "fish": "Fisch",
-      "dessert": "Dessert",
-      "snacks": "Snacks",
-      "other": "Andere"
+      "planner": "Weekly Planner"
     }
   },
   "category-view": {
@@ -49,17 +43,13 @@
     "no-content": {
       "info-text": "Es sieht so aus als hättest du keine Rezepte.",
       "button": "Rezept erstellen"
-    },
-    "categories": {
-      "meat": "Fleisch",
-      "baking": "Backen",
-      "fish": "Fisch",
-      "dessert": "Dessert",
-      "snacks": "Snacks",
-      "other": "Andere"
     }
   },
   "recipe-form": {
+    "on-save": {
+      "success": "Rezept {{recipe}} wurde gespeichert",
+      "error": "Fehler beim Speichern"
+    },
     "heading": {
       "new": "Neues Rezept",
       "edit": "Rezept bearbeiten"
@@ -67,6 +57,7 @@
     "delete-alert": {
       "header": "Rezept löschen",
       "message": "Rezept wirklich löschen?",
+      "error": "Fehler beim Löschen",
       "cancel-button": "Abbrechen",
       "confirm-button": "Löschen"
     },
@@ -83,12 +74,6 @@
       "add-photo": "Bild Hinzufügen",
       "tags": "Tags",
       "category": {
-        "meat": "Fleisch",
-        "baking": "Backen",
-        "fish": "Fisch",
-        "dessert": "Dessert",
-        "snacks": "Snacks",
-        "other": "Andere",
         "select-placeholder": "Auswählen",
         "select-confirm": "Auswählen",
         "select-cancel": "Abbrechen"
@@ -96,6 +81,8 @@
     },
     "ingredients": {
       "heading": "Zutaten",
+      "initial-name": "Zutat",
+      "initial-group-name": "Hauptzutaten",
       "info": "Hier kannst du Zutaten zu deinem Rezept hinzufügen",
       "edit": {
         "heading": "Zutat bearbeiten",

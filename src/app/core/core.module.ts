@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
@@ -11,6 +12,11 @@ import { RecipeListItemComponent } from './components/recipe-list-item/recipe-li
 import { RecipeViewToolbarComponent } from './components/recipe-view-toolbar/recipe-view-toolbar.component';
 import { AppSettingsService } from './services/app-settings/app-settings.service';
 import { CategoryPersistenceService } from './services/category-persistence/category-persistence.service';
+import { I18NPersistenceService } from './services/internationalization/i18n-persistence.service';
+import {
+  createTranslateLoader,
+  InternationalizationService,
+} from './services/internationalization/internationalization.service';
 import { RecipeFileHandlerService } from './services/recipe-file-handler/recipe-file-handler.service';
 import { RecipeService } from './services/recipe/recipe.service';
 
@@ -26,13 +32,21 @@ import { RecipeService } from './services/recipe/recipe.service';
     CommonModule,
     RouterModule.forChild([]),
     IonicModule,
-    TranslateModule.forChild(),
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateModule,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [
     RecipeFileHandlerService,
     AppSettingsService,
     CategoryPersistenceService,
     RecipeService,
+    InternationalizationService,
+    I18NPersistenceService,
   ],
   exports: [
     ListPlaceholderComponent,
