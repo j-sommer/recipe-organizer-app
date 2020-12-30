@@ -8,6 +8,7 @@ import {
   PopoverController,
 } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { cloneDeep } from 'lodash';
 
 import { IngredientFormComponent } from './ingredient-form/ingredient-form.component';
 import {
@@ -31,6 +32,12 @@ export class IngredientsComponent {
   public ingredientGroupsChange = new EventEmitter<IngredientGroup[]>();
 
   private focusedGroupInput: { index: number; title: string };
+
+  private readonly initialIngredient: Ingredient = {
+    name: this.translate.instant('recipe-form.ingredients.initial-name'),
+    quantity: 200,
+    quantityType: 'g',
+  };
 
   constructor(
     private translate: TranslateService,
@@ -171,11 +178,7 @@ export class IngredientsComponent {
   }
 
   public addGroup(title: string): void {
-    const newIngredient: Ingredient = {
-      name: 'Mehl',
-      quantity: 200,
-      quantityType: 'g',
-    };
+    const newIngredient: Ingredient = cloneDeep(this.initialIngredient);
 
     const newGroup: IngredientGroup = {
       title,
@@ -186,11 +189,8 @@ export class IngredientsComponent {
   }
 
   public addIngredient(groupIndex: number): void {
-    const newIngredient: Ingredient = {
-      name: 'Mehl',
-      quantity: 200,
-      quantityType: 'g',
-    };
+    const newIngredient: Ingredient = cloneDeep(this.initialIngredient);
+
     this.ingredientGroups[groupIndex].ingredients.push(newIngredient);
     this.ingredientGroupsChange.emit(this.ingredientGroups);
   }

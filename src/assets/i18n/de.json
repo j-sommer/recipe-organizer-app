@@ -46,6 +46,10 @@
     }
   },
   "recipe-form": {
+    "on-save": {
+      "success": "Rezept {{recipe}} wurde gespeichert",
+      "error": "Fehler beim Speichern"
+    },
     "heading": {
       "new": "Neues Rezept",
       "edit": "Rezept bearbeiten"
@@ -53,6 +57,7 @@
     "delete-alert": {
       "header": "Rezept löschen",
       "message": "Rezept wirklich löschen?",
+      "error": "Fehler beim Löschen",
       "cancel-button": "Abbrechen",
       "confirm-button": "Löschen"
     },
@@ -76,6 +81,7 @@
     },
     "ingredients": {
       "heading": "Zutaten",
+      "initial-name": "Zutat",
       "info": "Hier kannst du Zutaten zu deinem Rezept hinzufügen",
       "edit": {
         "heading": "Zutat bearbeiten",

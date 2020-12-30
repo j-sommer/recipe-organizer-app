@@ -46,6 +46,10 @@
     }
   },
   "recipe-form": {
+    "on-save": {
+      "success": "Recipe {{recipe}} saved",
+      "error": "Error while saving recipe"
+    },
     "heading": {
       "new": "New Recipe",
       "edit": "Edit Recipe"
@@ -53,6 +57,7 @@
     "delete-alert": {
       "header": "Delete Recipe",
       "message": "Do you really want to delete this recipe?",
+      "error": "Could not delete recipe",
       "cancel-button": "Cancel",
       "confirm-button": "Delete"
     },
@@ -75,6 +80,7 @@
     },
     "ingredients": {
       "heading": "Intredients",
+      "initial-name": "Ingredient",
       "edit": {
         "heading": "Edit Ingredient",
         "confirm-quantity-type": "Select",
