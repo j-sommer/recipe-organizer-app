@@ -151,7 +151,7 @@ export class RecipeFormPage implements OnDestroy {
       }
 
       const successToast = await this.toastController.create({
-        message: this.translate.instant('recipe-form.on-save.sucess', {
+        message: this.translate.instant('recipe-form.on-save.success', {
           recipe: this.currentRecipe.title,
         }),
         duration: 2500,
