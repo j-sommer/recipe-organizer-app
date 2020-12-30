@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { quantityTypesDE } from '@core/const/quantity-types.const';
 import { IngredientGroup } from '@core/models/recipe/ingredient/ingredient-group.model';
 import { Ingredient } from '@core/models/recipe/ingredient/ingredient.model';
 import {
@@ -22,7 +21,6 @@ import {
   styleUrls: ['./ingredients.component.scss'],
 })
 export class IngredientsComponent {
-  public readonly quantityTypes: string[] = quantityTypesDE;
   public readonly defaultGroupIndex = 0;
 
   @Input()
@@ -35,8 +33,10 @@ export class IngredientsComponent {
 
   private readonly initialIngredient: Ingredient = {
     name: this.translate.instant('recipe-form.ingredients.initial-name'),
-    quantity: 200,
-    quantityType: 'g',
+    quantity: 0,
+    quantityType: this.translate.instant(
+      'recipe-form.ingredients.initial-quantity-type'
+    ),
   };
 
   constructor(

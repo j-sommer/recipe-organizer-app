@@ -81,7 +81,8 @@
     },
     "ingredients": {
       "heading": "Zutaten",
-      "initial-name": "Zutat",
+      "initial-name": "Neue Zutat",
+      "initial-quantity-type": "Einheit",
       "initial-group-name": "Hauptzutaten",
       "info": "Hier kannst du Zutaten zu deinem Rezept hinzufügen",
       "edit": {
