@@ -81,6 +81,7 @@
     "ingredients": {
       "heading": "Intredients",
       "initial-name": "Ingredient",
+      "initial-group-name": "Main Ingredients",
       "edit": {
         "heading": "Edit Ingredient",
         "confirm-quantity-type": "Select",

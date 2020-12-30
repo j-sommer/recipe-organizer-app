@@ -82,6 +82,7 @@
     "ingredients": {
       "heading": "Zutaten",
       "initial-name": "Zutat",
+      "initial-group-name": "Hauptzutaten",
       "info": "Hier kannst du Zutaten zu deinem Rezept hinzufügen",
       "edit": {
         "heading": "Zutat bearbeiten",

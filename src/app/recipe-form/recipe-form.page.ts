@@ -25,7 +25,14 @@ export class RecipeFormPage implements OnDestroy {
     title: '',
     categoryId: CategoryService.defaultCategoryId,
     tags: [],
-    ingredientsGroups: [{ title: 'Hauptzutaten', ingredients: [] }],
+    ingredientsGroups: [
+      {
+        title: this.translate.instant(
+          'recipe-form.ingredients.initial-group-name'
+        ),
+        ingredients: [],
+      },
+    ],
     preparation: '',
   };
 
