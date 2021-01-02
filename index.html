@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recipe Organizer - Privacy Policy</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <script>
+      function changeLang(lang) {
+        var i;
+        var x = document.getElementsByClassName('privacy-policy');
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = 'none';
+        }
+        document.getElementById(lang).style.display = 'block';
+      }
+    </script>
+
+    <div>
+      <button onclick="changeLang('en')">EN - English</button>
+      <button onclick="changeLang('de')">DE - German</button>
+    </div>
+
+    <div>
+      <div class="privacy-policy" id="en">
+        <h2>Privacy Policy</h2>
+      </div>
+
+      <div class="privacy-policy" id="de" style="display: none">
+        <h2>Datenschutzerklärung</h2>
+      </div>
+    </div>
+  </body>
 </html>
