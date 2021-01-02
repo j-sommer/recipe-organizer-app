@@ -78,6 +78,21 @@
         <ion-list>
           <ion-menu-toggle auto-hide="true">
             <ion-item
+              [routerLink]="menuItems.privacyPolicy.url"
+              routerDirection="root"
+              lines="none"
+            >
+              <ion-icon
+                [name]="menuItems.privacyPolicy.icon"
+                slot="start"
+              ></ion-icon>
+              {{ 'menu.item.' + menuItems.privacyPolicy.title | translate }}
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+        <ion-list>
+          <ion-menu-toggle auto-hide="true">
+            <ion-item
               [routerLink]="menuItems.settings.url"
               routerDirection="root"
               lines="none"

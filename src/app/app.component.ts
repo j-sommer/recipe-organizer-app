@@ -36,6 +36,11 @@ export class AppComponent implements OnInit {
       url: '/settings',
       icon: 'settings-outline',
     } as SideMenuItem,
+    privacyPolicy: {
+      title: 'privacy-policy',
+      url: '/privacy-policy',
+      icon: 'information-outline',
+    } as SideMenuItem,
   };
 
   public readonly categoryViewBaseRoute = '/category-view';
