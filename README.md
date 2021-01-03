@@ -1,4 +1,10 @@
-# Recipe Organizer App
+<div style="display: flex; flex-direction: column; align-items: center;" >
+  <img src="https://raw.githubusercontent.com/j-sommer/recipe-organizer-app/master/resources/icon.png" width="100" height="100">
+
+<h1>
+Recipe Organizer App
+</h1>
+</div>
 
 ## About
 
