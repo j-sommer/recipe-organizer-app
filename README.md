@@ -22,3 +22,7 @@ This project uses the [ionic](https://ionicframework.com/) framework for buildin
 ## Contact
 
 You can reach me via my website [jan-sommer.dev](https://www.jan-sommer.dev/)
+
+<p align="center">
+<a href='https://play.google.com/store/apps/details?id=de.sommer.recipeorganizer&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img width="20%" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
+</p>
